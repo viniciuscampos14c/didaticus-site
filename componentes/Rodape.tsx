@@ -1,30 +1,28 @@
 import Image from "next/image";
+import { LINK_WHATSAPP } from "@/dados/escola";
 import css from "./Rodape.module.css";
 
 /*
  * O rodapé.
  *
- * O que falta aqui é dado da escola que o sistema ainda não tem: o cadastro da
- * unidade está sem CNPJ, endereço, telefone e e-mail. Em vez de inventar um
- * telefone de exemplo, que é o jeito mais rápido de um site nascer mentindo,
- * este rodapé mostra só o que é verdade hoje.
- *
- * Quando a escola preencher o cadastro, o contato entra aqui vindo da API, que
- * é onde ele já deveria estar.
+ * O contato que falta aqui é dado que o sistema ainda não tem: o cadastro da
+ * unidade está sem CNPJ, endereço, telefone e e-mail. O WhatsApp entra porque a
+ * própria escola o publica na landing. O resto fica de fora em vez de virar
+ * dado de exemplo, que é o jeito mais rápido de um site nascer mentindo.
  */
 
 const SECOES = [
   {
     titulo: "Aulas",
-    itens: ["Presencial, em casa", "Por videoconferência", "Acompanhamento pedagógico"],
+    itens: ["Presencial, em casa", "Por videoconferência", "Preparatório para o vestibular"],
   },
   {
     titulo: "A escola",
-    itens: ["Quem somos", "Professores", "Trabalhe conosco"],
+    itens: ["Como funciona", "Onde atendemos", "Trabalhe conosco"],
   },
   {
     titulo: "Para a família",
-    itens: ["Portal do responsável", "Materiais para baixar", "Contato"],
+    itens: ["Portal do responsável", "Materiais para baixar"],
   },
 ];
 
@@ -33,12 +31,8 @@ export function Rodape() {
     <footer className={css.rodape}>
       <div className={css.conteudo}>
         <div className={css.marca}>
-          <Image
-            src="/marca/didaticus-empilhada.png"
-            alt="Didaticus, aulas particulares"
-            width={150}
-            height={150}
-          />
+          <Image src="/marca/didaticus-simbolo.png" alt="" width={1254} height={1254} sizes="48px" className={css.simbolo} />
+          <Image src="/marca/didaticus-palavra.webp" alt="Didaticus, aulas particulares" width={2000} height={667} sizes="160px" className={css.palavra} />
         </div>
 
         <nav className={css.colunas} aria-label="Rodapé">
@@ -52,12 +46,20 @@ export function Rodape() {
               </ul>
             </div>
           ))}
+          <div>
+            <h2>Fale com a gente</h2>
+            <ul>
+              <li>
+                <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer">
+                  WhatsApp (61) 99996-7400
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
 
-      <p className={css.linhaFinal}>
-        Didaticus, aulas particulares em Brasília. Acesso da equipe pelo sistema.
-      </p>
+      <p className={css.linhaFinal}>Didaticus, aulas particulares em Brasília.</p>
     </footer>
   );
 }

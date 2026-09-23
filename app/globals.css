@@ -1,20 +1,39 @@
 /*
- * Os tokens da marca, tirados dos arquivos que o cliente entregou em 23/09.
+ * Os tokens do site, tirados da landing page que a escola tem no ar hoje,
+ * em didaticusaulas.com.br/lp, lida em 23/09/2026.
  *
- * O laranja e o marinho foram amostrados do PNG, e não escolhidos: a marca é a
- * fonte, e a folha de estilo obedece.
+ * NÃO SÃO AS CORES DO SISTEMA, e a primeira versão errou exatamente nisso. O
+ * sistema interno tem uma paleta própria, calma, feita para quem passa oito
+ * horas nele. O site é outra conversa, com outro público: é a vitrine que o pai
+ * vê antes de decidir, e a escola já tem uma voz visual publicada para isso,
+ * enérgica e escolar. O cliente reprovou a primeira home por ela ter saído com
+ * a cara do sistema.
+ *
+ * Os valores foram amostrados dos elementos da landing, e não escolhidos.
  */
 :root {
-  --laranja: #ee5b2b;
-  --laranja-forte: #c2410c;
-  --marinho: #1b3a5c;
-  --tinta: #16233b;
-  --tinta-media: #55607a;
-  --tinta-fraca: #8b94a6;
-  --papel: #fffdfb;
-  --papel-2: #faf5ee;
-  --papel-3: #f6ece1;
-  --linha: #e7e3dc;
+  --marinho: #04203a;
+  --marinho-2: #0b2f52;
+  --marinho-3: #13406b;
+
+  --laranja: #ff6533;
+  --laranja-2: #f05a29;
+  --amarelo: #ffd200;
+
+  --ciano: #f4fdff;
+  --ciano-2: #dcf5fb;
+
+  /* O verde é o do botão de WhatsApp da landing: é o canal de venda da escola. */
+  --verde: #1e7000;
+  --verde-2: #25a244;
+
+  --texto: #212121;
+  --texto-2: #4f5b6a;
+  --texto-3: #7f97b5;
+  --branco: #ffffff;
+
+  --raio: 22px;
+  --fonte: "Poppins", "Segoe UI", system-ui, sans-serif;
 }
 
 * {
@@ -23,24 +42,21 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: var(--papel);
-  color: var(--tinta);
-  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  background: var(--branco);
+  color: var(--texto);
+  font-family: var(--fonte);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-/*
- * A cena da abertura cobre a tela inteira enquanto roda, e por isso a rolagem
- * horizontal precisa estar trancada: um estouro de um pixel na cena viraria
- * uma barra na home inteira.
- */
-body {
+  /*
+   * A cena da abertura cobre a tela inteira enquanto roda. Um estouro de um
+   * pixel nela viraria uma barra de rolagem horizontal na home inteira.
+   */
   overflow-x: hidden;
 }
 
@@ -51,12 +67,15 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

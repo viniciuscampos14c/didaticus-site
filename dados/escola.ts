@@ -1,19 +1,72 @@
 /*
- * O que a escola faz, de onde o site tira o conteúdo.
+ * O conteúdo do site, e de onde cada parte veio.
  *
- * Os nomes vieram do sistema em 23/09/2026: as 17 disciplinas cadastradas e as
- * 42 sub-regiões atendidas, com a região de cada uma. Não são exemplo nem
- * chute, são o que a recepção usa para marcar aula.
+ * DUAS FONTES, e nenhuma é chute:
  *
- * FICA AQUI EM VEZ DE ESPALHADO NAS PÁGINAS, e por enquanto escrito à mão em
- * vez de vindo da API. A troca é consciente: a home é a porta do site e não
- * pode depender de a API estar de pé para dizer o que a escola ensina. Quando
- * existir cache, isto vira uma busca com este arquivo de reserva.
+ * - O que a escola diz de si vem da landing page que ela publica hoje, em
+ *   didaticusaulas.com.br/lp, lida em 23/09/2026: os cinco benefícios, os quatro
+ *   passos para contratar, o WhatsApp e os "quase dez anos". É a voz que a
+ *   escola já escolheu e já usa para vender, e o site novo parte dela em vez de
+ *   inventar outra.
  *
- * O preço NÃO está aqui de propósito. Ele muda, e uma tabela em código é uma
- * tabela que alguém esquece de atualizar. Quando a página de preços existir,
- * ela lê das faixas das regiões, que é onde a escola já mantém o valor.
+ * - O que a escola faz de fato vem do sistema: as 17 matérias e os 42 bairros
+ *   são os mesmos que a recepção usa para marcar aula.
+ *
+ * O preço NÃO está aqui. Ele muda, e tabela em código é tabela que alguém
+ * esquece. Quando a página de preços existir, lê das faixas das regiões.
  */
+
+/* O canal de venda da escola. A landing inteira converge para ele. */
+export const WHATSAPP = "5561999967400";
+export const LINK_WHATSAPP =
+  `https://wa.me/${WHATSAPP}?text=` +
+  encodeURIComponent("Olá! Vim pelo site e quero saber sobre as aulas particulares.");
+
+/* Publicado pela própria escola na landing: "com quase 10 anos de experiência". */
+export const TEMPO_DE_CASA = "quase 10 anos";
+
+export const BENEFICIOS = [
+  {
+    icone: "/lp/01.png.webp",
+    titulo: "Aulas em domicílio",
+    texto: "Você não precisa se deslocar. O professor vai até a sua casa.",
+  },
+  {
+    icone: "/lp/02.png.webp",
+    titulo: "Professores treinados",
+    texto:
+      "Especialistas preparados para o ensino personalizado, e para as avaliações que o aluno tem pela frente.",
+  },
+  {
+    icone: "/lp/03.png.webp",
+    titulo: "Suporte online",
+    texto: "Surgiu dúvida entre uma aula e outra? O aluno envia, e a gente responde.",
+  },
+  {
+    icone: "/lp/04.png.webp",
+    titulo: "Horários flexíveis",
+    texto: "Qualquer dia da semana, no horário em que o aluno pode.",
+  },
+  {
+    icone: "/lp/05.png.webp",
+    titulo: "Linguagem jovem",
+    texto: "Professor que fala a língua do aluno. É o que destrava a relação com a matéria.",
+  },
+];
+
+export const PASSOS = [
+  { icone: "/lp/icon-1.png.webp", titulo: "Fale com a gente pelo WhatsApp" },
+  { icone: "/lp/icon-2.png.webp", titulo: "Conheça as nossas soluções" },
+  { icone: "/lp/icon-3.png.webp", titulo: "Agende a primeira aula do seu filho" },
+  { icone: "/lp/icon-4.png.webp", titulo: "O melhor professor da região vai até a sua casa" },
+];
+
+export const NIVEIS = [
+  "Ensino fundamental",
+  "Ensino médio",
+  "Preparatório para o vestibular",
+  "Aulas personalizadas e flexíveis",
+];
 
 export const MATERIAS = [
   "Matemática",
@@ -42,104 +95,29 @@ export const REGIOES: Regiao[] = [
     nome: "Região Central do Distrito Federal",
     curto: "Plano Piloto e arredores",
     bairros: [
-      "Asa Sul",
-      "Asa Norte",
-      "Sudoeste",
-      "Noroeste",
-      "Octogonal",
-      "Cruzeiro Novo",
-      "Cruzeiro Velho",
-      "Park Way",
-      "Vila Planalto",
-      "Vila Telebrasília",
-      "Setor de Clubes Norte",
-      "Setor de Clubes Sul",
-      "Setor Militar Urbano",
-      "SIA",
+      "Asa Sul", "Asa Norte", "Sudoeste", "Noroeste", "Octogonal", "Cruzeiro Novo",
+      "Cruzeiro Velho", "Park Way", "Vila Planalto", "Vila Telebrasília",
+      "Setor de Clubes Norte", "Setor de Clubes Sul", "Setor Militar Urbano", "SIA",
     ],
   },
   {
     nome: "Região Norte do Distrito Federal",
-    curto: "Lagos e norte",
+    curto: "Lagos e região norte",
     bairros: [
-      "Lago Norte",
-      "Lago Sul",
-      "Jardim Botânico",
-      "Setor de Embaixadas Norte",
-      "Setor de Embaixadas Sul",
-      "Granja do Torto",
-      "Taquari",
-      "Varjão",
-      "Paranoá",
-      "São Sebastião",
-      "Sobradinho",
-      "Planaltina",
+      "Lago Norte", "Lago Sul", "Jardim Botânico", "Setor de Embaixadas Norte",
+      "Setor de Embaixadas Sul", "Granja do Torto", "Taquari", "Varjão", "Paranoá",
+      "São Sebastião", "Sobradinho", "Planaltina",
     ],
   },
   {
     nome: "Região Sul do Distrito Federal",
-    curto: "Sul e oeste",
+    curto: "Região sul e oeste",
     bairros: [
-      "Águas Claras",
-      "Taguatinga",
-      "Vicente Pires",
-      "Guará I",
-      "Guará II",
-      "Park Sul",
-      "Núcleo Bandeirante",
-      "Candangolândia",
-      "Arniqueiras",
-      "Riacho Fundo I",
-      "Riacho Fundo II",
-      "Samambaia",
-      "Ceilândia",
-      "Recanto das Emas",
-      "Santa Maria",
-      "Gama",
+      "Águas Claras", "Taguatinga", "Vicente Pires", "Guará I", "Guará II", "Park Sul",
+      "Núcleo Bandeirante", "Candangolândia", "Arniqueiras", "Riacho Fundo I",
+      "Riacho Fundo II", "Samambaia", "Ceilândia", "Recanto das Emas", "Santa Maria", "Gama",
     ],
   },
 ];
 
 export const QUANTOS_BAIRROS = REGIOES.reduce((n, r) => n + r.bairros.length, 0);
-
-/*
- * Os passos da primeira conversa até a primeira aula.
- *
- * É a página que o concorrente não tem, e responde a pergunta que todo pai faz
- * antes de decidir: quantos passos são, e quando meu filho começa.
- *
- * Cada passo corresponde a algo que o sistema faz de verdade. Nada aqui é
- * promessa de processo que não existe.
- */
-export const COMO_FUNCIONA = [
-  {
-    titulo: "Você conta o que está acontecendo",
-    texto:
-      "Qual matéria, qual série, e o que tem travado. Se for dificuldade de " +
-      "aprendizagem e não de conteúdo, a conversa muda, e é melhor saber disso antes.",
-  },
-  {
-    titulo: "A escola escolhe o professor",
-    texto:
-      "Pela matéria, pelo horário que serve para vocês, e pela região, para ninguém " +
-      "atravessar a cidade entre duas aulas. Quem escolhe é a coordenação, não um sorteio.",
-  },
-  {
-    titulo: "A aula é marcada com dia e hora",
-    texto:
-      "Em casa ou por videoconferência. Fica na agenda, com lembrete, e remarcar é " +
-      "conversa com a secretaria e não com o professor.",
-  },
-  {
-    titulo: "Depois de cada aula, um relato",
-    texto:
-      "O professor escreve o que foi dado e como o aluno respondeu. Não é presença " +
-      "marcada no papel: é o que permite acompanhar sem ter que perguntar.",
-  },
-  {
-    titulo: "Você acompanha pelo portal",
-    texto:
-      "A agenda do seu filho, o relato de cada aula, as notas e as faturas, no mesmo " +
-      "lugar. Sem precisar ligar para saber.",
-  },
-];

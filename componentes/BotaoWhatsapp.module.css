@@ -1,0 +1,28 @@
+/*
+ * Fica acima da cena da abertura: a abertura cobre a tela durante a rolagem, e
+ * o botão de falar com a escola não pode sumir justamente no primeiro contato.
+ */
+.botao {
+  position: fixed;
+  right: clamp(16px, 2.5vw, 28px);
+  bottom: clamp(16px, 2.5vw, 28px);
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25a244;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.28);
+  transition: transform 0.15s;
+}
+
+.botao:hover {
+  transform: scale(1.06);
+}
+
+.botao:focus-visible {
+  outline: 3px solid #ffd200;
+  outline-offset: 3px;
+}

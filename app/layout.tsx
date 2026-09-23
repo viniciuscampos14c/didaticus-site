@@ -7,14 +7,8 @@ export const metadata: Metadata = {
     template: "%s · Didaticus",
   },
   description:
-    "Aula particular em casa ou online, em Brasília. Cada aula com relato do " +
-    "professor, e a família acompanhando pelo portal.",
-  /*
-   * O ícone é a versão simplificada da marca, e não o símbolo completo: abaixo
-   * de uns 32px a página, a lombada e a capa viram mancha. Ele ainda não existe
-   * como arquivo, e por isso a linha está comentada em vez de apontar para o
-   * nada. Ver docs/MARCA.md.
-   */
+    "Aulas particulares feitas sob medida para o ensino fundamental e médio, em casa " +
+    "ou online, em Brasília. O professor vai até você.",
 };
 
 export default function Raiz({ children }: { children: React.ReactNode }) {
@@ -23,12 +17,14 @@ export default function Raiz({ children }: { children: React.ReactNode }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/*
+         * Poppins, a fonte da landing que a escola já publica. Os pesos são os que
+         * a home usa de fato: 800 no título em caixa alta, que é a voz da marca,
+         * e 400 a 600 no resto.
+         */}
         <link
           rel="stylesheet"
-          href={
-            "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800" +
-            "&family=Instrument+Sans:wght@400;500;600&display=swap"
-          }
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         />
       </head>
       <body>{children}</body>

@@ -8,29 +8,34 @@ import css from "./Abertura.module.css";
  *
  * Escolhida pelo cliente em 23/09/2026 entre três protótipos. O nome do efeito é
  * animação guiada pela rolagem: a rolagem deixa de mover a página e passa a
- * controlar o tempo de uma cena, que anda para frente e para trás.
+ * controlar o tempo de uma cena.
+ *
+ * O QUADRO DE DESENHO TEM O FORMATO DA TELA, e não é um quadrado. Esta é a
+ * correção do defeito que o cliente chamou de grotesco: a primeira versão
+ * desenhava num quadrado de 512 e cobria a tela com `slice`, que corta o que
+ * sobra. Numa tela de desktop, larga, sobrava só uma faixa de uns 250 dos 512,
+ * e a marca calculada para ocupar 46% do quadrado ocupava 93% da altura visível.
+ * O protótipo tinha esse erro corrigido e o componente reintroduziu.
+ *
+ * Agora o quadro mede a tela de verdade e a marca ocupa uma fração da altura
+ * real, em qualquer proporção, do monitor largo ao celular em pé.
  *
  * QUEM RECORTA A JANELA É O ALFA DO PRÓPRIO ARQUIVO DA MARCA, e não uma máscara
- * desenhada por nós. A primeira versão fazia o contrário, com um marinho atrás
- * do PNG e uma máscara traçada por cima, e a diferença entre o traçado e o furo
- * real do arquivo virava um anel azul em volta da janela, que engrossava
- * conforme a cena ampliava. Aqui o marinho é que leva a máscara, folgada de
- * propósito, e a marca vai por cima inteira: a borda passa a ser exata por
- * construção.
- *
- * O contorno em `contraforma.json` foi traçado do canal alfa do PNG e serve só
- * para tirar o marinho de trás. Ele nunca define a borda que se vê.
+ * nossa. O marinho é que leva a máscara, folgada, e a marca vai por cima
+ * inteira: a borda da janela é exata por construção. Com a máscara na marca, a
+ * diferença entre o traçado e o furo real virava um anel azul que engrossava
+ * conforme a cena ampliava.
  */
 
 /* A caixa de tinta da marca dentro do arquivo de 1254x1254. */
 const TINTA = { x: 328, y: 218, largura: 652, altura: 830 };
 
+/* O centro da contraforma, em coordenadas da caixa de tinta: é de onde o zoom sai. */
+const CENTRO_DA_JANELA = { x: 395, y: 474.5 };
+
 /*
- * O contorno do vazio do D, em coordenadas da caixa de tinta.
- *
- * Fica aqui e não num import de JSON porque ele entra no HTML do servidor: uma
- * busca a mais no primeiro carregamento da home, pela porta do site, custa mais
- * do que as duas linhas que ele ocupa.
+ * O contorno do vazio do D, traçado do canal alfa do PNG. Ele só tira o marinho
+ * de trás, e nunca define a borda que se vê.
  */
 const CONTRAFORMA =
   "M369 268 L426 282 L446 296 L459 310 L468 324 L474 338 L479 352 L483 366 " +
@@ -43,36 +48,34 @@ const CONTRAFORMA =
   "L300 338 L300 324 L300 310 L300 296 L300 282 L330 268 Z";
 
 /*
- * Quanto da tela a marca ocupa antes de a rolagem começar.
+ * Quanto da ALTURA DA TELA a marca ocupa antes de a rolagem começar.
  *
- * Calibrado em 23/09: a primeira versão usava 1.0 e a marca estourava a moldura.
- * Ela precisa ser grande o bastante para a pessoa reconhecer a marca antes de
- * rolar, e pequena o bastante para caber com folga.
+ * Fração da tela de verdade, e não de um quadro imaginário. 0,42 foi o que o
+ * cliente aprovou no protótipo, medido lá como 49% da moldura.
  */
-const PARTE_DA_TELA = 0.46;
+const PARTE_DA_ALTURA = 0.42;
 
-/* O quadro de desenho da cena, em unidades próprias. */
-const LADO = 512;
+/* A altura do quadro de desenho, em unidades próprias. A largura acompanha a tela. */
+const ALTURA = 1000;
 
 export function Abertura({ children }: { children: React.ReactNode }) {
   const trilha = useRef<HTMLElement>(null);
   const marca = useRef<SVGGElement>(null);
 
   /*
-   * Começa desligada e liga depois de montar.
-   *
-   * O servidor não tem `matchMedia` nem rolagem, e ler qualquer um dos dois
-   * durante a renderização faria o HTML dele divergir do primeiro do navegador.
-   * Enquanto está desligada, o que aparece é o site, que é o certo: quem tem
-   * animação desligada no sistema nunca vê a cena, e quem não tem vê o site por
-   * uma fração de segundo antes de a marca cobrir.
+   * Começa desligada e liga depois de montar. O servidor não tem `matchMedia`
+   * nem tamanho de tela, e ler qualquer um dos dois durante a renderização faria
+   * o HTML dele divergir do primeiro do navegador. Enquanto está desligada o que
+   * aparece é o site, que é o certo para quem pediu movimento reduzido.
    */
   const [animando, setAnimando] = useState(false);
+  const [proporcao, setProporcao] = useState(16 / 9);
 
   useEffect(() => {
-    const querParado = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (querParado.matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const medirTela = () => setProporcao(window.innerWidth / window.innerHeight);
+    medirTela();
     setAnimando(true);
 
     let pedido: number | null = null;
@@ -91,7 +94,7 @@ export function Abertura({ children }: { children: React.ReactNode }) {
        * A escala cresce em curva, e não em reta. Em reta a primeira metade da
        * rolagem quase não mostra nada e a segunda passa voando.
        */
-      const escala = 1 + Math.pow(andado, 2.4) * 170;
+      const escala = 1 + Math.pow(andado, 2.4) * 150;
       desenho.style.transform = `scale(${escala.toFixed(3)})`;
       desenho.style.opacity = andado > 0.9 ? String(Math.max(0, (1 - andado) / 0.1)) : "1";
     };
@@ -100,28 +103,35 @@ export function Abertura({ children }: { children: React.ReactNode }) {
       if (pedido === null) pedido = requestAnimationFrame(medir);
     };
 
+    const aoRedimensionar = () => {
+      medirTela();
+      medir();
+    };
+
     medir();
     window.addEventListener("scroll", aoRolar, { passive: true });
-    window.addEventListener("resize", medir);
+    window.addEventListener("resize", aoRedimensionar);
 
     return () => {
       if (pedido !== null) cancelAnimationFrame(pedido);
       window.removeEventListener("scroll", aoRolar);
-      window.removeEventListener("resize", medir);
+      window.removeEventListener("resize", aoRedimensionar);
     };
   }, []);
 
-  /* A marca centrada no quadro, no tamanho de repouso. */
-  const escala = (LADO * PARTE_DA_TELA) / TINTA.altura;
-  const x = (LADO - TINTA.largura * escala) / 2;
-  const y = (LADO - TINTA.altura * escala) / 2;
+  /* O quadro de desenho no formato da tela. */
+  const largura = ALTURA * proporcao;
+
+  /* A marca centrada, com a altura como fração da altura real da tela. */
+  const escala = (ALTURA * PARTE_DA_ALTURA) / TINTA.altura;
+  const x = (largura - TINTA.largura * escala) / 2;
+  const y = (ALTURA - TINTA.altura * escala) / 2;
   const assento = `translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${escala.toFixed(4)})`;
 
   /* O zoom sai do centro da janela, para a ampliação entrar reta pela porta. */
-  const centro = {
-    x: (((x + 395 * escala) / LADO) * 100).toFixed(1),
-    y: (((y + 474.5 * escala) / LADO) * 100).toFixed(1),
-  };
+  const origem =
+    `${(((x + CENTRO_DA_JANELA.x * escala) / largura) * 100).toFixed(2)}% ` +
+    `${(((y + CENTRO_DA_JANELA.y * escala) / ALTURA) * 100).toFixed(2)}%`;
 
   return (
     <section ref={trilha} className={animando ? css.trilha : css.semCena}>
@@ -129,26 +139,19 @@ export function Abertura({ children }: { children: React.ReactNode }) {
         {children}
 
         {animando && (
-          <div
-            className={css.cobertura}
-            aria-hidden="true"
-            style={{ transformOrigin: `${centro.x}% ${centro.y}%` }}
-          >
-            <svg viewBox={`0 0 ${LADO} ${LADO}`} preserveAspectRatio="xMidYMid slice">
+          <div className={css.cobertura} aria-hidden="true">
+            <svg viewBox={`0 0 ${largura.toFixed(1)} ${ALTURA}`} preserveAspectRatio="none">
               <defs>
                 <mask
                   id="janelaDoD"
                   maskUnits="userSpaceOnUse"
                   x="0"
                   y="0"
-                  width={LADO}
-                  height={LADO}
+                  width={largura}
+                  height={ALTURA}
                 >
-                  <rect width={LADO} height={LADO} fill="#fff" />
-                  {/*
-                   * O furo sai 3% folgado. Ele só precisa tirar o marinho de
-                   * trás, e encostar na borda é o que produzia o anel azul.
-                   */}
+                  <rect width={largura} height={ALTURA} fill="#fff" />
+                  {/* 3% folgado: ele só tira o marinho de trás, e não encosta na borda. */}
                   <g transform={assento}>
                     <g transform="translate(395,474.5) scale(1.03) translate(-395,-474.5)">
                       <path fill="#000" d={CONTRAFORMA} />
@@ -157,8 +160,14 @@ export function Abertura({ children }: { children: React.ReactNode }) {
                 </mask>
               </defs>
 
-              <g ref={marca} style={{ transformOrigin: `${centro.x}% ${centro.y}%` }}>
-                <rect width={LADO} height={LADO} fill="#1B3A5C" mask="url(#janelaDoD)" />
+              <g ref={marca} style={{ transformOrigin: origem }}>
+                {/*
+                 * Marinho chapado, mais escuro que o da primeira dobra do site.
+                 * É o contraste que faz a janela ler como janela: por ela se vê
+                 * o fundo mais claro, com a estampa e o título, como uma sala
+                 * acesa vista por uma porta.
+                 */}
+                <rect width={largura} height={ALTURA} fill="#021729" mask="url(#janelaDoD)" />
                 <g transform={assento}>
                   <image
                     href="/marca/didaticus-simbolo.png"

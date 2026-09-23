@@ -1,391 +1,584 @@
 /*
- * A home.
+ * A home, na linguagem da landing que a escola já publica.
  *
- * O primeiro quadro ocupa a tela inteira porque é ele que aparece por dentro do
- * D quando a marca se abre: se ele fosse menor que a tela, a janela mostraria
- * o fundo da página em vez de mostrar o site.
+ * Três marcas dessa linguagem, e as três são dela, não nossas: o título em caixa
+ * alta com Poppins pesada, o laranja destacando só as palavras que importam, e o
+ * ritmo das faixas, marinho, ciano claro e laranja.
  */
-.primeiroQuadro {
+
+/* ============================================================ o herói */
+
+.heroi {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 26px clamp(18px, 5vw, 56px) 30px;
-  background: linear-gradient(160deg, var(--papel) 0%, var(--papel-2) 58%, var(--papel-3) 100%);
+  color: var(--branco);
+  background-color: var(--marinho);
+  background-image: url("/lp/bg-01_.webp");
+  background-size: cover;
+  /* O brilho do fundo fica à direita, atrás das fotos, e o texto no escuro. */
+  background-position: 70% center;
+  padding: 22px clamp(18px, 5vw, 64px) clamp(28px, 4vw, 48px);
 }
 
 .topo {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
 
 .marca {
-  width: clamp(130px, 16vw, 190px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.simbolo {
+  width: 42px;
   height: auto;
+  /* O PNG tem margem transparente ao redor da tinta; o recorte é só visual. */
+  margin: -6px -4px -6px -6px;
+}
+
+/*
+ * A palavra da marca em branco. O arquivo tem a letra em marinho, que sumiria
+ * aqui; o filtro troca a cor sem trocar o desenho, e a letra continua sendo a do
+ * arquivo da escola.
+ */
+.palavra {
+  width: clamp(120px, 12vw, 158px);
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 
 .menu {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 22px);
+  gap: clamp(14px, 2.4vw, 30px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgb(255 255 255 / 0.82);
+  transition: color 0.15s;
+}
+
+.menu a:hover {
+  color: var(--branco);
+}
+
+.portal {
+  display: inline-block;
+  background: var(--laranja);
+  color: var(--branco) !important;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgb(255 101 51 / 0.35);
+}
+
+.heroiMiolo {
+  flex: 1;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 70px);
+  padding-top: clamp(20px, 4vh, 48px);
+}
+
+.selo {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.16);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amarelo);
+}
+
+/*
+ * O título da escola, com a letra da escola: caixa alta e Poppins no peso 800.
+ * A entrelinha é apertada porque são quatro linhas de caixa alta, e com a
+ * entrelinha padrão elas viram quatro frases soltas.
+ */
+.titulo {
+  font-family: var(--fonte);
+  font-weight: 800;
+  font-size: clamp(30px, 4.4vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
+  text-wrap: balance;
+}
+
+.realce {
+  color: var(--laranja);
+}
+
+.realceAmarelo {
+  color: var(--amarelo);
+}
+
+.heroiApoio {
+  max-width: 46ch;
+  margin: 0 0 30px;
+  font-size: clamp(15px, 1.35vw, 17.5px);
+  line-height: 1.6;
+  color: #c8d5e5;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+.botaoWhats,
+.botaoFantasma,
+.botaoAmarelo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 15px 28px;
+  font-family: var(--fonte);
+  font-size: 15.5px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.botaoWhats {
+  background: var(--verde-2);
+  color: var(--branco);
+  box-shadow: 0 10px 24px rgb(37 162 68 / 0.35);
+}
+
+.botaoFantasma {
+  border: 2px solid rgb(255 255 255 / 0.55);
+  color: var(--branco);
+}
+
+.botaoAmarelo {
+  background: var(--amarelo);
+  color: var(--marinho);
+  box-shadow: 0 10px 24px rgb(4 32 58 / 0.22);
+}
+
+.botaoWhats:hover,
+.botaoAmarelo:hover {
+  transform: translateY(-2px);
+}
+
+.botaoWhats:focus-visible,
+.botaoFantasma:focus-visible,
+.botaoAmarelo:focus-visible,
+.menu a:focus-visible {
+  outline: 3px solid var(--amarelo);
+  outline-offset: 3px;
+}
+
+.provas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
   list-style: none;
   margin: 0;
   padding: 0;
   font-size: 14px;
-  color: var(--tinta-media);
+  color: var(--texto-3);
 }
 
-.portal {
-  background: var(--laranja);
-  color: #fff;
-  border-radius: 999px;
-  padding: 8px 16px;
+.provas strong {
+  color: var(--branco);
   font-weight: 600;
 }
 
-.chamada {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 19ch;
+.heroiFoto img {
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
+  filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.28));
 }
 
-.chamada h1 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(34px, 6.4vw, 68px);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  margin: 0 0 18px;
-  text-wrap: balance;
-}
-
-.chamada p {
-  max-width: 44ch;
-  margin: 0 0 28px;
-  font-size: clamp(15px, 1.5vw, 18px);
-  color: var(--tinta-media);
-}
-
-.botao {
-  align-self: flex-start;
-  background: var(--laranja);
-  color: #fff;
-  border-radius: 999px;
-  padding: 14px 30px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.botao:focus-visible {
-  outline: 3px solid var(--marinho);
-  outline-offset: 3px;
-}
-
-.rodapeDoQuadro {
-  margin: 0;
-  font-size: 13px;
-  color: var(--tinta-fraca);
-}
+/* ======================================================= as faixas */
 
 .corpo {
   position: relative;
   z-index: 3;
-  background: var(--papel);
 }
 
-.secao {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: clamp(60px, 10vw, 110px) clamp(18px, 5vw, 56px);
-}
-
-.secao h2 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  font-weight: 600;
-  font-size: clamp(24px, 3.6vw, 34px);
-  letter-spacing: -0.02em;
-  margin: 0 0 12px;
-}
-
-.secao p {
-  margin: 0;
-  color: var(--tinta-media);
-}
-
-.secao code {
-  font-family: ui-monospace, Consolas, monospace;
-  font-size: 0.9em;
-  background: var(--papel-3);
-  border-radius: 5px;
-  padding: 2px 6px;
-}
-
-@media (max-width: 760px) {
-  .menu li:not(.portal) {
-    display: none;
-  }
-  .chamada {
-    max-width: none;
-  }
-}
-
-/* ==================================================== o corpo da home */
-
-/*
- * As faixas alternam fundo para separar assunto sem precisar de linha
- * divisória. Cada uma tem um papel, e a ordem é a da conversa que o pai tem na
- * cabeça: como a aula acontece, quantos passos são, o que se ensina, onde se
- * atende, e o que a Didaticus tem que os outros não têm.
- */
 .faixa {
-  padding: clamp(56px, 9vw, 104px) clamp(18px, 5vw, 56px);
+  padding: clamp(64px, 9vw, 112px) clamp(18px, 5vw, 64px);
+  background: var(--branco);
 }
 
-.faixaClara {
-  background: var(--papel-2);
+.faixaCiano {
+  background: var(--ciano);
 }
 
-.faixaEscura {
+.faixaLaranja {
+  background: var(--laranja-2);
+  color: var(--branco);
+}
+
+.faixaMarinho {
   background: var(--marinho);
-  color: #e6edf5;
+  color: var(--branco);
 }
 
-.faixaMarca {
-  background: var(--laranja);
-  color: #fff;
-}
-
-.larguraTexto {
-  max-width: 1080px;
+.miolo {
+  max-width: 1180px;
   margin: 0 auto;
 }
 
-.olho {
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--laranja);
-  margin: 0 0 10px;
-}
-
-.faixaEscura .olho {
-  color: #f0a075;
-}
-
-.faixaMarca .olho {
-  color: rgb(255 255 255 / 0.8);
-}
-
-.faixa h2 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+.tituloSecao {
+  font-family: var(--fonte);
   font-weight: 800;
-  font-size: clamp(26px, 4.2vw, 44px);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   margin: 0 0 14px;
-  max-width: 20ch;
+  max-width: 24ch;
   text-wrap: balance;
 }
 
-.apoio {
-  max-width: 54ch;
-  margin: 0;
-  font-size: clamp(15px, 1.4vw, 17px);
-  color: var(--tinta-media);
+.faixaLaranja .realce {
+  color: var(--amarelo);
 }
 
-.faixaEscura .apoio {
-  color: #b6c5d6;
+.subtitulo {
+  margin: 0 0 40px;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 500;
+  opacity: 0.9;
 }
 
-.destaque {
-  max-width: 48ch;
-  margin: 0 0 28px;
-  font-size: clamp(16px, 1.7vw, 20px);
-  line-height: 1.5;
+.textoSecao {
+  max-width: 52ch;
+  margin: 0 0 24px;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--texto-2);
 }
 
-/* ---------------------------------------------------- as modalidades */
+/* ---------------------------------------------------- os benefícios */
 
-.duasColunas {
-  max-width: 1080px;
-  margin: 36px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.cartao {
-  background: var(--papel-2);
-  border: 1px solid var(--linha);
-  border-radius: 18px;
-  padding: clamp(22px, 3vw, 32px);
-}
-
-.cartao h3 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.015em;
-  margin: 0 0 10px;
-}
-
-.cartao p {
-  margin: 0;
-  color: var(--tinta-media);
-  font-size: 15.5px;
-}
-
-/* ------------------------------------------------------- os passos */
-
-.passos {
-  max-width: 1080px;
-  margin: 40px auto 0;
-  padding: 0;
+.beneficios {
   list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: clamp(20px, 3vw, 34px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.beneficio {
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 26px 22px;
+  box-shadow: 0 1px 2px rgb(4 32 58 / 0.05), 0 12px 30px rgb(4 32 58 / 0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.beneficio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgb(4 32 58 / 0.05), 0 18px 40px rgb(4 32 58 / 0.12);
+}
+
+.beneficioIcone {
+  width: 58px;
+  height: 59px;
+  margin-bottom: 16px;
+}
+
+.beneficio h3 {
+  font-family: var(--fonte);
+  font-weight: 700;
+  font-size: 15.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--marinho);
+  margin: 0 0 8px;
+}
+
+.beneficio p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--texto-2);
+}
+
+/* ---------------------------------------------------------- os passos */
+
+/*
+ * Os passos são numerados porque a ordem é a informação: o pai quer saber o
+ * que vem primeiro. O número já vem no ícone da escola, o ladrilho amarelo.
+ */
+.passos {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
   counter-reset: passo;
 }
 
 .passo {
   display: flex;
+  align-items: center;
   gap: 16px;
-  align-items: flex-start;
-}
-
-/*
- * O número é informação, e não enfeite: a ordem dos passos é o que o pai quer
- * saber. Numerar uma lista que não tem ordem seria decoração.
- */
-.numero {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
   background: rgb(255 255 255 / 0.1);
-  border: 1px solid rgb(255 255 255 / 0.18);
-  color: #f0a075;
-  font-family: ui-monospace, Consolas, monospace;
-  font-size: 15px;
-  font-weight: 700;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: var(--raio);
+  padding: 18px 20px;
 }
 
-.passo h3 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 17.5px;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  margin: 4px 0 8px;
+.passoIcone {
+  flex: none;
+  width: 64px;
+  height: auto;
 }
 
 .passo p {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #b6c5d6;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
-/* ------------------------------------------------------- as matérias */
+/* ------------------------------------------------ níveis e matérias */
+
+.duasMetades {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+}
+
+.niveis {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.niveis li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--marinho);
+}
+
+.marcador {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--laranja);
+  box-shadow: inset 0 0 0 6px var(--laranja), inset 0 0 0 9px var(--branco);
+}
+
+.caixaMaterias {
+  background: var(--ciano);
+  border-radius: var(--raio);
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.rotuloMaterias {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--laranja-2);
+}
 
 .materias {
-  max-width: 1080px;
-  margin: 34px auto 0;
-  padding: 0;
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px;
 }
 
 .materias li {
-  border: 1px solid var(--linha);
+  background: var(--branco);
+  border: 1px solid var(--ciano-2);
   border-radius: 999px;
-  padding: 9px 18px;
-  background: var(--papel);
-  font-size: 15px;
+  padding: 8px 16px;
+  font-size: 14.5px;
   font-weight: 500;
+  color: var(--marinho);
 }
 
-/* --------------------------------------------------------- as regiões */
+/* ------------------------------------------------------- as regiões */
 
 .regioes {
-  max-width: 1080px;
-  margin: 34px auto 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
 }
 
 .regiao {
-  background: var(--papel);
-  border: 1px solid var(--linha);
-  border-radius: 18px;
-  padding: clamp(20px, 2.6vw, 28px);
+  background: var(--marinho-2);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: var(--raio);
+  padding: 24px 24px 26px;
 }
 
 .regiao h3 {
-  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: -0.01em;
-  margin: 0 0 10px;
+  font-family: var(--fonte);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--amarelo);
+  margin: 0 0 14px;
 }
 
-.bairros {
+.regiao ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
   font-size: 14px;
-  line-height: 1.7;
-  color: var(--tinta-media);
+  color: #c8d5e5;
 }
 
-/* --------------------------------------------------------- o convite */
+/* ---------------------------------------------------------- o portal */
 
-.convite {
+.portalCaixa {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  background: var(--ciano);
+  border-radius: 32px;
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.seloEscuro {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--marinho);
+  color: var(--amarelo);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.portalTexto .textoSecao {
+  margin-bottom: 0;
+}
+
+.portalItens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.portalItens li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--branco);
+  border-left: 5px solid var(--laranja);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 14.5px;
+  color: var(--texto-2);
+  box-shadow: 0 8px 22px rgb(4 32 58 / 0.06);
+}
+
+.portalItens strong {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--marinho);
+}
+
+/* ------------------------------------------------------ o fechamento */
+
+/*
+ * O fechamento repete o fundo do herói, de propósito: a página começa e termina
+ * no mesmo lugar, e o último botão fica sobre o fundo que a pessoa já associou a
+ * "é aqui que se agenda".
+ */
+.fechamento {
   text-align: center;
-  background: var(--papel-2);
+  color: var(--branco);
+  background-color: var(--marinho);
+  background-image: url("/lp/bg-01_.webp");
+  background-size: cover;
+  background-position: center;
 }
 
-.convite h2 {
+.fechamento .tituloSecao {
   margin-left: auto;
   margin-right: auto;
 }
 
-.convite .apoio {
-  margin: 0 auto 28px;
+.fechamento .subtitulo {
+  color: #c8d5e5;
 }
 
-.botaoVazado {
-  display: inline-block;
-  border: 2px solid rgb(255 255 255 / 0.85);
-  border-radius: 999px;
-  padding: 12px 28px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-}
+/* ====================================================== o celular */
 
-.botaoVazado:focus-visible {
-  outline: 3px solid var(--marinho);
-  outline-offset: 3px;
-}
-
-@media (max-width: 560px) {
-  .passo {
-    gap: 12px;
+@media (max-width: 900px) {
+  .heroiMiolo {
+    grid-template-columns: 1fr;
+    text-align: left;
   }
-  .faixa h2 {
-    max-width: none;
+  .heroiFoto img {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .duasMetades,
+  .portalCaixa {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu li:not(:last-child) {
+    display: none;
+  }
+  .portal {
+    padding: 8px 14px;
+    font-size: 13px;
   }
 }

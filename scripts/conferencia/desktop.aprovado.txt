@@ -1,229 +1,345 @@
 app/globals.css  *  box-sizing: border-box
-app/globals.css  :root  --laranja-forte: #c2410c
-app/globals.css  :root  --laranja: #ee5b2b
-app/globals.css  :root  --linha: #e7e3dc
-app/globals.css  :root  --marinho: #1b3a5c
-app/globals.css  :root  --papel-2: #faf5ee
-app/globals.css  :root  --papel-3: #f6ece1
-app/globals.css  :root  --papel: #fffdfb
-app/globals.css  :root  --tinta-fraca: #8b94a6
-app/globals.css  :root  --tinta-media: #55607a
-app/globals.css  :root  --tinta: #16233b
+app/globals.css  :root  --amarelo: #ffd200
+app/globals.css  :root  --branco: #ffffff
+app/globals.css  :root  --ciano-2: #dcf5fb
+app/globals.css  :root  --ciano: #f4fdff
+app/globals.css  :root  --fonte: "Poppins", "Segoe UI", system-ui, sans-serif
+app/globals.css  :root  --laranja-2: #f05a29
+app/globals.css  :root  --laranja: #ff6533
+app/globals.css  :root  --marinho-2: #0b2f52
+app/globals.css  :root  --marinho-3: #13406b
+app/globals.css  :root  --marinho: #04203a
+app/globals.css  :root  --raio: 22px
+app/globals.css  :root  --texto-2: #4f5b6a
+app/globals.css  :root  --texto-3: #7f97b5
+app/globals.css  :root  --texto: #212121
+app/globals.css  :root  --verde-2: #25a244
+app/globals.css  :root  --verde: #1e7000
 app/globals.css  @media (prefers-reduced-motion: reduce) *  animation-duration: 0.01ms !important
-app/globals.css  @media (prefers-reduced-motion: reduce) *  scroll-behavior: auto !important
 app/globals.css  @media (prefers-reduced-motion: reduce) *  transition-duration: 0.01ms !important
+app/globals.css  @media (prefers-reduced-motion: reduce) html  scroll-behavior: auto
 app/globals.css  a  color: inherit
 app/globals.css  body  -webkit-font-smoothing: antialiased
-app/globals.css  body  background: var(--papel)
-app/globals.css  body  color: var(--tinta)
-app/globals.css  body  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif
+app/globals.css  body  background: var(--branco)
+app/globals.css  body  color: var(--texto)
+app/globals.css  body  font-family: var(--fonte)
 app/globals.css  body  font-size: 16px
 app/globals.css  body  line-height: 1.6
 app/globals.css  body  margin: 0
 app/globals.css  body  overflow-x: hidden
 app/globals.css  html  -webkit-text-size-adjust: 100%
+app/globals.css  html  scroll-behavior: smooth
+app/globals.css  img  display: block
 app/globals.css  img  height: auto
 app/globals.css  img  max-width: 100%
-app/home.module.css  .apoio  color: var(--tinta-media)
-app/home.module.css  .apoio  font-size: clamp(15px, 1.4vw, 17px)
-app/home.module.css  .apoio  margin: 0
-app/home.module.css  .apoio  max-width: 54ch
-app/home.module.css  .bairros  color: var(--tinta-media)
-app/home.module.css  .bairros  font-size: 14px
-app/home.module.css  .bairros  line-height: 1.7
-app/home.module.css  .bairros  margin: 0
-app/home.module.css  .botao  align-self: flex-start
-app/home.module.css  .botao  background: var(--laranja)
-app/home.module.css  .botao  border-radius: 999px
-app/home.module.css  .botao  color: #fff
-app/home.module.css  .botao  font-size: 16px
-app/home.module.css  .botao  font-weight: 600
-app/home.module.css  .botao  padding: 14px 30px
-app/home.module.css  .botao  text-decoration: none
-app/home.module.css  .botao:focus-visible  outline-offset: 3px
-app/home.module.css  .botao:focus-visible  outline: 3px solid var(--marinho)
-app/home.module.css  .botaoVazado  border-radius: 999px
-app/home.module.css  .botaoVazado  border: 2px solid rgb(255 255 255 / 0.85)
-app/home.module.css  .botaoVazado  color: #fff
-app/home.module.css  .botaoVazado  display: inline-block
-app/home.module.css  .botaoVazado  font-size: 16px
-app/home.module.css  .botaoVazado  font-weight: 600
-app/home.module.css  .botaoVazado  padding: 12px 28px
-app/home.module.css  .botaoVazado  text-decoration: none
-app/home.module.css  .botaoVazado:focus-visible  outline-offset: 3px
-app/home.module.css  .botaoVazado:focus-visible  outline: 3px solid var(--marinho)
-app/home.module.css  .cartao  background: var(--papel-2)
-app/home.module.css  .cartao  border-radius: 18px
-app/home.module.css  .cartao  border: 1px solid var(--linha)
-app/home.module.css  .cartao  padding: clamp(22px, 3vw, 32px)
-app/home.module.css  .cartao h3  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .cartao h3  font-size: 20px
-app/home.module.css  .cartao h3  font-weight: 600
-app/home.module.css  .cartao h3  letter-spacing: -0.015em
-app/home.module.css  .cartao h3  margin: 0 0 10px
-app/home.module.css  .cartao p  color: var(--tinta-media)
-app/home.module.css  .cartao p  font-size: 15.5px
-app/home.module.css  .cartao p  margin: 0
-app/home.module.css  .chamada  display: flex
-app/home.module.css  .chamada  flex-direction: column
-app/home.module.css  .chamada  flex: 1
-app/home.module.css  .chamada  justify-content: center
-app/home.module.css  .chamada  max-width: 19ch
-app/home.module.css  .chamada h1  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .chamada h1  font-size: clamp(34px, 6.4vw, 68px)
-app/home.module.css  .chamada h1  font-weight: 800
-app/home.module.css  .chamada h1  letter-spacing: -0.03em
-app/home.module.css  .chamada h1  line-height: 1.02
-app/home.module.css  .chamada h1  margin: 0 0 18px
-app/home.module.css  .chamada h1  text-wrap: balance
-app/home.module.css  .chamada p  color: var(--tinta-media)
-app/home.module.css  .chamada p  font-size: clamp(15px, 1.5vw, 18px)
-app/home.module.css  .chamada p  margin: 0 0 28px
-app/home.module.css  .chamada p  max-width: 44ch
-app/home.module.css  .convite  background: var(--papel-2)
-app/home.module.css  .convite  text-align: center
-app/home.module.css  .convite .apoio  margin: 0 auto 28px
-app/home.module.css  .convite h2  margin-left: auto
-app/home.module.css  .convite h2  margin-right: auto
-app/home.module.css  .corpo  background: var(--papel)
+app/home.module.css  .acoes  display: flex
+app/home.module.css  .acoes  flex-wrap: wrap
+app/home.module.css  .acoes  gap: 12px
+app/home.module.css  .acoes  margin-bottom: 34px
+app/home.module.css  .beneficio  background: var(--branco)
+app/home.module.css  .beneficio  border-radius: var(--raio)
+app/home.module.css  .beneficio  box-shadow: 0 1px 2px rgb(4 32 58 / 0.05), 0 12px 30px rgb(4 32 58 / 0.07)
+app/home.module.css  .beneficio  padding: 26px 22px
+app/home.module.css  .beneficio  transition: transform 0.2s, box-shadow 0.2s
+app/home.module.css  .beneficio h3  color: var(--marinho)
+app/home.module.css  .beneficio h3  font-family: var(--fonte)
+app/home.module.css  .beneficio h3  font-size: 15.5px
+app/home.module.css  .beneficio h3  font-weight: 700
+app/home.module.css  .beneficio h3  letter-spacing: 0.01em
+app/home.module.css  .beneficio h3  margin: 0 0 8px
+app/home.module.css  .beneficio h3  text-transform: uppercase
+app/home.module.css  .beneficio p  color: var(--texto-2)
+app/home.module.css  .beneficio p  font-size: 14.5px
+app/home.module.css  .beneficio p  line-height: 1.55
+app/home.module.css  .beneficio p  margin: 0
+app/home.module.css  .beneficio:hover  box-shadow: 0 1px 2px rgb(4 32 58 / 0.05), 0 18px 40px rgb(4 32 58 / 0.12)
+app/home.module.css  .beneficio:hover  transform: translateY(-4px)
+app/home.module.css  .beneficioIcone  height: 59px
+app/home.module.css  .beneficioIcone  margin-bottom: 16px
+app/home.module.css  .beneficioIcone  width: 58px
+app/home.module.css  .beneficios  display: grid
+app/home.module.css  .beneficios  gap: 16px
+app/home.module.css  .beneficios  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+app/home.module.css  .beneficios  list-style: none
+app/home.module.css  .beneficios  margin: 44px 0 0
+app/home.module.css  .beneficios  padding: 0
+app/home.module.css  .botaoAmarelo  background: var(--amarelo)
+app/home.module.css  .botaoAmarelo  box-shadow: 0 10px 24px rgb(4 32 58 / 0.22)
+app/home.module.css  .botaoAmarelo  color: var(--marinho)
+app/home.module.css  .botaoFantasma  border: 2px solid rgb(255 255 255 / 0.55)
+app/home.module.css  .botaoFantasma  color: var(--branco)
+app/home.module.css  .botaoWhats  background: var(--verde-2)
+app/home.module.css  .botaoWhats  box-shadow: 0 10px 24px rgb(37 162 68 / 0.35)
+app/home.module.css  .botaoWhats  color: var(--branco)
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  align-items: center
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  border-radius: 999px
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  display: inline-flex
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  font-family: var(--fonte)
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  font-size: 15.5px
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  font-weight: 700
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  gap: 10px
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  letter-spacing: 0.02em
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  padding: 15px 28px
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  text-decoration: none
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  text-transform: uppercase
+app/home.module.css  .botaoWhats, .botaoFantasma, .botaoAmarelo  transition: transform 0.15s, box-shadow 0.15s
+app/home.module.css  .botaoWhats:focus-visible, .botaoFantasma:focus-visible, .botaoAmarelo:focus-visible, .menu a:focus-visible  outline-offset: 3px
+app/home.module.css  .botaoWhats:focus-visible, .botaoFantasma:focus-visible, .botaoAmarelo:focus-visible, .menu a:focus-visible  outline: 3px solid var(--amarelo)
+app/home.module.css  .botaoWhats:hover, .botaoAmarelo:hover  transform: translateY(-2px)
+app/home.module.css  .caixaMaterias  background: var(--ciano)
+app/home.module.css  .caixaMaterias  border-radius: var(--raio)
+app/home.module.css  .caixaMaterias  padding: clamp(24px, 3vw, 36px)
 app/home.module.css  .corpo  position: relative
 app/home.module.css  .corpo  z-index: 3
-app/home.module.css  .destaque  font-size: clamp(16px, 1.7vw, 20px)
-app/home.module.css  .destaque  line-height: 1.5
-app/home.module.css  .destaque  margin: 0 0 28px
-app/home.module.css  .destaque  max-width: 48ch
-app/home.module.css  .duasColunas  display: grid
-app/home.module.css  .duasColunas  gap: 18px
-app/home.module.css  .duasColunas  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
-app/home.module.css  .duasColunas  margin: 36px auto 0
-app/home.module.css  .duasColunas  max-width: 1080px
-app/home.module.css  .faixa  padding: clamp(56px, 9vw, 104px) clamp(18px, 5vw, 56px)
-app/home.module.css  .faixa h2  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .faixa h2  font-size: clamp(26px, 4.2vw, 44px)
-app/home.module.css  .faixa h2  font-weight: 800
-app/home.module.css  .faixa h2  letter-spacing: -0.025em
-app/home.module.css  .faixa h2  line-height: 1.08
-app/home.module.css  .faixa h2  margin: 0 0 14px
-app/home.module.css  .faixa h2  max-width: 20ch
-app/home.module.css  .faixa h2  text-wrap: balance
-app/home.module.css  .faixaClara  background: var(--papel-2)
-app/home.module.css  .faixaEscura  background: var(--marinho)
-app/home.module.css  .faixaEscura  color: #e6edf5
-app/home.module.css  .faixaEscura .apoio  color: #b6c5d6
-app/home.module.css  .faixaEscura .olho  color: #f0a075
-app/home.module.css  .faixaMarca  background: var(--laranja)
-app/home.module.css  .faixaMarca  color: #fff
-app/home.module.css  .faixaMarca .olho  color: rgb(255 255 255 / 0.8)
-app/home.module.css  .larguraTexto  margin: 0 auto
-app/home.module.css  .larguraTexto  max-width: 1080px
-app/home.module.css  .marca  height: auto
-app/home.module.css  .marca  width: clamp(130px, 16vw, 190px)
+app/home.module.css  .duasMetades  align-items: start
+app/home.module.css  .duasMetades  display: grid
+app/home.module.css  .duasMetades  gap: clamp(30px, 5vw, 72px)
+app/home.module.css  .duasMetades  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+app/home.module.css  .faixa  background: var(--branco)
+app/home.module.css  .faixa  padding: clamp(64px, 9vw, 112px) clamp(18px, 5vw, 64px)
+app/home.module.css  .faixaCiano  background: var(--ciano)
+app/home.module.css  .faixaLaranja  background: var(--laranja-2)
+app/home.module.css  .faixaLaranja  color: var(--branco)
+app/home.module.css  .faixaLaranja .realce  color: var(--amarelo)
+app/home.module.css  .faixaMarinho  background: var(--marinho)
+app/home.module.css  .faixaMarinho  color: var(--branco)
+app/home.module.css  .fechamento  background-color: var(--marinho)
+app/home.module.css  .fechamento  background-image: url("/lp/bg-01_.webp")
+app/home.module.css  .fechamento  background-position: center
+app/home.module.css  .fechamento  background-size: cover
+app/home.module.css  .fechamento  color: var(--branco)
+app/home.module.css  .fechamento  text-align: center
+app/home.module.css  .fechamento .subtitulo  color: #c8d5e5
+app/home.module.css  .fechamento .tituloSecao  margin-left: auto
+app/home.module.css  .fechamento .tituloSecao  margin-right: auto
+app/home.module.css  .heroi  background-color: var(--marinho)
+app/home.module.css  .heroi  background-image: url("/lp/bg-01_.webp")
+app/home.module.css  .heroi  background-position: 70% center
+app/home.module.css  .heroi  background-size: cover
+app/home.module.css  .heroi  color: var(--branco)
+app/home.module.css  .heroi  display: flex
+app/home.module.css  .heroi  flex-direction: column
+app/home.module.css  .heroi  min-height: 100vh
+app/home.module.css  .heroi  padding: 22px clamp(18px, 5vw, 64px) clamp(28px, 4vw, 48px)
+app/home.module.css  .heroi  position: relative
+app/home.module.css  .heroiApoio  color: #c8d5e5
+app/home.module.css  .heroiApoio  font-size: clamp(15px, 1.35vw, 17.5px)
+app/home.module.css  .heroiApoio  line-height: 1.6
+app/home.module.css  .heroiApoio  margin: 0 0 30px
+app/home.module.css  .heroiApoio  max-width: 46ch
+app/home.module.css  .heroiFoto img  filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.28))
+app/home.module.css  .heroiFoto img  margin-left: auto
+app/home.module.css  .heroiFoto img  max-width: 560px
+app/home.module.css  .heroiFoto img  width: 100%
+app/home.module.css  .heroiMiolo  align-items: center
+app/home.module.css  .heroiMiolo  display: grid
+app/home.module.css  .heroiMiolo  flex: 1
+app/home.module.css  .heroiMiolo  gap: clamp(24px, 5vw, 70px)
+app/home.module.css  .heroiMiolo  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr)
+app/home.module.css  .heroiMiolo  margin: 0 auto
+app/home.module.css  .heroiMiolo  max-width: 1240px
+app/home.module.css  .heroiMiolo  padding-top: clamp(20px, 4vh, 48px)
+app/home.module.css  .heroiMiolo  width: 100%
+app/home.module.css  .marca  align-items: center
+app/home.module.css  .marca  display: flex
+app/home.module.css  .marca  gap: 10px
+app/home.module.css  .marca  text-decoration: none
+app/home.module.css  .marcador  background: var(--laranja)
+app/home.module.css  .marcador  border-radius: 50%
+app/home.module.css  .marcador  box-shadow: inset 0 0 0 6px var(--laranja), inset 0 0 0 9px var(--branco)
+app/home.module.css  .marcador  flex: none
+app/home.module.css  .marcador  height: 22px
+app/home.module.css  .marcador  width: 22px
 app/home.module.css  .materias  display: flex
 app/home.module.css  .materias  flex-wrap: wrap
-app/home.module.css  .materias  gap: 10px
+app/home.module.css  .materias  gap: 9px
 app/home.module.css  .materias  list-style: none
-app/home.module.css  .materias  margin: 34px auto 0
-app/home.module.css  .materias  max-width: 1080px
+app/home.module.css  .materias  margin: 0
 app/home.module.css  .materias  padding: 0
-app/home.module.css  .materias li  background: var(--papel)
+app/home.module.css  .materias li  background: var(--branco)
 app/home.module.css  .materias li  border-radius: 999px
-app/home.module.css  .materias li  border: 1px solid var(--linha)
-app/home.module.css  .materias li  font-size: 15px
+app/home.module.css  .materias li  border: 1px solid var(--ciano-2)
+app/home.module.css  .materias li  color: var(--marinho)
+app/home.module.css  .materias li  font-size: 14.5px
 app/home.module.css  .materias li  font-weight: 500
-app/home.module.css  .materias li  padding: 9px 18px
+app/home.module.css  .materias li  padding: 8px 16px
 app/home.module.css  .menu  align-items: center
-app/home.module.css  .menu  color: var(--tinta-media)
 app/home.module.css  .menu  display: flex
-app/home.module.css  .menu  font-size: 14px
-app/home.module.css  .menu  gap: clamp(12px, 2vw, 22px)
+app/home.module.css  .menu  font-size: 14.5px
+app/home.module.css  .menu  font-weight: 500
+app/home.module.css  .menu  gap: clamp(14px, 2.4vw, 30px)
 app/home.module.css  .menu  list-style: none
 app/home.module.css  .menu  margin: 0
 app/home.module.css  .menu  padding: 0
-app/home.module.css  .numero  background: rgb(255 255 255 / 0.1)
-app/home.module.css  .numero  border-radius: 10px
-app/home.module.css  .numero  border: 1px solid rgb(255 255 255 / 0.18)
-app/home.module.css  .numero  color: #f0a075
-app/home.module.css  .numero  display: grid
-app/home.module.css  .numero  flex: none
-app/home.module.css  .numero  font-family: ui-monospace, Consolas, monospace
-app/home.module.css  .numero  font-size: 15px
-app/home.module.css  .numero  font-weight: 700
-app/home.module.css  .numero  height: 34px
-app/home.module.css  .numero  place-items: center
-app/home.module.css  .numero  width: 34px
-app/home.module.css  .olho  color: var(--laranja)
-app/home.module.css  .olho  font-size: 12.5px
-app/home.module.css  .olho  font-weight: 600
-app/home.module.css  .olho  letter-spacing: 0.14em
-app/home.module.css  .olho  margin: 0 0 10px
-app/home.module.css  .olho  text-transform: uppercase
-app/home.module.css  .passo  align-items: flex-start
+app/home.module.css  .menu a  color: rgb(255 255 255 / 0.82)
+app/home.module.css  .menu a  text-decoration: none
+app/home.module.css  .menu a  transition: color 0.15s
+app/home.module.css  .menu a:hover  color: var(--branco)
+app/home.module.css  .miolo  margin: 0 auto
+app/home.module.css  .miolo  max-width: 1180px
+app/home.module.css  .niveis  display: grid
+app/home.module.css  .niveis  gap: 12px
+app/home.module.css  .niveis  list-style: none
+app/home.module.css  .niveis  margin: 0
+app/home.module.css  .niveis  padding: 0
+app/home.module.css  .niveis li  align-items: center
+app/home.module.css  .niveis li  color: var(--marinho)
+app/home.module.css  .niveis li  display: flex
+app/home.module.css  .niveis li  font-size: 16px
+app/home.module.css  .niveis li  font-weight: 600
+app/home.module.css  .niveis li  gap: 12px
+app/home.module.css  .palavra  filter: brightness(0) invert(1)
+app/home.module.css  .palavra  height: auto
+app/home.module.css  .palavra  width: clamp(120px, 12vw, 158px)
+app/home.module.css  .passo  align-items: center
+app/home.module.css  .passo  background: rgb(255 255 255 / 0.1)
+app/home.module.css  .passo  border-radius: var(--raio)
+app/home.module.css  .passo  border: 1px solid rgb(255 255 255 / 0.2)
 app/home.module.css  .passo  display: flex
 app/home.module.css  .passo  gap: 16px
-app/home.module.css  .passo h3  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .passo h3  font-size: 17.5px
-app/home.module.css  .passo h3  font-weight: 600
-app/home.module.css  .passo h3  letter-spacing: -0.01em
-app/home.module.css  .passo h3  line-height: 1.25
-app/home.module.css  .passo h3  margin: 4px 0 8px
-app/home.module.css  .passo p  color: #b6c5d6
-app/home.module.css  .passo p  font-size: 15px
-app/home.module.css  .passo p  line-height: 1.55
+app/home.module.css  .passo  padding: 18px 20px
+app/home.module.css  .passo p  font-size: 15.5px
+app/home.module.css  .passo p  font-weight: 600
+app/home.module.css  .passo p  line-height: 1.35
 app/home.module.css  .passo p  margin: 0
+app/home.module.css  .passoIcone  flex: none
+app/home.module.css  .passoIcone  height: auto
+app/home.module.css  .passoIcone  width: 64px
 app/home.module.css  .passos  counter-reset: passo
 app/home.module.css  .passos  display: grid
-app/home.module.css  .passos  gap: clamp(20px, 3vw, 34px)
-app/home.module.css  .passos  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr))
+app/home.module.css  .passos  gap: 18px
+app/home.module.css  .passos  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
 app/home.module.css  .passos  list-style: none
-app/home.module.css  .passos  margin: 40px auto 0
-app/home.module.css  .passos  max-width: 1080px
+app/home.module.css  .passos  margin: 0 0 40px
 app/home.module.css  .passos  padding: 0
 app/home.module.css  .portal  background: var(--laranja)
 app/home.module.css  .portal  border-radius: 999px
-app/home.module.css  .portal  color: #fff
+app/home.module.css  .portal  box-shadow: 0 6px 18px rgb(255 101 51 / 0.35)
+app/home.module.css  .portal  color: var(--branco) !important
+app/home.module.css  .portal  display: inline-block
 app/home.module.css  .portal  font-weight: 600
-app/home.module.css  .portal  padding: 8px 16px
-app/home.module.css  .primeiroQuadro  background: linear-gradient(160deg, var(--papel) 0%, var(--papel-2) 58%, var(--papel-3) 100%)
-app/home.module.css  .primeiroQuadro  display: flex
-app/home.module.css  .primeiroQuadro  flex-direction: column
-app/home.module.css  .primeiroQuadro  height: 100vh
-app/home.module.css  .primeiroQuadro  padding: 26px clamp(18px, 5vw, 56px) 30px
-app/home.module.css  .primeiroQuadro  position: relative
-app/home.module.css  .regiao  background: var(--papel)
-app/home.module.css  .regiao  border-radius: 18px
-app/home.module.css  .regiao  border: 1px solid var(--linha)
-app/home.module.css  .regiao  padding: clamp(20px, 2.6vw, 28px)
-app/home.module.css  .regiao h3  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .regiao h3  font-size: 17px
-app/home.module.css  .regiao h3  font-weight: 600
-app/home.module.css  .regiao h3  letter-spacing: -0.01em
-app/home.module.css  .regiao h3  margin: 0 0 10px
+app/home.module.css  .portal  padding: 9px 18px
+app/home.module.css  .portalCaixa  align-items: center
+app/home.module.css  .portalCaixa  background: var(--ciano)
+app/home.module.css  .portalCaixa  border-radius: 32px
+app/home.module.css  .portalCaixa  display: grid
+app/home.module.css  .portalCaixa  gap: clamp(28px, 5vw, 64px)
+app/home.module.css  .portalCaixa  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr)
+app/home.module.css  .portalCaixa  padding: clamp(28px, 5vw, 64px)
+app/home.module.css  .portalItens  display: grid
+app/home.module.css  .portalItens  gap: 12px
+app/home.module.css  .portalItens  list-style: none
+app/home.module.css  .portalItens  margin: 0
+app/home.module.css  .portalItens  padding: 0
+app/home.module.css  .portalItens li  background: var(--branco)
+app/home.module.css  .portalItens li  border-left: 5px solid var(--laranja)
+app/home.module.css  .portalItens li  border-radius: 14px
+app/home.module.css  .portalItens li  box-shadow: 0 8px 22px rgb(4 32 58 / 0.06)
+app/home.module.css  .portalItens li  color: var(--texto-2)
+app/home.module.css  .portalItens li  display: flex
+app/home.module.css  .portalItens li  flex-direction: column
+app/home.module.css  .portalItens li  font-size: 14.5px
+app/home.module.css  .portalItens li  gap: 2px
+app/home.module.css  .portalItens li  padding: 14px 18px
+app/home.module.css  .portalItens strong  color: var(--marinho)
+app/home.module.css  .portalItens strong  font-size: 15px
+app/home.module.css  .portalItens strong  font-weight: 700
+app/home.module.css  .portalItens strong  letter-spacing: 0.02em
+app/home.module.css  .portalItens strong  text-transform: uppercase
+app/home.module.css  .portalTexto .textoSecao  margin-bottom: 0
+app/home.module.css  .provas  color: var(--texto-3)
+app/home.module.css  .provas  display: flex
+app/home.module.css  .provas  flex-wrap: wrap
+app/home.module.css  .provas  font-size: 14px
+app/home.module.css  .provas  gap: 10px 26px
+app/home.module.css  .provas  list-style: none
+app/home.module.css  .provas  margin: 0
+app/home.module.css  .provas  padding: 0
+app/home.module.css  .provas strong  color: var(--branco)
+app/home.module.css  .provas strong  font-weight: 600
+app/home.module.css  .realce  color: var(--laranja)
+app/home.module.css  .realceAmarelo  color: var(--amarelo)
+app/home.module.css  .regiao  background: var(--marinho-2)
+app/home.module.css  .regiao  border-radius: var(--raio)
+app/home.module.css  .regiao  border: 1px solid rgb(255 255 255 / 0.08)
+app/home.module.css  .regiao  padding: 24px 24px 26px
+app/home.module.css  .regiao h3  color: var(--amarelo)
+app/home.module.css  .regiao h3  font-family: var(--fonte)
+app/home.module.css  .regiao h3  font-size: 15px
+app/home.module.css  .regiao h3  font-weight: 700
+app/home.module.css  .regiao h3  letter-spacing: 0.04em
+app/home.module.css  .regiao h3  margin: 0 0 14px
+app/home.module.css  .regiao h3  text-transform: uppercase
+app/home.module.css  .regiao ul  color: #c8d5e5
+app/home.module.css  .regiao ul  display: flex
+app/home.module.css  .regiao ul  flex-wrap: wrap
+app/home.module.css  .regiao ul  font-size: 14px
+app/home.module.css  .regiao ul  gap: 6px 14px
+app/home.module.css  .regiao ul  list-style: none
+app/home.module.css  .regiao ul  margin: 0
+app/home.module.css  .regiao ul  padding: 0
 app/home.module.css  .regioes  display: grid
-app/home.module.css  .regioes  gap: 18px
-app/home.module.css  .regioes  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
-app/home.module.css  .regioes  margin: 34px auto 0
-app/home.module.css  .regioes  max-width: 1080px
-app/home.module.css  .rodapeDoQuadro  color: var(--tinta-fraca)
-app/home.module.css  .rodapeDoQuadro  font-size: 13px
-app/home.module.css  .rodapeDoQuadro  margin: 0
-app/home.module.css  .secao  margin: 0 auto
-app/home.module.css  .secao  max-width: 820px
-app/home.module.css  .secao  padding: clamp(60px, 10vw, 110px) clamp(18px, 5vw, 56px)
-app/home.module.css  .secao code  background: var(--papel-3)
-app/home.module.css  .secao code  border-radius: 5px
-app/home.module.css  .secao code  font-family: ui-monospace, Consolas, monospace
-app/home.module.css  .secao code  font-size: 0.9em
-app/home.module.css  .secao code  padding: 2px 6px
-app/home.module.css  .secao h2  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
-app/home.module.css  .secao h2  font-size: clamp(24px, 3.6vw, 34px)
-app/home.module.css  .secao h2  font-weight: 600
-app/home.module.css  .secao h2  letter-spacing: -0.02em
-app/home.module.css  .secao h2  margin: 0 0 12px
-app/home.module.css  .secao p  color: var(--tinta-media)
-app/home.module.css  .secao p  margin: 0
+app/home.module.css  .regioes  gap: 16px
+app/home.module.css  .regioes  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr))
+app/home.module.css  .rotuloMaterias  color: var(--laranja-2)
+app/home.module.css  .rotuloMaterias  font-size: 13px
+app/home.module.css  .rotuloMaterias  font-weight: 700
+app/home.module.css  .rotuloMaterias  letter-spacing: 0.1em
+app/home.module.css  .rotuloMaterias  margin: 0 0 16px
+app/home.module.css  .rotuloMaterias  text-transform: uppercase
+app/home.module.css  .selo  background: rgb(255 255 255 / 0.08)
+app/home.module.css  .selo  border-radius: 999px
+app/home.module.css  .selo  border: 1px solid rgb(255 255 255 / 0.16)
+app/home.module.css  .selo  color: var(--amarelo)
+app/home.module.css  .selo  display: inline-block
+app/home.module.css  .selo  font-size: 12.5px
+app/home.module.css  .selo  font-weight: 600
+app/home.module.css  .selo  letter-spacing: 0.08em
+app/home.module.css  .selo  margin: 0 0 18px
+app/home.module.css  .selo  padding: 7px 15px
+app/home.module.css  .selo  text-transform: uppercase
+app/home.module.css  .seloEscuro  background: var(--marinho)
+app/home.module.css  .seloEscuro  border-radius: 999px
+app/home.module.css  .seloEscuro  color: var(--amarelo)
+app/home.module.css  .seloEscuro  display: inline-block
+app/home.module.css  .seloEscuro  font-size: 12px
+app/home.module.css  .seloEscuro  font-weight: 700
+app/home.module.css  .seloEscuro  letter-spacing: 0.1em
+app/home.module.css  .seloEscuro  margin: 0 0 16px
+app/home.module.css  .seloEscuro  padding: 6px 14px
+app/home.module.css  .seloEscuro  text-transform: uppercase
+app/home.module.css  .simbolo  height: auto
+app/home.module.css  .simbolo  margin: -6px -4px -6px -6px
+app/home.module.css  .simbolo  width: 42px
+app/home.module.css  .subtitulo  font-size: clamp(15px, 1.4vw, 18px)
+app/home.module.css  .subtitulo  font-weight: 500
+app/home.module.css  .subtitulo  margin: 0 0 40px
+app/home.module.css  .subtitulo  opacity: 0.9
+app/home.module.css  .textoSecao  color: var(--texto-2)
+app/home.module.css  .textoSecao  font-size: 16.5px
+app/home.module.css  .textoSecao  line-height: 1.65
+app/home.module.css  .textoSecao  margin: 0 0 24px
+app/home.module.css  .textoSecao  max-width: 52ch
+app/home.module.css  .titulo  font-family: var(--fonte)
+app/home.module.css  .titulo  font-size: clamp(30px, 4.4vw, 58px)
+app/home.module.css  .titulo  font-weight: 800
+app/home.module.css  .titulo  letter-spacing: -0.015em
+app/home.module.css  .titulo  line-height: 1.04
+app/home.module.css  .titulo  margin: 0 0 22px
+app/home.module.css  .titulo  text-transform: uppercase
+app/home.module.css  .titulo  text-wrap: balance
+app/home.module.css  .tituloSecao  font-family: var(--fonte)
+app/home.module.css  .tituloSecao  font-size: clamp(26px, 3.4vw, 42px)
+app/home.module.css  .tituloSecao  font-weight: 800
+app/home.module.css  .tituloSecao  letter-spacing: -0.01em
+app/home.module.css  .tituloSecao  line-height: 1.1
+app/home.module.css  .tituloSecao  margin: 0 0 14px
+app/home.module.css  .tituloSecao  max-width: 24ch
+app/home.module.css  .tituloSecao  text-transform: uppercase
+app/home.module.css  .tituloSecao  text-wrap: balance
 app/home.module.css  .topo  align-items: center
 app/home.module.css  .topo  display: flex
-app/home.module.css  .topo  gap: 20px
+app/home.module.css  .topo  gap: 24px
 app/home.module.css  .topo  justify-content: space-between
 componentes/Abertura.module.css  .cena  height: 100vh
 componentes/Abertura.module.css  .cena  overflow: hidden
@@ -241,38 +357,61 @@ componentes/Abertura.module.css  .cobertura svg  width: 100%
 componentes/Abertura.module.css  .semCena  position: relative
 componentes/Abertura.module.css  .trilha  height: 250vh
 componentes/Abertura.module.css  .trilha  position: relative
+componentes/BotaoWhatsapp.module.css  .botao  background: #25a244
+componentes/BotaoWhatsapp.module.css  .botao  border-radius: 50%
+componentes/BotaoWhatsapp.module.css  .botao  bottom: clamp(16px, 2.5vw, 28px)
+componentes/BotaoWhatsapp.module.css  .botao  box-shadow: 0 10px 28px rgb(0 0 0 / 0.28)
+componentes/BotaoWhatsapp.module.css  .botao  color: #ffffff
+componentes/BotaoWhatsapp.module.css  .botao  display: grid
+componentes/BotaoWhatsapp.module.css  .botao  height: 60px
+componentes/BotaoWhatsapp.module.css  .botao  place-items: center
+componentes/BotaoWhatsapp.module.css  .botao  position: fixed
+componentes/BotaoWhatsapp.module.css  .botao  right: clamp(16px, 2.5vw, 28px)
+componentes/BotaoWhatsapp.module.css  .botao  transition: transform 0.15s
+componentes/BotaoWhatsapp.module.css  .botao  width: 60px
+componentes/BotaoWhatsapp.module.css  .botao  z-index: 50
+componentes/BotaoWhatsapp.module.css  .botao:focus-visible  outline-offset: 3px
+componentes/BotaoWhatsapp.module.css  .botao:focus-visible  outline: 3px solid #ffd200
+componentes/BotaoWhatsapp.module.css  .botao:hover  transform: scale(1.06)
 componentes/Rodape.module.css  .colunas  display: flex
 componentes/Rodape.module.css  .colunas  flex-wrap: wrap
 componentes/Rodape.module.css  .colunas  flex: 1
-componentes/Rodape.module.css  .colunas  gap: clamp(26px, 5vw, 60px)
-componentes/Rodape.module.css  .colunas h2  color: #8fa6bd
-componentes/Rodape.module.css  .colunas h2  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
+componentes/Rodape.module.css  .colunas  gap: clamp(26px, 5vw, 64px)
+componentes/Rodape.module.css  .colunas h2  color: #ffd200
+componentes/Rodape.module.css  .colunas h2  font-family: var(--fonte)
 componentes/Rodape.module.css  .colunas h2  font-size: 13px
-componentes/Rodape.module.css  .colunas h2  font-weight: 600
+componentes/Rodape.module.css  .colunas h2  font-weight: 700
 componentes/Rodape.module.css  .colunas h2  letter-spacing: 0.1em
-componentes/Rodape.module.css  .colunas h2  margin: 0 0 12px
+componentes/Rodape.module.css  .colunas h2  margin: 0 0 14px
 componentes/Rodape.module.css  .colunas h2  text-transform: uppercase
 componentes/Rodape.module.css  .colunas ul  display: flex
 componentes/Rodape.module.css  .colunas ul  flex-direction: column
 componentes/Rodape.module.css  .colunas ul  font-size: 14.5px
-componentes/Rodape.module.css  .colunas ul  gap: 8px
+componentes/Rodape.module.css  .colunas ul  gap: 9px
 componentes/Rodape.module.css  .colunas ul  list-style: none
 componentes/Rodape.module.css  .colunas ul  margin: 0
 componentes/Rodape.module.css  .colunas ul  padding: 0
 componentes/Rodape.module.css  .conteudo  align-items: flex-start
 componentes/Rodape.module.css  .conteudo  display: flex
 componentes/Rodape.module.css  .conteudo  flex-wrap: wrap
-componentes/Rodape.module.css  .conteudo  gap: clamp(30px, 6vw, 70px)
+componentes/Rodape.module.css  .conteudo  gap: clamp(30px, 6vw, 80px)
 componentes/Rodape.module.css  .conteudo  margin: 0 auto
-componentes/Rodape.module.css  .conteudo  max-width: 1080px
-componentes/Rodape.module.css  .linhaFinal  border-top: 1px solid rgb(255 255 255 / 0.12)
-componentes/Rodape.module.css  .linhaFinal  color: #8fa6bd
+componentes/Rodape.module.css  .conteudo  max-width: 1180px
+componentes/Rodape.module.css  .linhaFinal  border-top: 1px solid rgb(255 255 255 / 0.1)
+componentes/Rodape.module.css  .linhaFinal  color: #7f97b5
 componentes/Rodape.module.css  .linhaFinal  font-size: 13px
 componentes/Rodape.module.css  .linhaFinal  margin: clamp(34px, 5vw, 56px) auto 0
-componentes/Rodape.module.css  .linhaFinal  max-width: 1080px
-componentes/Rodape.module.css  .linhaFinal  padding-top: 20px
-componentes/Rodape.module.css  .marca img  height: auto
-componentes/Rodape.module.css  .marca img  width: clamp(110px, 14vw, 150px)
-componentes/Rodape.module.css  .rodape  background: var(--marinho)
-componentes/Rodape.module.css  .rodape  color: #cfdbe8
-componentes/Rodape.module.css  .rodape  padding: clamp(46px, 7vw, 78px) clamp(18px, 5vw, 56px) 26px
+componentes/Rodape.module.css  .linhaFinal  max-width: 1180px
+componentes/Rodape.module.css  .linhaFinal  padding-top: 22px
+componentes/Rodape.module.css  .marca  align-items: center
+componentes/Rodape.module.css  .marca  display: flex
+componentes/Rodape.module.css  .marca  gap: 10px
+componentes/Rodape.module.css  .palavra  filter: brightness(0) invert(1)
+componentes/Rodape.module.css  .palavra  height: auto
+componentes/Rodape.module.css  .palavra  width: 150px
+componentes/Rodape.module.css  .rodape  background: #021729
+componentes/Rodape.module.css  .rodape  color: #c8d5e5
+componentes/Rodape.module.css  .rodape  padding: clamp(46px, 7vw, 76px) clamp(18px, 5vw, 64px) 28px
+componentes/Rodape.module.css  .simbolo  height: auto
+componentes/Rodape.module.css  .simbolo  margin: -6px -4px -6px -6px
+componentes/Rodape.module.css  .simbolo  width: 44px
