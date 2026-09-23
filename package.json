@@ -6,7 +6,13 @@
     "dev": "next dev -p 3100",
     "build": "next build",
     "start": "next start -p 3100",
-    "tipos": "tsc --noEmit"
+    "tipos": "tsc --noEmit",
+    "contrato:gerar": "tsx scripts/contrato.ts",
+    "conferir:contrato": "tsx scripts/contrato.ts --conferir",
+    "conferir:texto": "tsx scripts/conferencia/texto.ts",
+    "conferir:cascata": "tsx scripts/conferencia/cascata.ts",
+    "conferir:desktop": "tsx scripts/conferencia/desktop.ts",
+    "conferir": "npm run tipos && npm run conferir:texto && npm run conferir:cascata && npm run conferir:desktop"
   },
   "dependencies": {
     "next": "^16.3.6",
@@ -17,6 +23,9 @@
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
+    "openapi-typescript": "^7.13.0",
+    "postcss": "^8.5.28",
+    "tsx": "^4.23.15",
     "typescript": "^5.7.3"
   }
 }

@@ -1,0 +1,6402 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/v1/saude": {
+      "get": {
+        "operationId": "SaudeController_verificar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Diz se a API está de pé, se o banco responde e se a instalação está completa",
+        "tags": [
+          "Saúde"
+        ]
+      }
+    },
+    "/v1/mensagens/modelos": {
+      "get": {
+        "description": "Cada modelo traz as variáveis que aceita, porque ninguém adivinha que existe {{aluno}} sem alguém dizer.",
+        "operationId": "MensagensController_listarModelos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os modelos de mensagem",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/mensagens/modelos/{id}": {
+      "patch": {
+        "description": "Variável que o modelo não conhece é recusada aqui, e não descoberta quando o e-mail sai com um buraco no meio.",
+        "operationId": "MensagensController_alterarModelo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarModeloDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera o texto de um modelo",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/mensagens/modelos/{id}/restaurar": {
+      "post": {
+        "description": "A porta de volta para quando a edição estragou o texto. O liga-desliga do aviso não muda: quem restaura quer o texto de volta, não o canal.",
+        "operationId": "MensagensController_restaurarModelo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Devolve o modelo ao texto de fábrica",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/mensagens/modelos/{id}/previa": {
+      "post": {
+        "description": "A secretaria vê o resultado antes de salvar, em vez de descobrir o erro de digitação quando quarenta famílias já receberam.",
+        "operationId": "MensagensController_previa",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreviaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Mostra como a mensagem vai sair, com valores de exemplo",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/mensagens": {
+      "get": {
+        "description": "É o que responde 'o e-mail foi?', que é a primeira pergunta quando o pai diz que não recebeu.",
+        "operationId": "MensagensController_listar",
+        "parameters": [
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "evento",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinatario",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as mensagens que saíram, ou tentaram sair",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/mensagens/{id}/reenviar": {
+      "post": {
+        "description": "A falha mais comum é de fora: provedor fora do ar, endereço recusado na hora. Sem esta porta, o aviso se perde sem a escola saber.",
+        "operationId": "MensagensController_reenviar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Recoloca na fila uma mensagem que falhou",
+        "tags": [
+          "Mensagens"
+        ]
+      }
+    },
+    "/v1/paineis/inicio": {
+      "get": {
+        "description": "Os vinte cartões da referência de 16/09 numa resposta só, porque a tela é uma leitura só. Receita é o que foi COBRADO no período, e hora contratada é hora MARCADA no sistema: as duas definições são do cliente, de 16/09.",
+        "operationId": "PaineisController_painelInicial",
+        "parameters": [
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O painel da tela de início",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/paineis/exportar/{qual}": {
+      "get": {
+        "description": "Chama o mesmo cálculo que a tela usa, e por isso arquivo e tela nunca discordam. A planilha traz dinheiro como número e os totais como fórmula, para a escola continuar a conta; o PDF é para imprimir e mandar.",
+        "operationId": "PaineisController_exportar",
+        "parameters": [
+          {
+            "name": "qual",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "formato",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Baixa o painel em planilha ou PDF",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/paineis/operacao": {
+      "get": {
+        "description": "Aulas, presença, alunos e disciplinas no período. Sem datas, é o mês corrente, que é o que a escola quer ver ao abrir a tela. Professor vê os números dele.",
+        "operationId": "PaineisController_operacao",
+        "parameters": [
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Como a operação está andando",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/paineis/alunos": {
+      "get": {
+        "description": "A lista de evasão é nominal e traz telefone: um número informa, uma lista com nome e contato é trabalho que dá para fazer hoje. O corte de dias sem aula é parâmetro.",
+        "operationId": "PaineisController_alunos",
+        "parameters": [
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quem entrou, quem está saindo, e quanto cada um estuda",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/paineis/financeiro": {
+      "get": {
+        "description": "A margem é de caixa: recebido menos repasse menos contas pagas. Calculada sobre o recebido, e não sobre o emitido, porque margem sobre emitido conta como ganho o dinheiro que ainda não chegou.",
+        "operationId": "PaineisController_financeiro",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Faturamento, inadimplência e margem do mês",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/paineis/professores": {
+      "get": {
+        "description": "Aulas, horas, faltas e valor a receber. O professor vê a linha dele, que é o que ele abre para conferir o próprio pagamento antes do dia do repasse.",
+        "operationId": "PaineisController_professores",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quanto cada professor produziu no mês",
+        "tags": [
+          "Painéis"
+        ]
+      }
+    },
+    "/v1/metas": {
+      "get": {
+        "description": "Devolve os doze meses sempre, inclusive os sem meta definida, e diz qual é o padrão herdado do parâmetro.",
+        "operationId": "MetasController_listar",
+        "parameters": [
+          {
+            "name": "ano",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As metas de um ano, nos doze meses",
+        "tags": [
+          "Metas"
+        ]
+      }
+    },
+    "/v1/metas/{ano}/{mes}": {
+      "put": {
+        "description": "Com os dois campos vazios, a linha é apagada e o mês volta a usar o padrão. É assim que se desfaz uma meta definida por engano.",
+        "operationId": "MetasController_definir",
+        "parameters": [
+          {
+            "name": "ano",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mes",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefinirMetaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Define a meta de um mês",
+        "tags": [
+          "Metas"
+        ]
+      }
+    },
+    "/v1/metas/{ano}/copiar": {
+      "post": {
+        "description": "Só preenche mês que ainda não tem meta, para não apagar ajuste recente.",
+        "operationId": "MetasController_copiar",
+        "parameters": [
+          {
+            "name": "ano",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CopiarMetasDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Copia as metas de outro ano para este",
+        "tags": [
+          "Metas"
+        ]
+      }
+    },
+    "/v1/usuarios": {
+      "get": {
+        "operationId": "UsuariosController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os acessos ao sistema",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      },
+      "post": {
+        "description": "A senha aparece nesta resposta e em nenhum outro lugar. Ela não é guardada em texto: o banco tem só o hash.",
+        "operationId": "UsuariosController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cria um acesso e devolve a senha temporária",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/permissoes": {
+      "get": {
+        "description": "Capacidade sem linha no banco vem como negada, e aparece também em `semLinhaNoBanco`: é o sintoma de capacidade nova que o seed ainda não criou.",
+        "operationId": "UsuariosController_matriz",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A matriz de permissões, por perfil e capacidade",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      },
+      "patch": {
+        "description": "É a régua que a escola muda sem tocar em código. O administrador não consegue tirar de si a permissão de gerenciar usuários: ninguém poderia devolvê-la.",
+        "operationId": "UsuariosController_definirPermissao",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Liga ou desliga uma capacidade para um perfil",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/{id}": {
+      "get": {
+        "operationId": "UsuariosController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Um acesso",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      },
+      "patch": {
+        "operationId": "UsuariosController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um acesso",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/{id}/desativar": {
+      "post": {
+        "description": "Além de marcar como inativo, revoga as sessões abertas. Sem isso, quem foi desligado continuaria dentro até o token vencer.",
+        "operationId": "UsuariosController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Tira o acesso agora",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/{id}/reativar": {
+      "post": {
+        "operationId": "UsuariosController_reativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Devolve o acesso",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/{id}/senha": {
+      "post": {
+        "description": "As duas coisas juntas, sempre: reiniciar sem derrubar deixaria quem roubou a sessão dentro do sistema, que é o caso em que se reinicia uma senha às pressas.",
+        "operationId": "UsuariosController_reiniciarSenha",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Reinicia a senha e derruba as sessões",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/usuarios/{id}/segundo-fator/desligar": {
+      "post": {
+        "description": "Para quem perdeu o celular e gastou os códigos de recuperação. Na entrada seguinte, a pessoa cadastra o fator de novo se ele continuar sendo exigido dela.",
+        "operationId": "UsuariosController_desligarSegundoFator",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Desliga o segundo fator de alguém e derruba as sessões dela",
+        "tags": [
+          "Usuários e permissões"
+        ]
+      }
+    },
+    "/v1/auth/entrar": {
+      "post": {
+        "operationId": "AuthController_entrar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntrarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Entra no sistema e recebe a sessão em cookie",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/segundo-fator": {
+      "post": {
+        "operationId": "AuthController_segundoFator",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CodigoDoFatorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Conclui a entrada com o código do segundo fator",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/segundo-fator/comecar": {
+      "post": {
+        "operationId": "AuthController_comecarFator",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DesafioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Gera o segredo do segundo fator para quem está entrando",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/segundo-fator/confirmar": {
+      "post": {
+        "operationId": "AuthController_confirmarFator",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CodigoDoFatorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Confirma a ativação e devolve os códigos de recuperação",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/renovar": {
+      "post": {
+        "operationId": "AuthController_renovar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Troca o token de renovação por uma sessão nova",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/sair": {
+      "post": {
+        "operationId": "AuthController_sair",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "summary": "Encerra a sessão",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/auth/eu": {
+      "get": {
+        "operationId": "AuthController_eu",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quem está logado, o que ele pode fazer, e o prazo da sessão",
+        "tags": [
+          "Autenticação"
+        ]
+      }
+    },
+    "/v1/parametros": {
+      "get": {
+        "operationId": "ParametrosController_listar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os parâmetros da unidade, agrupados",
+        "tags": [
+          "Parâmetros"
+        ]
+      }
+    },
+    "/v1/parametros/email/testar": {
+      "post": {
+        "description": "Conecta no servidor configurado e confere usuário e senha. Com um endereço em 'para', manda também uma mensagem de teste. O erro volta como o provedor respondeu, porque é o que serve para quem tem o painel dele aberto.",
+        "operationId": "ParametrosController_testarEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestarEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Testa a configuração de e-mail",
+        "tags": [
+          "Parâmetros"
+        ]
+      }
+    },
+    "/v1/parametros/zoom/testar": {
+      "post": {
+        "description": "Autentica com as credenciais salvas e confere cada conta anfitriã cadastrada, inclusive se ela tem licença. Conta sem licença não hospeda reunião, e credencial certa com anfitrião sem licença é a configuração que passa no teste e não cria sala nenhuma.",
+        "operationId": "ParametrosController_testarZoom",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Testa a configuração do Zoom",
+        "tags": [
+          "Parâmetros"
+        ]
+      }
+    },
+    "/v1/parametros/{chave}": {
+      "put": {
+        "operationId": "ParametrosController_definir",
+        "parameters": [
+          {
+            "name": "chave",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefinirDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera o valor de um parâmetro",
+        "tags": [
+          "Parâmetros"
+        ]
+      }
+    },
+    "/v1/suporte": {
+      "get": {
+        "operationId": "SuporteController_ver",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O contato de suporte da escola, para qualquer perfil logado",
+        "tags": [
+          "Suporte"
+        ]
+      }
+    },
+    "/v1/suporte/politica": {
+      "get": {
+        "operationId": "SuporteController_politica",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Para onde vai a política de privacidade, sem exigir sessão",
+        "tags": [
+          "Suporte"
+        ]
+      }
+    },
+    "/v1/regioes": {
+      "get": {
+        "operationId": "RegioesController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as regiões, com paginação e busca",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "post": {
+        "operationId": "RegioesController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarRegiaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra uma região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/faixas": {
+      "get": {
+        "operationId": "RegioesController_listarFaixas",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as faixas de cobrança",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "post": {
+        "operationId": "RegioesController_criarFaixa",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaixaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra uma faixa de cobrança",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/deslocamentos": {
+      "get": {
+        "operationId": "RegioesController_listarDeslocamentos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A matriz de deslocamento entre as regiões",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/sub-regioes": {
+      "get": {
+        "operationId": "RegioesController_listarSubRegioes",
+        "parameters": [
+          {
+            "name": "incluirInativas",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As sub-regiões, agrupadas pela região a que pertencem",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/{id}/sub-regioes": {
+      "post": {
+        "operationId": "RegioesController_criarSubRegiao",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubRegiaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra uma sub-região dentro de uma região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/sub-regioes/{id}": {
+      "patch": {
+        "operationId": "RegioesController_alterarSubRegiao",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarSubRegiaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma sub-região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "delete": {
+        "description": "Apaga quando nenhum aluno aponta para ela, e desativa quando algum aponta. A resposta diz o que aconteceu, para a tela falar a verdade.",
+        "operationId": "RegioesController_removerSubRegiao",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Remove uma sub-região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/{id}": {
+      "get": {
+        "operationId": "RegioesController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Uma região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "patch": {
+        "operationId": "RegioesController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarRegiaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "delete": {
+        "description": "Região não é apagada, porque está gravada em aulas que já aconteceram. Desativada, ela some da lista de escolha e continua explicando o histórico.",
+        "operationId": "RegioesController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desativa uma região",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/faixas/{id}": {
+      "patch": {
+        "operationId": "RegioesController_alterarFaixa",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarFaixaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma faixa de cobrança",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/regioes/deslocamentos/{origemId}/{destinoId}": {
+      "put": {
+        "description": "Por padrão grava os dois sentidos. Passe simetrico=false para gravar um lado só.",
+        "operationId": "RegioesController_definirDeslocamento",
+        "parameters": [
+          {
+            "name": "origemId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeslocamentoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Define o tempo mínimo entre duas regiões",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      },
+      "delete": {
+        "operationId": "RegioesController_removerDeslocamento",
+        "parameters": [
+          {
+            "name": "origemId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destinoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Remove o tempo entre duas regiões, nos dois sentidos",
+        "tags": [
+          "Regiões e deslocamento"
+        ]
+      }
+    },
+    "/v1/disciplinas": {
+      "get": {
+        "operationId": "DisciplinasController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as disciplinas, com paginação e busca",
+        "tags": [
+          "Disciplinas"
+        ]
+      },
+      "post": {
+        "operationId": "DisciplinasController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarDisciplinaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra uma disciplina",
+        "tags": [
+          "Disciplinas"
+        ]
+      }
+    },
+    "/v1/disciplinas/{id}": {
+      "get": {
+        "operationId": "DisciplinasController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Uma disciplina, com os professores que a dão",
+        "tags": [
+          "Disciplinas"
+        ]
+      },
+      "patch": {
+        "operationId": "DisciplinasController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarDisciplinaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma disciplina",
+        "tags": [
+          "Disciplinas"
+        ]
+      },
+      "delete": {
+        "description": "Não apaga: a disciplina está gravada em aulas que já aconteceram. A resposta diz quantos vínculos existiam, para a tela avisar a consequência.",
+        "operationId": "DisciplinasController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desativa uma disciplina",
+        "tags": [
+          "Disciplinas"
+        ]
+      }
+    },
+    "/v1/colegios": {
+      "get": {
+        "operationId": "ColegiosController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os colégios, com paginação e busca",
+        "tags": [
+          "Colégios"
+        ]
+      },
+      "post": {
+        "description": "Recusa a grafia nova de um nome que já existe: 'COLEGIO SIGMA' não entra quando 'Colégio Sigma' está cadastrado.",
+        "operationId": "ColegiosController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarColegioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um colégio",
+        "tags": [
+          "Colégios"
+        ]
+      }
+    },
+    "/v1/colegios/para-escolha": {
+      "get": {
+        "operationId": "ColegiosController_paraEscolha",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os colégios ativos, sem paginação, para o campo da ficha",
+        "tags": [
+          "Colégios"
+        ]
+      }
+    },
+    "/v1/colegios/{id}": {
+      "get": {
+        "operationId": "ColegiosController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Um colégio",
+        "tags": [
+          "Colégios"
+        ]
+      },
+      "patch": {
+        "operationId": "ColegiosController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarColegioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um colégio",
+        "tags": [
+          "Colégios"
+        ]
+      },
+      "delete": {
+        "description": "Não apaga: ele está gravado na ficha de aluno que já estudou lá.",
+        "operationId": "ColegiosController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desativa um colégio",
+        "tags": [
+          "Colégios"
+        ]
+      }
+    },
+    "/v1/colegios/{id}/juntar": {
+      "post": {
+        "description": "Os alunos do outro passam para este, e o outro é desativado. Serve para o que a migração não conseguiu juntar sozinha, como 'Sigma' e 'Colégio Sigma'.",
+        "operationId": "ColegiosController_juntar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JuntarColegioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Junta outro colégio neste",
+        "tags": [
+          "Colégios"
+        ]
+      }
+    },
+    "/v1/professores": {
+      "get": {
+        "operationId": "ProfessoresController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os professores, com disciplinas e regiões",
+        "tags": [
+          "Professores"
+        ]
+      },
+      "post": {
+        "operationId": "ProfessoresController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um professor",
+        "tags": [
+          "Professores"
+        ]
+      }
+    },
+    "/v1/professores/eu/inicio": {
+      "get": {
+        "description": "Só do próprio professor, sempre. O quanto ele tem a receber não vem aqui: está em /repasses/previa, que exige repasse.ver, e a escola decide se o perfil tem essa capacidade.",
+        "operationId": "ProfessoresController_inicio",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A tela de início do professor: quem está faltando, o que ele deve, e a ocupação",
+        "tags": [
+          "Professores"
+        ]
+      }
+    },
+    "/v1/professores/{id}": {
+      "get": {
+        "operationId": "ProfessoresController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A ficha do professor, com o valor da hora já resolvido",
+        "tags": [
+          "Professores"
+        ]
+      },
+      "patch": {
+        "operationId": "ProfessoresController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarProfessorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um professor",
+        "tags": [
+          "Professores"
+        ]
+      },
+      "delete": {
+        "description": "Não apaga. A resposta diz quantas aulas futuras ficaram para remanejar, que é o que dispara o desconto de saída com aula agendada.",
+        "operationId": "ProfessoresController_desligar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DesligarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desliga um professor",
+        "tags": [
+          "Professores"
+        ]
+      }
+    },
+    "/v1/professores/{id}/disponibilidade": {
+      "get": {
+        "description": "O professor alcança a grade dele. A recepção alcança a de todos.",
+        "operationId": "ProfessoresController_disponibilidade",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As faixas de horário em que o professor atende",
+        "tags": [
+          "Professores"
+        ]
+      },
+      "put": {
+        "description": "Substitui o conjunto inteiro. A tela manda a grade toda, e não faixa a faixa. O professor define a dele; a recepção, a de qualquer um.",
+        "operationId": "ProfessoresController_definirDisponibilidade",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisponibilidadeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Define a disponibilidade semanal",
+        "tags": [
+          "Professores"
+        ]
+      }
+    },
+    "/v1/responsaveis": {
+      "get": {
+        "operationId": "ResponsaveisController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os responsáveis, com os filhos vinculados",
+        "tags": [
+          "Responsáveis"
+        ]
+      },
+      "post": {
+        "operationId": "ResponsaveisController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsavelDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um responsável",
+        "tags": [
+          "Responsáveis"
+        ]
+      }
+    },
+    "/v1/responsaveis/{id}": {
+      "get": {
+        "operationId": "ResponsaveisController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A ficha do responsável",
+        "tags": [
+          "Responsáveis"
+        ]
+      },
+      "patch": {
+        "operationId": "ResponsaveisController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarResponsavelDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um responsável",
+        "tags": [
+          "Responsáveis"
+        ]
+      },
+      "delete": {
+        "description": "A resposta diz quantas cobranças em aberto e aulas futuras ele tinha.",
+        "operationId": "ResponsaveisController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desativa um responsável",
+        "tags": [
+          "Responsáveis"
+        ]
+      }
+    },
+    "/v1/alunos": {
+      "get": {
+        "operationId": "AlunosController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os alunos, com região e responsáveis",
+        "tags": [
+          "Alunos"
+        ]
+      },
+      "post": {
+        "operationId": "AlunosController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlunoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um aluno",
+        "tags": [
+          "Alunos"
+        ]
+      }
+    },
+    "/v1/alunos/{id}": {
+      "get": {
+        "operationId": "AlunosController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A ficha do aluno",
+        "tags": [
+          "Alunos"
+        ]
+      },
+      "patch": {
+        "operationId": "AlunosController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarAlunoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um aluno",
+        "tags": [
+          "Alunos"
+        ]
+      },
+      "delete": {
+        "operationId": "AlunosController_desativar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Desativa um aluno",
+        "tags": [
+          "Alunos"
+        ]
+      }
+    },
+    "/v1/alunos/{id}/material": {
+      "get": {
+        "description": "Agrupado por disciplina, da aula mais recente para a mais antiga. O professor vê o que ele compartilhou com este aluno; a escola vê tudo.",
+        "operationId": "AlunosController_trilha",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Tudo que foi compartilhado nas aulas deste aluno",
+        "tags": [
+          "Alunos"
+        ]
+      }
+    },
+    "/v1/alunos/{id}/disponibilidade": {
+      "get": {
+        "operationId": "AlunosController_disponibilidade",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os horários em que o aluno pode estudar",
+        "tags": [
+          "Alunos"
+        ]
+      },
+      "put": {
+        "description": "Substitui o conjunto inteiro. A tela manda a grade toda, e não faixa a faixa.",
+        "operationId": "AlunosController_definirDisponibilidade",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisponibilidadeDoAlunoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Define quando o aluno pode estudar",
+        "tags": [
+          "Alunos"
+        ]
+      }
+    },
+    "/v1/alunos/{id}/responsaveis/{responsavelId}": {
+      "put": {
+        "description": "Marcar alguém como financeiro tira a marca do anterior na mesma operação. Um aluno tem um pagador, e só um.",
+        "operationId": "AlunosController_vincular",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responsavelId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Vincula um responsável ao aluno",
+        "tags": [
+          "Alunos"
+        ]
+      },
+      "delete": {
+        "operationId": "AlunosController_desvincular",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responsavelId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Remove o vínculo entre o aluno e um responsável",
+        "tags": [
+          "Alunos"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/conteudo": {
+      "get": {
+        "description": "Material e exercício vêm separados porque são coisas diferentes para a escola: um é para ler, o outro é para fazer.",
+        "operationId": "MaterialController_listar",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Link da chamada, material, exercícios e a conversa da aula",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/sala": {
+      "patch": {
+        "description": "Manual por enquanto, como a escola já faz na agenda do Google. Quando o Zoom entrar, ele preenche este mesmo campo. Vazio desfaz.",
+        "operationId": "MaterialController_definirSala",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Define o link da chamada ao vivo",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/material": {
+      "post": {
+        "operationId": "MaterialController_adicionar",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaterialDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Põe material ou exercício na aula",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/material/arquivo": {
+      "post": {
+        "operationId": "MaterialController_adicionarComArquivo",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "arquivo": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "titulo": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "type": "string",
+                    "enum": [
+                      "MATERIAL",
+                      "EXERCICIO"
+                    ]
+                  }
+                },
+                "required": [
+                  "arquivo",
+                  "titulo"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Põe material ou exercício na aula, com arquivo anexado",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/material/{id}": {
+      "patch": {
+        "operationId": "MaterialController_alterar",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarMaterialDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um material ou exercício",
+        "tags": [
+          "Material da aula"
+        ]
+      },
+      "delete": {
+        "description": "O arquivo em si continua no módulo de arquivos: o mesmo PDF pode estar em duas aulas.",
+        "operationId": "MaterialController_remover",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Tira o material da aula",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/perguntas": {
+      "post": {
+        "description": "Quem está logado como aluno pergunta por si. Quem é da escola registra em nome de um aluno da aula, porque a pergunta chega por telefone tanto quanto pela tela.",
+        "operationId": "MaterialController_perguntar",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PerguntaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "O aluno pergunta ao professor",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/aulas/{aulaId}/perguntas/{id}": {
+      "patch": {
+        "description": "Resposta vazia desfaz, para corrigir quem respondeu na pergunta errada.",
+        "operationId": "MaterialController_responder",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RespostaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O professor responde",
+        "tags": [
+          "Material da aula"
+        ]
+      }
+    },
+    "/v1/duvidas": {
+      "get": {
+        "description": "O recorte é o mesmo de sempre: a escola vê tudo, o professor vê as aulas dele, e o aluno vê as aulas em que ele está. A conversa não é privada por decisão de 06/09, porque o aluno é menor e o professor é adulto.",
+        "operationId": "DuvidasController_listar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As dúvidas que você alcança, de todas as aulas",
+        "tags": [
+          "Dúvidas"
+        ]
+      }
+    },
+    "/v1/arquivos": {
+      "get": {
+        "description": "Informe exatamente um dono: alunoId, responsavelId, professorId, aulaId ou contratoId.",
+        "operationId": "ArquivosController_listar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os arquivos de um cadastro",
+        "tags": [
+          "Arquivos"
+        ]
+      },
+      "post": {
+        "operationId": "ArquivosController_enviar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "arquivo": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "categoria": {
+                    "type": "string",
+                    "enum": [
+                      "FOTO",
+                      "DOCUMENTO",
+                      "CONTRATO",
+                      "MATERIAL"
+                    ]
+                  },
+                  "alunoId": {
+                    "type": "string"
+                  },
+                  "responsavelId": {
+                    "type": "string"
+                  },
+                  "professorId": {
+                    "type": "string"
+                  },
+                  "aulaId": {
+                    "type": "string"
+                  },
+                  "contratoId": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "arquivo",
+                  "categoria"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Envia um arquivo e o pendura em um cadastro",
+        "tags": [
+          "Arquivos"
+        ]
+      }
+    },
+    "/v1/arquivos/{id}/url": {
+      "get": {
+        "description": "É o endereço desta própria API, e não o do armazenamento. O armazenamento não publica porta e não é alcançável de fora, de propósito: quem fala com ele é a API. Até 18/09 esta rota devolvia o endereço assinado do MinIO, que funcionava em desenvolvimento e em produção mandava o navegador para um `minio:9000` que ele não resolve.",
+        "operationId": "ArquivosController_url",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O endereço para ler este arquivo",
+        "tags": [
+          "Arquivos"
+        ]
+      }
+    },
+    "/v1/arquivos/{id}/conteudo": {
+      "get": {
+        "description": "A API entrega os bytes. Ela NÃO redireciona para o armazenamento, e a razão é que o armazenamento não é alcançável de fora: o contêiner não publica porta, e quem fala com ele é a API. Redirecionar funcionava em desenvolvimento, onde a porta está publicada em localhost, e em produção mandava o navegador para um endereço que ele não resolve. Achado na validação de 18/09, e nenhum arquivo tinha aberto em produção até então.",
+        "operationId": "ArquivosController_conteudo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O arquivo em si, para uma tag <img> ou um link poder apontar aqui",
+        "tags": [
+          "Arquivos"
+        ]
+      }
+    },
+    "/v1/arquivos/{id}": {
+      "delete": {
+        "operationId": "ArquivosController_remover",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Apaga um arquivo, do registro e do armazenamento",
+        "tags": [
+          "Arquivos"
+        ]
+      }
+    },
+    "/v1/enderecos/cep/{cep}": {
+      "get": {
+        "description": "Responde 404 quando o CEP não existe e 503 quando o provedor está fora do ar. Nos dois casos a tela deixa digitar à mão.",
+        "operationId": "EnderecosController_porCep",
+        "parameters": [
+          {
+            "name": "cep",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Endereço a partir do CEP",
+        "tags": [
+          "endereços"
+        ]
+      }
+    },
+    "/v1/contratos/modelos": {
+      "get": {
+        "description": "O catálogo vai junto porque a tela de edição precisa listar o que existe enquanto a pessoa escreve.",
+        "operationId": "DocumentoDeContratoController_listarModelos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os modelos de contrato, e o catálogo de marcadores",
+        "tags": [
+          "Contratos"
+        ]
+      },
+      "post": {
+        "description": "Um ativo por tipo: criar um desativa o anterior, na mesma transação.",
+        "operationId": "DocumentoDeContratoController_criarModelo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModeloDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um modelo, e o deixa como o ativo do tipo",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/modelos/{id}": {
+      "patch": {
+        "operationId": "DocumentoDeContratoController_alterarModelo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarModeloDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um modelo de contrato",
+        "tags": [
+          "Contratos"
+        ]
+      },
+      "delete": {
+        "description": "O modelo não fica gravado em contrato nenhum, então apagar não reescreve história. O ativo do tipo não sai: sem ele a escola perde a geração.",
+        "operationId": "DocumentoDeContratoController_apagarModelo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Apaga um modelo que não está em uso",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}/documento": {
+      "get": {
+        "description": "Diz quais marcadores sairiam em branco e quais não existem, para a tela avisar ANTES de a pessoa mandar o contrato para assinatura.",
+        "operationId": "DocumentoDeContratoController_conferir",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O que o documento teria, sem gerá-lo",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}/documento.pdf": {
+      "get": {
+        "operationId": "DocumentoDeContratoController_pdf",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O contrato preenchido, em PDF",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}/documento.docx": {
+      "get": {
+        "description": "Para quando a escola precisa mudar uma frase em UM caso, sem mexer no modelo de todos.",
+        "operationId": "DocumentoDeContratoController_docx",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O contrato preenchido, em Word",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/assinatura/estado": {
+      "get": {
+        "description": "A tela pergunta isto para não oferecer um botão que vai recusar.",
+        "operationId": "AssinaturaController_estado",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Se o envio para assinatura está ligado",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}/enviar-para-assinatura": {
+      "post": {
+        "description": "Gera o PDF na hora, cria o envelope no provedor e dispara os e-mails. Recusa contrato com campo em branco: na assinatura eletrônica não dá para preencher à mão.",
+        "operationId": "AssinaturaController_enviar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Manda o contrato para assinatura eletrônica",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/assinatura/aviso/{unidadeId}": {
+      "post": {
+        "description": "Público por necessidade: quem chama é o provedor, sem sessão. O que protege é a assinatura HMAC conferida sobre o corpo cru.",
+        "operationId": "AssinaturaController_aviso",
+        "parameters": [
+          {
+            "name": "unidadeId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "content-hmac",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Recebe o aviso de assinatura do provedor",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/sem-contrato": {
+      "get": {
+        "description": "A outra metade da pergunta: a listagem mostra o que existe, e esta mostra o buraco. Professor contratado e sem contrato nenhum não tem linha para aparecer na lista.",
+        "operationId": "ContratosController_semContrato",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quem ainda não tem contrato que valha",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos": {
+      "get": {
+        "description": "A situação não é o status: o status diz onde o contrato está no fluxo, e a situação diz se ele vale hoje. Contrato com status vigente e fim no mês passado aparece como vencido, porque é o que ele é.",
+        "operationId": "ContratosController_listar",
+        "parameters": [
+          {
+            "name": "tipo",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responsavelId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os contratos, com a situação de cada um",
+        "tags": [
+          "Contratos"
+        ]
+      },
+      "post": {
+        "operationId": "ContratosController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cria um contrato",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}": {
+      "get": {
+        "operationId": "ContratosController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Um contrato, com os anexos",
+        "tags": [
+          "Contratos"
+        ]
+      },
+      "patch": {
+        "operationId": "ContratosController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarContratoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Muda as datas do contrato",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/contratos/{id}/situacao": {
+      "patch": {
+        "description": "Marcar como assinado exige o documento anexado: sem ele o registro não prova nada no dia em que alguém perguntar. Encerrado e cancelado não reabrem.",
+        "operationId": "ContratosController_mudarStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Anda com o contrato no fluxo",
+        "tags": [
+          "Contratos"
+        ]
+      }
+    },
+    "/v1/leads/captura": {
+      "post": {
+        "operationId": "LeadsController_capturar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapturaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Recebe o formulário do site e cria um lead",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads": {
+      "get": {
+        "operationId": "LeadsController_listar",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          },
+          {
+            "name": "etapa",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os leads, opcionalmente de uma etapa só",
+        "tags": [
+          "Leads"
+        ]
+      },
+      "post": {
+        "operationId": "LeadsController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um lead",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads/funil": {
+      "get": {
+        "operationId": "LeadsController_funil",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O funil por etapa, com leads parados e taxa de conversão",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads/{id}": {
+      "get": {
+        "operationId": "LeadsController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Um lead, com todo o histórico de contato",
+        "tags": [
+          "Leads"
+        ]
+      },
+      "patch": {
+        "operationId": "LeadsController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarLeadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um lead",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads/{id}/etapa": {
+      "put": {
+        "description": "Registra a mudança no histórico sozinho. Perder exige motivo.",
+        "operationId": "LeadsController_mover",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoverDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Move o lead de etapa",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads/{id}/interacoes": {
+      "post": {
+        "operationId": "LeadsController_interagir",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InteracaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Registra um contato com o lead",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/leads/{id}/converter": {
+      "post": {
+        "description": "Cria o responsável e o aluno, vincula os dois e amarra o lead ao aluno. Exige as duas permissões, porque a operação cria cadastro.",
+        "operationId": "LeadsController_converter",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConverterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Converte o lead em matrícula",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/v1/lista-espera": {
+      "get": {
+        "operationId": "ListaEsperaController_listar",
+        "parameters": [
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "disciplinaId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quem está esperando por aula",
+        "tags": [
+          "Lista de espera"
+        ]
+      },
+      "post": {
+        "operationId": "ListaEsperaController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EsperaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Colocar uma família na fila",
+        "tags": [
+          "Lista de espera"
+        ]
+      }
+    },
+    "/v1/lista-espera/quem-cabe": {
+      "post": {
+        "operationId": "ListaEsperaController_quemCabe",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VagaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Quem da fila aceita um horário que abriu",
+        "tags": [
+          "Lista de espera"
+        ]
+      }
+    },
+    "/v1/lista-espera/{id}": {
+      "get": {
+        "operationId": "ListaEsperaController_porId",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Um pedido da fila",
+        "tags": [
+          "Lista de espera"
+        ]
+      },
+      "patch": {
+        "operationId": "ListaEsperaController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarEsperaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Mudar o que a família aceita",
+        "tags": [
+          "Lista de espera"
+        ]
+      }
+    },
+    "/v1/lista-espera/{id}/encerrar": {
+      "patch": {
+        "operationId": "ListaEsperaController_encerrar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EncerrarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Tirar da fila, por atendimento ou desistência",
+        "tags": [
+          "Lista de espera"
+        ]
+      }
+    },
+    "/v1/notificacoes": {
+      "get": {
+        "description": "Só as não lidas, salvo pedido contrário. Ler não apaga: a escola precisa poder voltar no que já viu.",
+        "operationId": "NotificacoesController_listar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O que o sistema percebeu sozinho",
+        "tags": [
+          "Notificações"
+        ]
+      }
+    },
+    "/v1/notificacoes/contagem": {
+      "get": {
+        "description": "Só o número: o sino aparece em toda tela e é consultado o tempo todo.",
+        "operationId": "NotificacoesController_contar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quantos avisos não lidos",
+        "tags": [
+          "Notificações"
+        ]
+      }
+    },
+    "/v1/notificacoes/lidas": {
+      "post": {
+        "description": "A alternativa é clicar em vinte avisos um a um, e o que acontece nesse caso é a pessoa parar de abrir o sino.",
+        "operationId": "NotificacoesController_marcarTodas",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca todos os avisos como lidos",
+        "tags": [
+          "Notificações"
+        ]
+      }
+    },
+    "/v1/notificacoes/{id}": {
+      "patch": {
+        "operationId": "NotificacoesController_marcar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LidaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Marca um aviso como lido, ou desfaz",
+        "tags": [
+          "Notificações"
+        ]
+      }
+    },
+    "/v1/agenda/professores-para": {
+      "get": {
+        "description": "Os professores que atendem a disciplina, cada um marcado como disponível ou não no horário pedido. A lista vem inteira de propósito: marcar fora da disponibilidade é aviso e não proibição, e quem decide se a tela oferece essa saída é o parâmetro agenda.permitir_fora_disponibilidade.",
+        "operationId": "AgendaController_professoresPara",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Quem pode dar esta aula, com o motivo de quem não pode",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/agenda": {
+      "get": {
+        "description": "Serve para o dia e para a semana: a diferença é o tamanho do intervalo. O professor e o responsável só enxergam o que é deles, pelo filtro automático.",
+        "operationId": "AgendaController_listar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A agenda de um período",
+        "tags": [
+          "Agenda"
+        ]
+      },
+      "post": {
+        "operationId": "AgendaController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AulaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca uma aula avulsa",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/agenda/reposicoes": {
+      "get": {
+        "description": "A mais antiga primeiro: é a ordem em que a escola resolve e a que a família espera. O professor vê só as dele, pelo filtro automático.",
+        "operationId": "AgendaController_reposicoesPendentes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As aulas que estão devendo reposição",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/agenda/{id}": {
+      "get": {
+        "operationId": "AgendaController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Uma aula, com alunos, material e dúvidas",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/agenda/previsualizar": {
+      "post": {
+        "description": "Devolve cada ocorrência com seus impedimentos e avisos, para a tela mostrar as vinte aulas antes de a pessoa confirmar.",
+        "operationId": "AgendaController_previsualizar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SerieDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Calcula a série sem gravar nada",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/agenda/series": {
+      "post": {
+        "description": "É o pedido do cliente: marcar terça e quinta sem sair e voltar. A regra segue o padrão de calendário, por exemplo FREQ=WEEKLY;BYDAY=TU,TH;COUNT=20.",
+        "operationId": "AgendaController_criarSerie",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SerieDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca uma série de aulas de uma vez",
+        "tags": [
+          "Agenda"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/taxa-de-cancelamento": {
+      "get": {
+        "description": "A tela mostra isso antes de a pessoa confirmar, com a explicação em texto.",
+        "operationId": "AulasController_previsaoDeTaxa",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Diz se cancelar agora cobra taxa, e por quê",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/presenca": {
+      "put": {
+        "description": "Falta do aluno mantém a aula realizada e a cobrança de pé, porque o professor foi. Falta do professor marca a aula como não realizada.",
+        "operationId": "AulasController_lancar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LancarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lança a presença, o conteúdo dado e a observação",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/cancelar": {
+      "post": {
+        "operationId": "AulasController_cancelar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cancela uma aula, aplicando a regra das 24 horas",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/remarcar": {
+      "post": {
+        "description": "Cria a nova, cancela a antiga e guarda o vínculo entre as duas. Com o mesmo professor e dentro do prazo, não cobra taxa.",
+        "operationId": "AulasController_remarcar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemarcarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Remarca a aula para outro horário",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/serie": {
+      "put": {
+        "description": "SO_ESTA, ESTA_E_SEGUINTES ou TODAS. Aula já realizada ou cancelada nunca é tocada, e o valor gravado não muda: ele foi congelado quando a aula nasceu.",
+        "operationId": "AulasController_editarSerie",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditarSerieDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera a série a partir desta aula",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/cancelar-serie": {
+      "post": {
+        "description": "Cada aula recebe a decisão de taxa individual, porque a regra das 24 horas olha o horário de cada uma: a de amanhã cobra, a do mês que vem não.",
+        "operationId": "AulasController_cancelarSerie",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarSerieDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cancela a série a partir desta aula",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/reposicao": {
+      "get": {
+        "description": "A regra é sempre a mesma: a família pagou pela aula que não teve? Se pagou, a reposição sai como cortesia. Se não pagou, entra na conta como aula normal.",
+        "operationId": "AulasController_avaliarReposicao",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Se a aula pode ser reposta, e se a reposição é cobrada",
+        "tags": [
+          "Aulas"
+        ]
+      },
+      "patch": {
+        "description": "A fila é de trabalho, e não direito adquirido: quem entra e quem sai é escolha da escola. A aula que o professor não deu entra sozinha.",
+        "operationId": "AulasController_marcarReposicao",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarcarReposicaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Põe ou tira a aula da fila de reposição",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/aulas/{id}/repor": {
+      "post": {
+        "description": "A aula nova passa pelas mesmas conferências de conflito de qualquer outra. A antiga fica no histórico como não realizada: a escola precisa saber que aconteceu.",
+        "operationId": "AulasController_repor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReporDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca a aula que repõe esta",
+        "tags": [
+          "Aulas"
+        ]
+      }
+    },
+    "/v1/solicitacoes": {
+      "get": {
+        "description": "O aluno vê os dele, o responsável vê os dos filhos, e a equipe vê os da escola. Aberto primeiro, e o mais antigo no topo: quem espera há três dias vem antes de quem pediu agora.",
+        "operationId": "SolicitacoesController_listar",
+        "parameters": [
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os pedidos que a pessoa alcança",
+        "tags": [
+          "Pedidos de aula"
+        ]
+      },
+      "post": {
+        "description": "Um pedido em aberto por aluno. Sem isso, quem não vê resposta em dois dias pede de novo, e a recepção passa a ver três linhas do mesmo assunto sem saber qual é a atual.",
+        "operationId": "SolicitacoesController_pedir",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Pede uma aula",
+        "tags": [
+          "Pedidos de aula"
+        ]
+      }
+    },
+    "/v1/solicitacoes/{id}": {
+      "patch": {
+        "description": "Fechar exige escrever o que foi feito: marcar como atendida sem dizer nada deixa quem pediu vendo a palavra e sem saber se tem aula marcada.",
+        "operationId": "SolicitacoesController_responder",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RespostaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Responde um pedido",
+        "tags": [
+          "Pedidos de aula"
+        ]
+      }
+    },
+    "/v1/relatos/aluno/{alunoId}": {
+      "get": {
+        "description": "Do mais recente para o mais antigo. É o que responde como o aluno vem indo, que é a pergunta que o relato existe para responder: uma linha solta não responde nada.",
+        "operationId": "RelatosController_doAluno",
+        "parameters": [
+          {
+            "name": "alunoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O histórico de relatos de um aluno",
+        "tags": [
+          "Relatos de aula"
+        ]
+      }
+    },
+    "/v1/relatos/professor/{professorId}": {
+      "get": {
+        "description": "Onde o cliente pediu que isto aparecesse, em 16/09. Sem período, traz os últimos; com período, recorta o mês.",
+        "operationId": "RelatosController_doProfessor",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os relatos que um professor escreveu",
+        "tags": [
+          "Relatos de aula"
+        ]
+      }
+    },
+    "/v1/relatos/aula/{aulaId}/aluno/{alunoId}": {
+      "put": {
+        "description": "Texto vazio apaga. O sistema guarda quem escreveu por último e quando, porque numa aula que troca de professor ao longo do semestre o histórico precisa dizer de quem é cada linha.",
+        "operationId": "RelatosController_escrever",
+        "parameters": [
+          {
+            "name": "aulaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "alunoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelatoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Escreve o relato de um aluno numa aula",
+        "tags": [
+          "Relatos de aula"
+        ]
+      }
+    },
+    "/v1/cobrancas": {
+      "get": {
+        "operationId": "CobrancasController_listar",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responsavelId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as cobranças, com o resumo do que entrou e do que falta",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      },
+      "post": {
+        "operationId": "CobrancasController_gerar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GerarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Gera a cobrança do mês de um responsável",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/recebidas": {
+      "get": {
+        "description": "Filtra pela data da baixa, e não pela competência: a mensalidade de agosto paga em setembro entra no caixa de setembro, que é onde o dinheiro chegou. A diferença entre esta lista e a de cobranças do mês é a inadimplência.",
+        "operationId": "CobrancasController_recebidas",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O que entrou no mês",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/previa": {
+      "get": {
+        "description": "Sem responsavelId, devolve a prévia de todo mundo com aula no mês, que é o que a escola confere antes de emitir.",
+        "operationId": "CobrancasController_previa",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "responsavelId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Calcula a conta do mês sem gravar nada",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/{id}": {
+      "get": {
+        "operationId": "CobrancasController_buscar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Uma cobrança, com os itens que a compõem",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/{id}/pagamento": {
+      "post": {
+        "description": "Existe porque nem todo pagamento passa pelo provedor: o PIX direto na conta da escola precisa cair no sistema de algum jeito.",
+        "operationId": "CobrancasController_pagar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagamentoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Registra o pagamento à mão",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/itens": {
+      "post": {
+        "description": "O avulso é item da cobrança do mês escolhido, e não cobrança nova, porque a escola manda um boleto por família por mês. Se a cobrança daquele mês ainda não existe, ela nasce com o vencimento informado; se já foi emitida, o lançamento é recusado e a tela oferece o mês seguinte.",
+        "operationId": "CobrancasController_lancarItem",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemAvulsoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Lança um valor à mão na cobrança da família",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/itens/{itemId}": {
+      "delete": {
+        "description": "Só o que uma pessoa digitou, e só enquanto a cobrança está em aberto. Item que veio da agenda se corrige na agenda.",
+        "operationId": "CobrancasController_removerItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Tira um lançamento feito à mão",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/cobrancas/{id}/estorno": {
+      "post": {
+        "description": "A regra de 27/08 diz que correção de valor é estorno, e nunca apagar. Só se estorna o que foi pago: para desfazer antes do pagamento, cancele.",
+        "operationId": "CobrancasController_estornar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstornoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Estorna uma cobrança paga",
+        "tags": [
+          "Financeiro do cliente"
+        ]
+      }
+    },
+    "/v1/repasses/previa": {
+      "get": {
+        "operationId": "RepasseController_previa",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Calcula o repasse do mês sem gravar nada",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/repasses/fechamentos": {
+      "get": {
+        "description": "A prévia diz quanto cada professor tem a receber; isto diz se o mês dele já foi fechado ou pago. A tela precisa das duas para saber qual botão mostrar.",
+        "operationId": "RepasseController_fechamentos",
+        "parameters": [
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Os fechamentos de um mês, com a situação de cada um",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/repasses/lancamentos/{professorId}": {
+      "post": {
+        "description": "O sinal vem do tipo, e não de quem digita: informe sempre valor positivo. Hora-aula não se lança aqui, ela sai da agenda.",
+        "operationId": "RepasseController_lancar",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LancamentoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Lança Uber, ajuste ou desconto no mês do professor",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/repasses/desconto-de-saida/{professorId}": {
+      "post": {
+        "operationId": "RepasseController_descontoDeSaida",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompetenciaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Aplica o desconto de saída sobre as aulas agendadas e não cumpridas",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/repasses/fechar/{professorId}": {
+      "post": {
+        "description": "Congela os números e prende os lançamentos ao fechamento, para o mês seguinte não puxar os mesmos de novo.",
+        "operationId": "RepasseController_fechar",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompetenciaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Fecha o mês do professor",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/repasses/{id}/pagamento": {
+      "post": {
+        "operationId": "RepasseController_pagar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagamentoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca o repasse como pago",
+        "tags": [
+          "Financeiro do professor"
+        ]
+      }
+    },
+    "/v1/emissao/situacao": {
+      "get": {
+        "description": "A tela usa isto para mostrar ou esconder o botão de emitir, em vez de deixar a pessoa clicar e receber erro.",
+        "operationId": "EmissaoController_situacao",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Diz se a emissão automática está ligada",
+        "tags": [
+          "Emissão de cobrança"
+        ]
+      }
+    },
+    "/v1/emissao/{cobrancaId}": {
+      "post": {
+        "operationId": "EmissaoController_emitir",
+        "parameters": [
+          {
+            "name": "cobrancaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmitirDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Emite a cobrança no provedor de pagamento",
+        "tags": [
+          "Emissão de cobrança"
+        ]
+      }
+    },
+    "/v1/avisos-de-pagamento": {
+      "post": {
+        "operationId": "AvisosController_receber",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Recebe o aviso de pagamento do provedor",
+        "tags": [
+          "Emissão de cobrança"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/fornecedores": {
+      "get": {
+        "operationId": "ContasAPagarController_listarFornecedores",
+        "parameters": [
+          {
+            "name": "pagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "porPagina",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maximum": 200,
+              "default": 25,
+              "type": "number"
+            }
+          },
+          {
+            "name": "busca",
+            "required": false,
+            "in": "query",
+            "description": "Busca por nome",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordem",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "situacao",
+            "required": false,
+            "in": "query",
+            "description": "ativos, inativos ou todos",
+            "schema": {
+              "default": "ativos",
+              "type": "string",
+              "enum": [
+                "ativos",
+                "inativos",
+                "todos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista os fornecedores",
+        "tags": [
+          "Contas a pagar"
+        ]
+      },
+      "post": {
+        "operationId": "ContasAPagarController_criarFornecedor",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra um fornecedor",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/fornecedores/{id}": {
+      "patch": {
+        "operationId": "ContasAPagarController_alterarFornecedor",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarFornecedorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera um fornecedor",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar": {
+      "get": {
+        "description": "O resumo separa o que está em aberto do que já venceu. Vencida não é status guardado, é conta que passou da data e continua aberta.",
+        "operationId": "ContasAPagarController_listar",
+        "parameters": [
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fornecedorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "categoriaId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as contas a pagar",
+        "tags": [
+          "Contas a pagar"
+        ]
+      },
+      "post": {
+        "operationId": "ContasAPagarController_criar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Lança uma conta a pagar",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/{id}": {
+      "patch": {
+        "operationId": "ContasAPagarController_alterar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarContaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma conta que ainda não foi paga",
+        "tags": [
+          "Contas a pagar"
+        ]
+      },
+      "delete": {
+        "description": "Conta já paga não se cancela: esconderia uma saída que aconteceu.",
+        "operationId": "ContasAPagarController_cancelar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Cancela uma conta que ainda não foi paga",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/{id}/pagamento": {
+      "post": {
+        "description": "A forma de pagamento aqui é como o dinheiro saiu de verdade, e não como a conta foi lançada. Conta que se repete não depende desta baixa: quem gera as próximas é a recorrência.",
+        "operationId": "ContasAPagarController_pagar",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Marca a conta como paga",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/grupos/{grupoId}": {
+      "delete": {
+        "description": "A parcela já paga fica, porque ela aconteceu. Cancelar uma por uma convida a esquecer a última.",
+        "operationId": "ContasAPagarController_cancelarGrupo",
+        "parameters": [
+          {
+            "name": "grupoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Cancela o que sobrou de um parcelamento",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/recorrencias": {
+      "get": {
+        "description": "O molde, e não as contas que ele gerou. As contas aparecem na listagem normal, junto com as lançadas à mão.",
+        "operationId": "ContasAPagarController_listarRecorrencias",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as contas que se repetem",
+        "tags": [
+          "Contas a pagar"
+        ]
+      },
+      "post": {
+        "description": "As contas dos próximos meses já nascem junto, para a escola ver o que vem pela frente. Sem data de fim nem número de vezes, ela repete sem parar.",
+        "operationId": "ContasAPagarController_criarRecorrencia",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecorrenciaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cadastra uma conta que se repete",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/contas-a-pagar/recorrencias/{id}": {
+      "patch": {
+        "description": "Mexer no molde não mexe nas contas já geradas: elas são obrigações que já existem, e algumas podem estar pagas.",
+        "operationId": "ContasAPagarController_alterarRecorrencia",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarRecorrenciaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Altera uma conta que se repete",
+        "tags": [
+          "Contas a pagar"
+        ]
+      }
+    },
+    "/v1/financeiro/categorias": {
+      "get": {
+        "description": "Sem filtro devolve as duas listas. As desativadas só vêm com `todas=sim`.",
+        "operationId": "CadastrosFinanceirosController_listarCategorias",
+        "parameters": [
+          {
+            "name": "fluxo",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "todas",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as categorias",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      },
+      "post": {
+        "operationId": "CadastrosFinanceirosController_criarCategoria",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cria uma categoria",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      }
+    },
+    "/v1/financeiro/categorias/{id}": {
+      "patch": {
+        "description": "Categoria não se apaga: apagar arrancaria a classificação de lançamentos antigos e mudaria relatório de mês já fechado.",
+        "operationId": "CadastrosFinanceirosController_alterarCategoria",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarCategoriaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Renomeia ou desativa uma categoria",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      }
+    },
+    "/v1/financeiro/formas-de-pagamento": {
+      "get": {
+        "description": "Como o dinheiro se moveu: dinheiro, PIX, transferência, cartão. Não confundir com a forma de emissão, que é o que o provedor emite.",
+        "operationId": "CadastrosFinanceirosController_listarFormas",
+        "parameters": [
+          {
+            "name": "todas",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Lista as formas de pagamento",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      },
+      "post": {
+        "operationId": "CadastrosFinanceirosController_criarForma",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Cria uma forma de pagamento",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      }
+    },
+    "/v1/financeiro/formas-de-pagamento/{id}": {
+      "patch": {
+        "operationId": "CadastrosFinanceirosController_alterarForma",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarFormaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Renomeia ou desativa uma forma de pagamento",
+        "tags": [
+          "Cadastros do financeiro"
+        ]
+      }
+    },
+    "/v1/relatorios/professor/{professorId}/aulas": {
+      "get": {
+        "description": "Aluno, disciplina, data, hora e duração, na ordem em que aconteceram. Sem datas, é o mês corrente. A aula cancelada entra na lista, com a situação escrita.",
+        "operationId": "RelatoriosController_aulas",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "As aulas de um professor no período",
+        "tags": [
+          "Relatórios por professor"
+        ]
+      }
+    },
+    "/v1/relatorios/professor/{professorId}/aulas.pdf": {
+      "get": {
+        "description": "Chama o mesmo método da tela, então o papel e a tela nunca discordam.",
+        "operationId": "RelatoriosController_aulasEmPdf",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "de",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "A mesma lista, para imprimir e mandar",
+        "tags": [
+          "Relatórios por professor"
+        ]
+      }
+    },
+    "/v1/relatorios/professor/{professorId}/financeiro": {
+      "get": {
+        "description": "Chama a prévia do repasse, que é o mesmo cálculo que a escola usa para pagar. A quebra por aluno é o que ele pediu em 16/09 e o repasse não tinha.",
+        "operationId": "RelatoriosController_financeiro",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O que o professor recebe no mês, com o valor por aluno",
+        "tags": [
+          "Relatórios por professor"
+        ]
+      }
+    },
+    "/v1/relatorios/professor/{professorId}/financeiro.pdf": {
+      "get": {
+        "description": "O documento que a escola entrega ao professor junto com o pagamento.",
+        "operationId": "RelatoriosController_financeiroEmPdf",
+        "parameters": [
+          {
+            "name": "professorId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "competencia",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "O mesmo fechamento, para imprimir e mandar",
+        "tags": [
+          "Relatórios por professor"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "API do Didaticus",
+    "description": "Toda regra de negócio e a identidade das pessoas moram aqui. O sistema interno, o site e o portal do responsável são telas desta API.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "didaticus_acesso"
+      }
+    },
+    "schemas": {
+      "AlterarModeloDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PreviaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DefinirMetaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CopiarMetasDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CriarUsuarioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PermissaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarUsuarioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EntrarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CodigoDoFatorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DesafioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "TestarEmailDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DefinirDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "SubRegiaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarSubRegiaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CriarRegiaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarRegiaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "FaixaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarFaixaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DeslocamentoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CriarDisciplinaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarDisciplinaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CriarColegioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarColegioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "JuntarColegioDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ProfessorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarProfessorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DisponibilidadeDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DesligarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ResponsavelDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarResponsavelDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlunoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarAlunoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "DisponibilidadeDoAlunoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "VinculoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "SalaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "MaterialDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarMaterialDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PerguntaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RespostaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ModeloDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ContratoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarContratoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "StatusDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CapturaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LeadDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarLeadDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "MoverDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "InteracaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ConverterDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "VagaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EsperaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarEsperaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EncerrarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LidaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "SerieDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AulaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LancarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CancelarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RemarcarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EditarSerieDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CancelarSerieDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "MarcarReposicaoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ReporDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PedidoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RelatoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "GerarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PagamentoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ItemAvulsoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EstornoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LancamentoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CompetenciaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "EmitirDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "FornecedorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarFornecedorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "ContaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarContaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PagarDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RecorrenciaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarRecorrenciaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CategoriaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarCategoriaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "FormaDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "AlterarFormaDto": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}

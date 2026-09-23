@@ -45,6 +45,24 @@ npm run build
 npm run tipos      # confere os tipos sem gerar nada
 ```
 
+## Os guardas
+
+```bash
+npm run conferir            # tipos, texto, cascata e desktop de uma vez
+npm run conferir:contrato   # o contrato commitado ainda descreve a API?
+npm run contrato:gerar      # busca o contrato da API e regera os tipos
+```
+
+Os três primeiros são os mesmos do repositório do sistema, copiados. O `texto`
+recusa marca de texto gerado por máquina, o `cascata` acusa regra responsiva
+desfeita por outra, e o `desktop` compara o CSS de desktop com um retrato
+aprovado.
+
+**O `conferir:contrato` é o que esta separação exige e não existia lá.** Ele
+busca o contrato de verdade em `/v1/docs-json` e compara com o `openapi.json`
+commitado. Se alguém mudar a API e este repositório não acompanhar, ele reprova
+antes de publicar, em vez de a quebra aparecer na frente de um pai.
+
 ## Estrutura
 
 ```
@@ -56,6 +74,11 @@ app/
   (portal)/           o portal do responsável, autenticado
 componentes/
   Abertura.tsx        a animação guiada pela rolagem
+scripts/
+  contrato.ts         busca o contrato da API e gera os tipos
+  conferencia/        os guardas
+tipos/
+  api.ts              gerado do contrato, não editar à mão
 docs/
   PESQUISA.md         o levantamento do concorrente e o que o site precisa ter
   MARCA.md            os arquivos da marca e onde cada um serve

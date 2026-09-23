@@ -1,0 +1,114 @@
+app/globals.css  *  box-sizing: border-box
+app/globals.css  :root  --laranja-forte: #c2410c
+app/globals.css  :root  --laranja: #ee5b2b
+app/globals.css  :root  --linha: #e7e3dc
+app/globals.css  :root  --marinho: #1b3a5c
+app/globals.css  :root  --papel-2: #faf5ee
+app/globals.css  :root  --papel-3: #f6ece1
+app/globals.css  :root  --papel: #fffdfb
+app/globals.css  :root  --tinta-fraca: #8b94a6
+app/globals.css  :root  --tinta-media: #55607a
+app/globals.css  :root  --tinta: #16233b
+app/globals.css  @media (prefers-reduced-motion: reduce) *  animation-duration: 0.01ms !important
+app/globals.css  @media (prefers-reduced-motion: reduce) *  scroll-behavior: auto !important
+app/globals.css  @media (prefers-reduced-motion: reduce) *  transition-duration: 0.01ms !important
+app/globals.css  a  color: inherit
+app/globals.css  body  -webkit-font-smoothing: antialiased
+app/globals.css  body  background: var(--papel)
+app/globals.css  body  color: var(--tinta)
+app/globals.css  body  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif
+app/globals.css  body  font-size: 16px
+app/globals.css  body  line-height: 1.6
+app/globals.css  body  margin: 0
+app/globals.css  body  overflow-x: hidden
+app/globals.css  html  -webkit-text-size-adjust: 100%
+app/globals.css  img  height: auto
+app/globals.css  img  max-width: 100%
+app/home.module.css  .botao  align-self: flex-start
+app/home.module.css  .botao  background: var(--laranja)
+app/home.module.css  .botao  border-radius: 999px
+app/home.module.css  .botao  color: #fff
+app/home.module.css  .botao  font-size: 16px
+app/home.module.css  .botao  font-weight: 600
+app/home.module.css  .botao  padding: 14px 30px
+app/home.module.css  .botao  text-decoration: none
+app/home.module.css  .botao:focus-visible  outline-offset: 3px
+app/home.module.css  .botao:focus-visible  outline: 3px solid var(--marinho)
+app/home.module.css  .chamada  display: flex
+app/home.module.css  .chamada  flex-direction: column
+app/home.module.css  .chamada  flex: 1
+app/home.module.css  .chamada  justify-content: center
+app/home.module.css  .chamada  max-width: 19ch
+app/home.module.css  .chamada h1  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
+app/home.module.css  .chamada h1  font-size: clamp(34px, 6.4vw, 68px)
+app/home.module.css  .chamada h1  font-weight: 800
+app/home.module.css  .chamada h1  letter-spacing: -0.03em
+app/home.module.css  .chamada h1  line-height: 1.02
+app/home.module.css  .chamada h1  margin: 0 0 18px
+app/home.module.css  .chamada h1  text-wrap: balance
+app/home.module.css  .chamada p  color: var(--tinta-media)
+app/home.module.css  .chamada p  font-size: clamp(15px, 1.5vw, 18px)
+app/home.module.css  .chamada p  margin: 0 0 28px
+app/home.module.css  .chamada p  max-width: 44ch
+app/home.module.css  .corpo  background: var(--papel)
+app/home.module.css  .corpo  position: relative
+app/home.module.css  .corpo  z-index: 3
+app/home.module.css  .marca  height: auto
+app/home.module.css  .marca  width: clamp(130px, 16vw, 190px)
+app/home.module.css  .menu  align-items: center
+app/home.module.css  .menu  color: var(--tinta-media)
+app/home.module.css  .menu  display: flex
+app/home.module.css  .menu  font-size: 14px
+app/home.module.css  .menu  gap: clamp(12px, 2vw, 22px)
+app/home.module.css  .menu  list-style: none
+app/home.module.css  .menu  margin: 0
+app/home.module.css  .menu  padding: 0
+app/home.module.css  .portal  background: var(--laranja)
+app/home.module.css  .portal  border-radius: 999px
+app/home.module.css  .portal  color: #fff
+app/home.module.css  .portal  font-weight: 600
+app/home.module.css  .portal  padding: 8px 16px
+app/home.module.css  .primeiroQuadro  background: linear-gradient(160deg, var(--papel) 0%, var(--papel-2) 58%, var(--papel-3) 100%)
+app/home.module.css  .primeiroQuadro  display: flex
+app/home.module.css  .primeiroQuadro  flex-direction: column
+app/home.module.css  .primeiroQuadro  height: 100vh
+app/home.module.css  .primeiroQuadro  padding: 26px clamp(18px, 5vw, 56px) 30px
+app/home.module.css  .primeiroQuadro  position: relative
+app/home.module.css  .rodapeDoQuadro  color: var(--tinta-fraca)
+app/home.module.css  .rodapeDoQuadro  font-size: 13px
+app/home.module.css  .rodapeDoQuadro  margin: 0
+app/home.module.css  .secao  margin: 0 auto
+app/home.module.css  .secao  max-width: 820px
+app/home.module.css  .secao  padding: clamp(60px, 10vw, 110px) clamp(18px, 5vw, 56px)
+app/home.module.css  .secao code  background: var(--papel-3)
+app/home.module.css  .secao code  border-radius: 5px
+app/home.module.css  .secao code  font-family: ui-monospace, Consolas, monospace
+app/home.module.css  .secao code  font-size: 0.9em
+app/home.module.css  .secao code  padding: 2px 6px
+app/home.module.css  .secao h2  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif
+app/home.module.css  .secao h2  font-size: clamp(24px, 3.6vw, 34px)
+app/home.module.css  .secao h2  font-weight: 600
+app/home.module.css  .secao h2  letter-spacing: -0.02em
+app/home.module.css  .secao h2  margin: 0 0 12px
+app/home.module.css  .secao p  color: var(--tinta-media)
+app/home.module.css  .secao p  margin: 0
+app/home.module.css  .topo  align-items: center
+app/home.module.css  .topo  display: flex
+app/home.module.css  .topo  gap: 20px
+app/home.module.css  .topo  justify-content: space-between
+componentes/Abertura.module.css  .cena  height: 100vh
+componentes/Abertura.module.css  .cena  overflow: hidden
+componentes/Abertura.module.css  .cena  position: sticky
+componentes/Abertura.module.css  .cena  top: 0
+componentes/Abertura.module.css  .cobertura  inset: 0
+componentes/Abertura.module.css  .cobertura  pointer-events: none
+componentes/Abertura.module.css  .cobertura  position: absolute
+componentes/Abertura.module.css  .cobertura  will-change: transform
+componentes/Abertura.module.css  .cobertura  z-index: 2
+componentes/Abertura.module.css  .cobertura g  will-change: transform, opacity
+componentes/Abertura.module.css  .cobertura svg  display: block
+componentes/Abertura.module.css  .cobertura svg  height: 100%
+componentes/Abertura.module.css  .cobertura svg  width: 100%
+componentes/Abertura.module.css  .semCena  position: relative
+componentes/Abertura.module.css  .trilha  height: 250vh
+componentes/Abertura.module.css  .trilha  position: relative
