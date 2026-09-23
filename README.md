@@ -98,10 +98,43 @@ criança.
 a abertura não acontece e o site continua sendo um site, indexável. A cena é
 acréscimo, e não a página.
 
+## O que a home diz, e de onde veio
+
+A home vende, e essa é a decisão que veio da pesquisa. A home do concorrente
+direto é uma tela só, sem rolagem: marca, menu e um botão. Quem chega pelo
+Google cai numa porta em vez de numa apresentação, e é a maior brecha deles.
+Repetir isso com uma abertura bonita por cima seria trocar um erro por um erro
+mais caro.
+
+As seções, na ordem da conversa que o pai tem na cabeça: como a aula acontece,
+quantos passos são até a primeira, o que se ensina, onde se atende, e o portal.
+
+**Os números são do sistema, e não de exemplo.** As 17 matérias e os 42 bairros
+em `dados/escola.ts` foram lidos do banco em 23/09: são os mesmos que a recepção
+usa para marcar aula. O preço ficou de fora de propósito, porque tabela em código
+é tabela que alguém esquece de atualizar; quando a página de preços existir, ela
+lê das faixas das regiões.
+
+## O que falta e depende da escola
+
+Não inventei nada disto, e é por isso que o site ainda não tem:
+
+- **Contato.** O cadastro da unidade no sistema está sem CNPJ, endereço, telefone
+  e e-mail. O rodapé mostra só o que é verdade hoje, em vez de um telefone de
+  exemplo, que é o jeito mais rápido de um site nascer mentindo.
+- **Prova social.** O concorrente tem 135 avaliações no Google e as esconde na
+  página de contato. Depoimento é o que mais converte numa escola, e inventar um
+  está fora de questão.
+- **Desde quando a escola existe**, quantos professores, quantos alunos. São
+  números que vendem e que eu não tenho.
+- **Fotos.** De aula, de professor, da equipe.
+- **Preço.** A decisão de publicar aberto, como o concorrente faz, ou deixar sob
+  consulta.
+
 ## O que ainda não existe
 
-- O favicon. Abaixo de uns 32px o símbolo vira mancha, e a saída é uma versão
-  simplificada da marca. Ver `docs/MARCA.md`.
-- As páginas internas: aulas, professores, preços, materiais, contato.
+- As páginas internas: aulas, professores, preços, materiais, contato, blog.
 - O portal do responsável, que depende do fluxo de convite já existente na API.
 - O consumo da API. Nada aqui busca dado ainda.
+- O favicon. Abaixo de uns 32px o símbolo vira mancha, e a saída é uma versão
+  simplificada da marca. Ver `docs/MARCA.md`.

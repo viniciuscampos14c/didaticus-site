@@ -133,3 +133,259 @@
     max-width: none;
   }
 }
+
+/* ==================================================== o corpo da home */
+
+/*
+ * As faixas alternam fundo para separar assunto sem precisar de linha
+ * divisória. Cada uma tem um papel, e a ordem é a da conversa que o pai tem na
+ * cabeça: como a aula acontece, quantos passos são, o que se ensina, onde se
+ * atende, e o que a Didaticus tem que os outros não têm.
+ */
+.faixa {
+  padding: clamp(56px, 9vw, 104px) clamp(18px, 5vw, 56px);
+}
+
+.faixaClara {
+  background: var(--papel-2);
+}
+
+.faixaEscura {
+  background: var(--marinho);
+  color: #e6edf5;
+}
+
+.faixaMarca {
+  background: var(--laranja);
+  color: #fff;
+}
+
+.larguraTexto {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.olho {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin: 0 0 10px;
+}
+
+.faixaEscura .olho {
+  color: #f0a075;
+}
+
+.faixaMarca .olho {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.faixa h2 {
+  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 4.2vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.apoio {
+  max-width: 54ch;
+  margin: 0;
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--tinta-media);
+}
+
+.faixaEscura .apoio {
+  color: #b6c5d6;
+}
+
+.destaque {
+  max-width: 48ch;
+  margin: 0 0 28px;
+  font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------- as modalidades */
+
+.duasColunas {
+  max-width: 1080px;
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.cartao {
+  background: var(--papel-2);
+  border: 1px solid var(--linha);
+  border-radius: 18px;
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.cartao h3 {
+  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+}
+
+.cartao p {
+  margin: 0;
+  color: var(--tinta-media);
+  font-size: 15.5px;
+}
+
+/* ------------------------------------------------------- os passos */
+
+.passos {
+  max-width: 1080px;
+  margin: 40px auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: clamp(20px, 3vw, 34px);
+  counter-reset: passo;
+}
+
+.passo {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/*
+ * O número é informação, e não enfeite: a ordem dos passos é o que o pai quer
+ * saber. Numerar uma lista que não tem ordem seria decoração.
+ */
+.numero {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  color: #f0a075;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.passo h3 {
+  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17.5px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 4px 0 8px;
+}
+
+.passo p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #b6c5d6;
+}
+
+/* ------------------------------------------------------- as matérias */
+
+.materias {
+  max-width: 1080px;
+  margin: 34px auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.materias li {
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: var(--papel);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------- as regiões */
+
+.regioes {
+  max-width: 1080px;
+  margin: 34px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.regiao {
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 18px;
+  padding: clamp(20px, 2.6vw, 28px);
+}
+
+.regiao h3 {
+  font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.bairros {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--tinta-media);
+}
+
+/* --------------------------------------------------------- o convite */
+
+.convite {
+  text-align: center;
+  background: var(--papel-2);
+}
+
+.convite h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.convite .apoio {
+  margin: 0 auto 28px;
+}
+
+.botaoVazado {
+  display: inline-block;
+  border: 2px solid rgb(255 255 255 / 0.85);
+  border-radius: 999px;
+  padding: 12px 28px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.botaoVazado:focus-visible {
+  outline: 3px solid var(--marinho);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .passo {
+    gap: 12px;
+  }
+  .faixa h2 {
+    max-width: none;
+  }
+}
