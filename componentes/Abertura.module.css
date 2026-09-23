@@ -1,0 +1,45 @@
+/*
+ * A abertura da home.
+ *
+ * A trilha é alta e a cena gruda no topo dela: é a rolagem sobre a trilha que
+ * dá o tempo da animação. Duas telas e meia, e não cinco: acima disso a pessoa
+ * não sente que está entrando, sente que está presa.
+ */
+.trilha {
+  position: relative;
+  height: 250vh;
+}
+
+.cena {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*
+ * Sem animação, a seção não ocupa altura nenhuma e o site aparece direto.
+ * É o que vale para quem pediu movimento reduzido no sistema, e para quando o
+ * JavaScript não roda.
+ */
+.semCena {
+  position: relative;
+}
+
+.cobertura {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cobertura svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cobertura g {
+  will-change: transform, opacity;
+}

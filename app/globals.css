@@ -1,0 +1,62 @@
+/*
+ * Os tokens da marca, tirados dos arquivos que o cliente entregou em 23/09.
+ *
+ * O laranja e o marinho foram amostrados do PNG, e não escolhidos: a marca é a
+ * fonte, e a folha de estilo obedece.
+ */
+:root {
+  --laranja: #ee5b2b;
+  --laranja-forte: #c2410c;
+  --marinho: #1b3a5c;
+  --tinta: #16233b;
+  --tinta-media: #55607a;
+  --tinta-fraca: #8b94a6;
+  --papel: #fffdfb;
+  --papel-2: #faf5ee;
+  --papel-3: #f6ece1;
+  --linha: #e7e3dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * A cena da abertura cobre a tela inteira enquanto roda, e por isso a rolagem
+ * horizontal precisa estar trancada: um estouro de um pixel na cena viraria
+ * uma barra na home inteira.
+ */
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
