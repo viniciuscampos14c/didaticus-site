@@ -6,32 +6,48 @@ particulares em Brasília.
 Repositório separado do sistema por pedido do cliente em 23/09/2026. O sistema
 interno, a API e o worker continuam em [Didaticus](https://github.com/viniciuscampos14c/Didaticus).
 
+**Nada disto está no ar.** O site que a escola tem hoje é uma landing em
+WordPress, em `didaticusaulas.com.br/lp`, e a substituição é decisão do cliente.
+
+Como se chegou em cada decisão, inclusive os erros no caminho, está em
+[`docs/HISTORICO.md`](docs/HISTORICO.md). Vale ler antes de mexer na home.
+
 ## O que já está decidido
+
+**A identidade visual é a da landing que a escola já publica, e não a do
+sistema.** É a decisão que mais custou e a que não pode ser esquecida. O sistema
+interno tem uma paleta calma, feita para oito horas de uso; o site é a vitrine
+que o pai vê antes de decidir, e a escola já tem uma voz visual para isso:
+marinho com a estampa de material escolar, título em caixa alta em Poppins 800,
+laranja destacando as palavras que importam, e foto de aluno em bloco colorido.
+As cores em `app/globals.css` foram amostradas da landing, e não escolhidas.
 
 **A abertura da home.** A marca cresce e o site aparece por dentro do vazio do
 D. O nome do efeito é animação guiada pela rolagem. Escolhida entre três
-protótipos, e o motivo da escolha foi que a logo da Didaticus já é um livro:
-abrir o D e entrar por ele mostra a metáfora que já está na marca, em vez de
-acrescentar outra.
+protótipos, porque a logo da Didaticus já é um livro: abrir o D e entrar por ele
+mostra a metáfora que já está na marca, em vez de acrescentar outra.
 
-**O portal do responsável é o destaque do menu.** Nenhum concorrente de Brasília
-tem um, e é a coisa que a Didaticus tem e eles não. Ver `docs/PESQUISA.md`.
+**O portal do responsável é o único item destacado do menu.** Nenhum concorrente
+de Brasília tem um. Ver `docs/PESQUISA.md`.
 
-**A marca é a que o cliente entregou.** Nada foi redesenhado. As regras de uso, e
-um caso em que ela precisa de atenção, estão em `docs/MARCA.md`.
+**A marca é a que o cliente entregou, e não se redesenha.** Houve três
+tentativas de vetorizar e refinar: as duas primeiras foram reprovadas, e depois
+da terceira o cliente mandou a marca que ele mesmo gerou. Regras de uso em
+`docs/MARCA.md`.
+
+**O WhatsApp é o canal de venda.** A landing inteira converge para ele, e o site
+também: botão no herói, no fechamento, e flutuando a página toda.
 
 ## A consequência de estar separado do sistema
 
 Aqui não se alcança os pacotes do monorepo (`@didaticus/types`,
-`@didaticus/api-client`). Este site conversa com a API v1 por HTTP e carrega os
-próprios tipos.
+`@didaticus/api-client`). O site conversa com a API v1 por HTTP.
 
-O preço disso é conhecido e vale escrever: **quando a API mudar um contrato,
-nada aqui vai reclamar em tempo de compilação**. No monorepo o TypeScript
-apontava; aqui a quebra aparece em execução. Duas defesas, quando o consumo
-começar: um teste de fumaça que bate nos contratos que o site usa, e um tipo
-escrito à mão por resposta consumida, num arquivo só, para a mudança ter um
-lugar óbvio para ser feita.
+O risco é conhecido: quando a API mudar um contrato, a quebra apareceria em
+produção, na frente de um pai, e não no terminal de quem fez a mudança. A
+defesa já existe e não é tipo escrito à mão: o `api-client` do monorepo sempre
+foi gerado do OpenAPI, então este repositório gera os próprios tipos do mesmo
+contrato, e o `conferir:contrato` reprova quando a cópia envelhece.
 
 ## Rodar
 
@@ -45,6 +61,14 @@ npm run build
 npm run tipos      # confere os tipos sem gerar nada
 ```
 
+**No Windows, servidor que ficou para trás segura a porta.** O `pkill` do Git
+Bash não alcança processo do Windows, e o sintoma é o navegador mostrando a
+versão velha como se o build não tivesse pegado. Para liberar a porta:
+
+```powershell
+Get-NetTCPConnection -LocalPort 3100 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+```
+
 ## Os guardas
 
 ```bash
@@ -56,85 +80,97 @@ npm run contrato:gerar      # busca o contrato da API e regera os tipos
 Os três primeiros são os mesmos do repositório do sistema, copiados. O `texto`
 recusa marca de texto gerado por máquina, o `cascata` acusa regra responsiva
 desfeita por outra, e o `desktop` compara o CSS de desktop com um retrato
-aprovado.
+aprovado. Mudou o desktop de propósito, grave de novo:
+
+```bash
+npx tsx scripts/conferencia/desktop.ts --gravar
+```
 
 **O `conferir:contrato` é o que esta separação exige e não existia lá.** Ele
 busca o contrato de verdade em `/v1/docs-json` e compara com o `openapi.json`
-commitado. Se alguém mudar a API e este repositório não acompanhar, ele reprova
-antes de publicar, em vez de a quebra aparecer na frente de um pai.
+commitado.
 
 ## Estrutura
 
 ```
 app/
-  page.tsx            a home, com o primeiro quadro dentro da abertura
-  layout.tsx          o esqueleto e as fontes
-  globals.css         os tokens da marca
-  (institucional)/    as páginas públicas
-  (portal)/           o portal do responsável, autenticado
+  page.tsx              a home, com o primeiro quadro dentro da abertura
+  layout.tsx            o esqueleto e a Poppins
+  globals.css           os tokens, amostrados da landing
+  home.module.css       a home
 componentes/
-  Abertura.tsx        a animação guiada pela rolagem
+  Abertura.tsx          a animação guiada pela rolagem
+  Rodape.tsx            o rodapé
+  BotaoWhatsapp.tsx     o botão flutuante
+dados/
+  escola.ts             o conteúdo, e de onde cada parte veio
 scripts/
-  contrato.ts         busca o contrato da API e gera os tipos
-  conferencia/        os guardas
+  contrato.ts           busca o contrato da API e gera os tipos
+  conferencia/          os guardas
 tipos/
-  api.ts              gerado do contrato, não editar à mão
+  api.ts                gerado do contrato, não editar à mão
+public/
+  marca/                os arquivos da marca que o cliente entregou
+  lp/                   a estampa, a colagem de fotos e os ícones da landing
 docs/
-  PESQUISA.md         o levantamento do concorrente e o que o site precisa ter
-  MARCA.md            os arquivos da marca e onde cada um serve
-public/marca/         os arquivos da marca
+  HISTORICO.md          como se chegou em cada decisão, e os erros
+  PESQUISA.md           o concorrente, e o que o site precisa ter
+  MARCA.md              os arquivos da marca e onde cada um serve
 ```
+
+Os grupos de rota `(institucional)` e `(portal)`, previstos na arquitetura,
+**ainda não existem**. Pasta vazia não entra no git, e as páginas internas não
+foram escritas.
+
+## A home, e de onde veio cada parte
+
+A ordem segue a da landing, que é a conversa que o pai tem na cabeça: o herói
+com o título da escola e as fotos, os cinco benefícios, os quatro passos para
+contratar, as matérias e os níveis, os bairros atendidos, o portal, e o
+fechamento.
+
+**O que a escola diz de si** vem da landing, lida em 23/09: os benefícios, os
+passos, o WhatsApp e os "quase 10 anos". É a voz que ela já escolheu para
+vender.
+
+**O que a escola faz de fato** vem do sistema: as 17 matérias e os 42 bairros
+são os mesmos que a recepção usa para marcar aula.
+
+**O que não está**, de propósito: o preço, porque tabela em código é tabela que
+alguém esquece de atualizar. Quando a página de preços existir, ela lê das
+faixas das regiões.
 
 ## Três regras da abertura, que não são detalhe
 
-**Ela dura duas telas e meia, e não cinco.** Acima disso a pessoa não sente que
-está entrando, sente que está presa.
+**A marca ocupa 42% da altura da tela, e o quadro de desenho tem o formato da
+tela.** Não um quadrado recortado: foi exatamente isso que produziu o D
+gigante. Ver `docs/HISTORICO.md`.
 
-**Quem tem movimento reduzido ligado no sistema não vê a cena.** A home abre
-direto. Não é preferência: enjoo de movimento é real, e o público aqui inclui
-criança.
+**Ela dura duas telas e meia.** Acima disso a pessoa não sente que está
+entrando, sente que está presa.
 
-**O texto da home é HTML normal, por baixo da cena.** Se o JavaScript não rodar,
-a abertura não acontece e o site continua sendo um site, indexável. A cena é
-acréscimo, e não a página.
-
-## O que a home diz, e de onde veio
-
-A home vende, e essa é a decisão que veio da pesquisa. A home do concorrente
-direto é uma tela só, sem rolagem: marca, menu e um botão. Quem chega pelo
-Google cai numa porta em vez de numa apresentação, e é a maior brecha deles.
-Repetir isso com uma abertura bonita por cima seria trocar um erro por um erro
-mais caro.
-
-As seções, na ordem da conversa que o pai tem na cabeça: como a aula acontece,
-quantos passos são até a primeira, o que se ensina, onde se atende, e o portal.
-
-**Os números são do sistema, e não de exemplo.** As 17 matérias e os 42 bairros
-em `dados/escola.ts` foram lidos do banco em 23/09: são os mesmos que a recepção
-usa para marcar aula. O preço ficou de fora de propósito, porque tabela em código
-é tabela que alguém esquece de atualizar; quando a página de preços existir, ela
-lê das faixas das regiões.
+**Quem tem movimento reduzido ligado no sistema não vê a cena**, e sem
+JavaScript ela simplesmente não acontece. O texto da home é HTML normal por
+baixo, indexável.
 
 ## O que falta e depende da escola
 
-Não inventei nada disto, e é por isso que o site ainda não tem:
-
-- **Contato.** O cadastro da unidade no sistema está sem CNPJ, endereço, telefone
-  e e-mail. O rodapé mostra só o que é verdade hoje, em vez de um telefone de
-  exemplo, que é o jeito mais rápido de um site nascer mentindo.
-- **Prova social.** O concorrente tem 135 avaliações no Google e as esconde na
-  página de contato. Depoimento é o que mais converte numa escola, e inventar um
-  está fora de questão.
-- **Desde quando a escola existe**, quantos professores, quantos alunos. São
-  números que vendem e que eu não tenho.
-- **Fotos.** De aula, de professor, da equipe.
-- **Preço.** A decisão de publicar aberto, como o concorrente faz, ou deixar sob
-  consulta.
+- **Contato.** O cadastro da unidade no sistema está sem CNPJ, endereço,
+  telefone e e-mail. O rodapé mostra o WhatsApp, que a escola publica, e nada
+  mais: telefone de exemplo é o jeito mais rápido de um site nascer mentindo.
+- **A licença das fotos.** A colagem do herói veio da landing e parece de banco
+  de imagens, provavelmente comprada pela agência que fez a landing. Confirmar
+  que a licença cobre o site novo **antes de ir para o ar**.
+- **Depoimentos.** O concorrente tem 135 avaliações no Google e as esconde na
+  página de contato. Inventar um está fora de questão.
+- **Quantos professores e quantos alunos.** Números que vendem e que não temos.
+- **Preço.** Publicar aberto, como o concorrente, ou deixar sob consulta.
 
 ## O que ainda não existe
 
 - As páginas internas: aulas, professores, preços, materiais, contato, blog.
-- O portal do responsável, que depende do fluxo de convite já existente na API.
+- O portal do responsável. **A home já o anuncia**, então a home não pode ir
+  para o ar antes dele, ou ela promete o que não entrega.
 - O consumo da API. Nada aqui busca dado ainda.
 - O favicon. Abaixo de uns 32px o símbolo vira mancha, e a saída é uma versão
   simplificada da marca. Ver `docs/MARCA.md`.
