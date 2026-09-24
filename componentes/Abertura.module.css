@@ -1,45 +1,307 @@
-/*
- * A abertura da home.
- *
- * A trilha é alta e a cena gruda no topo dela: é a rolagem sobre a trilha que
- * dá o tempo da animação. Duas telas e meia, e não cinco: acima disso a pessoa
- * não sente que está entrando, sente que está presa.
- */
-.trilha {
-  position: relative;
-  height: 250vh;
+.trilha{
+  position:relative;
+  height:185vh
 }
-
-.cena {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+.cena{
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:hidden
 }
-
-/*
- * Sem animação, a seção não ocupa altura nenhuma e o site aparece direto.
- * É o que vale para quem pediu movimento reduzido no sistema, e para quando o
- * JavaScript não roda.
- */
-.semCena {
-  position: relative;
+.semCena{
+  position:relative
 }
-
-.cobertura {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  will-change: transform;
+.cobertura{
+  --progresso:0;
+  --saida:0;
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 55%,#215e78 0%,#103f5d 42%,#06243c 100%);
+  color:#fff;
+  transform:translateY(calc(var(--saida)*-100%));
+  will-change:transform;
+  overflow:hidden
 }
-
-.cobertura svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+.cobertura::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 82px,#ffffff08 83px 84px),repeating-linear-gradient(90deg,transparent 0 82px,#ffffff08 83px 84px);
+  mask-image:linear-gradient(to bottom,transparent,#0008 35%,#0008 70%,transparent)
 }
-
-.cobertura g {
-  will-change: transform, opacity;
+.lateral{
+  position:absolute;
+  left:4vw;
+  top:50%;
+  writing-mode:vertical-rl;
+  transform:translateY(-50%) rotate(180deg);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.32em;
+  color:#ffffff70
+}
+.palco{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px
+}
+.sobre{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin:0 0 clamp(14px,3vh,26px);
+  padding:10px 16px;
+  color:#fff;
+  border:1px solid #ffffff38;
+  border-radius:40px;
+  background:#ffffff12;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:clamp(0,calc(1 - var(--progresso)*3),1)
+}
+.sobre::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ff7448;
+  box-shadow:0 0 0 4px #ff744833
+}
+.sobre span{
+  padding-left:12px;
+  border-left:1px solid #ffffff55;
+  color:#ffd200
+}
+.livro{
+  position:relative;
+  width:min(64vw,820px);
+  height:min(36vw,480px);
+  perspective:1100px;
+  filter:drop-shadow(0 32px 24px #00132185);
+  transform:translateY(calc(var(--progresso)*-3vh)) scale(calc(1 + var(--progresso)*.32));
+  opacity:clamp(0,calc(1 - (var(--progresso) - .6)*3),1)
+}
+.pilha{
+  position:absolute;
+  inset:8px -10px -10px 7px;
+  border:2px solid #d7ebef;
+  background:#e5f6f8;
+  border-radius:8px 17px 17px 8px;
+  box-shadow:0 5px 0 #b7d9e3,0 10px 0 #8dbcc9,0 20px 30px #00142399
+}
+.paginaEsquerda,.paginaDireita,.capa{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  border-radius:5px 18px 18px 5px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  box-shadow:0 18px 34px #00132266
+}
+.paginaEsquerda{
+  left:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  padding:clamp(24px,3vw,50px);
+  background:linear-gradient(90deg,#d2ebf3 0%,#fff 15%,#f8fdff 90%,#bedbe4 100%);
+  transform-origin:right;
+  transform:rotateY(calc(var(--progresso)*-11deg));
+  box-shadow:inset -18px 0 30px #25526b2b
+}
+.paginaEsquerda small{
+  color:#e65e35;
+  font-size:clamp(9px,.8vw,12px);
+  letter-spacing:.18em;
+  font-weight:800;
+  margin-bottom:auto
+}
+.paginaEsquerda strong{
+  color:#082c47;
+  font-size:clamp(19px,2.5vw,36px);
+  line-height:1.08;
+  max-width:12ch
+}
+.paginaEsquerda span{
+  font-size:clamp(10px,.9vw,14px);
+  line-height:1.5;
+  color:#506a79;
+  max-width:23ch;
+  margin-top:18px
+}
+.paginaEsquerda i{
+  width:50px;
+  height:5px;
+  background:#ff6533;
+  border-radius:10px;
+  margin-top:auto
+}
+.paginaDireita{
+  right:0;
+  background:#f7ffff;
+  transform-origin:left;
+  transform:rotateY(calc(var(--progresso)*8deg))
+}
+.paginaDireita img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:45% center
+}
+.lombada{
+  position:absolute;
+  z-index:2;
+  left:calc(50% - 8px);
+  top:0;
+  width:16px;
+  height:100%;
+  background:linear-gradient(90deg,#9cbec8,#fff,#83adba);
+  box-shadow:0 0 22px #001f3980
+}
+.capa{
+  z-index:3;
+  left:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(90deg,#f05d2f 0 12px,#fff 12px 100%);
+  transform-origin:left;
+  transform:rotateY(calc(var(--progresso)*-160deg));
+  backface-visibility:hidden;
+  box-shadow:inset -12px 0 22px #cadfe466,0 22px 36px #00132277
+}
+.capa::after{
+  content:"";
+  position:absolute;
+  bottom:11%;
+  left:18%;
+  right:15%;
+  height:4px;
+  background:#ff6533;
+  border-radius:6px
+}
+.capa img{
+  display:block;
+  width:81%;
+  height:80%;
+  object-fit:contain
+}
+.convite{
+  position:relative;
+  z-index:2;
+  font-size:clamp(25px,2.5vw,42px);
+  font-weight:800;
+  line-height:1.1;
+  max-width:700px;
+  margin:26px 0 0;
+  opacity:clamp(0,calc(1 - (var(--progresso) - .23)*2.4),1)
+}
+.convite em{
+  font-style:normal;
+  color:#ff8a5d
+}
+.apoio{
+  font-size:clamp(13px,1vw,17px);
+  color:#d6e5ec;
+  margin:14px 0 0;
+  opacity:clamp(0,calc(1 - (var(--progresso) - .23)*2.4),1)
+}
+.indicacao{
+  position:absolute;
+  bottom:clamp(12px,2vh,24px);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:clamp(0,calc(1 - var(--progresso)*3),1)
+}
+.indicacao b{
+  display:block;
+  font-size:25px;
+  margin-top:5px
+}
+@media(max-width:760px){
+  .trilha{
+    height:155vh
+  }
+  .lateral{
+    display:none
+  }
+  .livro{
+    width:88vw;
+    height:58vw;
+    max-height:330px;
+    transform:scale(calc(1 + var(--progresso)*.12))
+  }
+  .paginaEsquerda{
+    padding:16px
+  }
+  .paginaEsquerda strong{
+    font-size:clamp(16px,4vw,25px)
+  }
+  .paginaEsquerda span{
+    display:none
+  }
+  .capa img{
+    width:87%;
+    height:80%
+  }
+  .convite{
+    font-size:clamp(23px,6vw,32px)
+  }
+  .apoio{
+    max-width:30ch
+  }
+  .sobre{
+    font-size:9px;
+    gap:7px;
+    padding:9px 11px
+  }
+  .sobre span{
+    padding-left:7px
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .trilha{
+    height:auto
+  }
+  .cena{
+    position:relative;
+    height:auto;
+    min-height:100vh
+  }
+  .cobertura{
+    display:none
+  }
+}
+.cobertura{
+  z-index:100
+}
+@media(min-width:761px){
+  .livro{
+    width:min(64vw,820px,95vh);
+    height:auto;
+    aspect-ratio:1.72
+  }
+}
+@media(min-width:761px) and (max-height:800px){
+  .livro{
+    width:min(64vw,820px,85vh)
+  }
+  .convite{
+    margin-top:17px
+  }
+  .apoio{
+    margin-top:8px
+  }
 }

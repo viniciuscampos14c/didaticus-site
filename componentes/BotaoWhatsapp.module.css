@@ -26,3 +26,8 @@
   outline: 3px solid #ffd200;
   outline-offset: 3px;
 }
+
+:global(body.em-abertura) .botao {
+  opacity: 0;
+  pointer-events: none;
+}

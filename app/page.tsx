@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Abertura } from "@/componentes/Abertura";
 import { Rodape } from "@/componentes/Rodape";
 import { BotaoWhatsapp } from "@/componentes/BotaoWhatsapp";
+import { Cabecalho } from "@/componentes/Cabecalho";
 import {
   BENEFICIOS,
   LINK_WHATSAPP,
@@ -37,49 +38,24 @@ export default function Home() {
     <>
       <Abertura>
         <header className={css.heroi}>
-          <nav className={css.topo} aria-label="Principal">
-            <a href="/" className={css.marca} aria-label="Didaticus, início">
-              <Image src="/marca/didaticus-simbolo.png" alt="" width={1254} height={1254} sizes="48px" className={css.simbolo} priority />
-              {/*
-               * A palavra da marca em branco, a partir do arquivo do cliente, e não
-               * redesenhada em fonte: o arquivo original tem a letra em marinho, e
-               * sobre este fundo ela sumiria. O filtro troca a cor sem trocar o
-               * desenho da letra.
-               */}
-              <Image src="/marca/didaticus-palavra.webp" alt="" width={2000} height={667} sizes="160px" className={css.palavra} priority />
-            </a>
-
-            <ul className={css.menu}>
-              <li><a href="#como">Como funciona</a></li>
-              <li><a href="#materias">Matérias</a></li>
-              <li><a href="#onde">Onde atendemos</a></li>
-              {/*
-               * O único item destacado, de propósito: nenhum concorrente de
-               * Brasília tem portal do responsável.
-               */}
-              <li><a href="#portal" className={css.portal}>Portal do responsável</a></li>
-            </ul>
-          </nav>
+          <Cabecalho />
 
           <div className={css.heroiMiolo}>
             <div className={css.heroiTexto}>
               <p className={css.selo}>Aulas particulares · Brasília</p>
               <h1 className={css.titulo}>
-                Aulas particulares feitas sob medida para o{" "}
-                <span className={css.realce}>ensino fundamental</span> e{" "}
-                <span className={css.realce}>médio</span>.
+                O jeito de aprender muda. <span className={css.realce}>O cuidado acompanha.</span>
               </h1>
               <p className={css.heroiApoio}>
-                Com professores preparados e acompanhamento de perto, seu filho chega
-                pronto para a escola e com uma preparação acima do nível para o
-                vestibular.
+                Aulas particulares em domicílio, adaptadas à matéria e ao ritmo
+                do seu filho. O primeiro passo é contar o que ele precisa.
               </p>
 
               <div className={css.acoes}>
                 <a className={css.botaoWhats} href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer">
                   <IconeWhats /> Agendar aula agora
                 </a>
-                <a className={css.botaoFantasma} href="#como">
+                <a className={css.botaoFantasma} href="/como-funciona">
                   Como funciona
                 </a>
               </div>
@@ -213,14 +189,13 @@ export default function Home() {
         <section className={css.faixa} id="portal" aria-labelledby="titulo-portal">
           <div className={`${css.miolo} ${css.portalCaixa}`}>
             <div className={css.portalTexto}>
-              <p className={css.seloEscuro}>Só na Didaticus</p>
+              <p className={css.seloEscuro}>Portal do responsável · em implantação</p>
               <h2 id="titulo-portal" className={css.tituloSecao}>
                 Você acompanha <span className={css.realce}>cada aula</span>, sem precisar ligar
               </h2>
               <p className={css.textoSecao}>
-                No portal do responsável você vê a agenda do seu filho, o que o professor
-                escreveu depois de cada aula, as notas e as faturas. Tudo no mesmo lugar, a
-                qualquer hora.
+                Quando o acesso estiver disponível, você poderá consultar a agenda do seu filho,
+                os relatos das aulas, as notas e as faturas em um só lugar.
               </p>
             </div>
 
@@ -237,10 +212,10 @@ export default function Home() {
         <section className={`${css.faixa} ${css.fechamento}`} aria-labelledby="titulo-final">
           <div className={css.miolo}>
             <h2 id="titulo-final" className={css.tituloSecao}>
-              Está esperando o quê?
+              A próxima conquista começa com uma conversa.
             </h2>
             <p className={css.subtitulo}>
-              Valorize o futuro do seu filho. Agende a primeira aula pelo WhatsApp.
+              Conte a série, a matéria e o que o aluno precisa. A equipe ajuda a organizar a primeira aula.
             </p>
             <a className={css.botaoWhats} href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer">
               <IconeWhats /> Agendar a primeira aula

@@ -1,65 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
 import { LINK_WHATSAPP } from "@/dados/escola";
 import css from "./Rodape.module.css";
 
-/*
- * O rodapé.
- *
- * O contato que falta aqui é dado que o sistema ainda não tem: o cadastro da
- * unidade está sem CNPJ, endereço, telefone e e-mail. O WhatsApp entra porque a
- * própria escola o publica na landing. O resto fica de fora em vez de virar
- * dado de exemplo, que é o jeito mais rápido de um site nascer mentindo.
- */
-
-const SECOES = [
-  {
-    titulo: "Aulas",
-    itens: ["Presencial, em casa", "Por videoconferência", "Preparatório para o vestibular"],
-  },
-  {
-    titulo: "A escola",
-    itens: ["Como funciona", "Onde atendemos", "Trabalhe conosco"],
-  },
-  {
-    titulo: "Para a família",
-    itens: ["Portal do responsável", "Materiais para baixar"],
-  },
+const grupos = [
+  { titulo: "Aulas", links: [{ texto: "Presenciais", href: "/aulas/presenciais" }, { texto: "Suporte online", href: "/aulas/online" }, { texto: "Preços", href: "/precos" }] },
+  { titulo: "A escola", links: [{ texto: "Como funciona", href: "/como-funciona" }, { texto: "Professores", href: "/professores" }, { texto: "Trabalhe conosco", href: "/trabalhe-conosco" }] },
+  { titulo: "Para a família", links: [{ texto: "Portal do responsável", href: "/portal" }, { texto: "Blog", href: "/blog" }, { texto: "Materiais", href: "/materiais" }] },
 ];
 
 export function Rodape() {
-  return (
-    <footer className={css.rodape}>
-      <div className={css.conteudo}>
-        <div className={css.marca}>
-          <Image src="/marca/didaticus-simbolo.png" alt="" width={1254} height={1254} sizes="48px" className={css.simbolo} />
-          <Image src="/marca/didaticus-palavra.webp" alt="Didaticus, aulas particulares" width={2000} height={667} sizes="160px" className={css.palavra} />
-        </div>
-
-        <nav className={css.colunas} aria-label="Rodapé">
-          {SECOES.map((secao) => (
-            <div key={secao.titulo}>
-              <h2>{secao.titulo}</h2>
-              <ul>
-                {secao.itens.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <div>
-            <h2>Fale com a gente</h2>
-            <ul>
-              <li>
-                <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer">
-                  WhatsApp (61) 99996-7400
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+  return <footer className={css.rodape}>
+    <div className={css.conteudo}>
+      <div className={css.marca}>
+        <Link href="/" aria-label="Didaticus, página inicial"><Image src="/marca/didaticus-horizontal-oficial.png" alt="Didaticus, aulas particulares" width={2172} height={724} sizes="220px" /></Link>
+        <p>Aulas particulares em Brasília, com atenção ao caminho de cada aluno.</p>
       </div>
-
-      <p className={css.linhaFinal}>Didaticus, aulas particulares em Brasília.</p>
-    </footer>
-  );
+      <nav className={css.colunas} aria-label="Rodapé">
+        {grupos.map(grupo => <div key={grupo.titulo}><h2>{grupo.titulo}</h2><ul>{grupo.links.map(link => <li key={link.href}><Link href={link.href}>{link.texto}</Link></li>)}</ul></div>)}
+        <div><h2>Fale com a gente</h2><ul><li><a href={LINK_WHATSAPP}>WhatsApp (61) 99996-7400</a></li><li><Link href="/contato">Contato</Link></li></ul></div>
+      </nav>
+    </div>
+    <p className={css.linhaFinal}>Didaticus · Brasília, DF</p>
+  </footer>;
 }

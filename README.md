@@ -22,10 +22,9 @@ marinho com a estampa de material escolar, título em caixa alta em Poppins 800,
 laranja destacando as palavras que importam, e foto de aluno em bloco colorido.
 As cores em `app/globals.css` foram amostradas da landing, e não escolhidas.
 
-**A abertura da home.** A marca cresce e o site aparece por dentro do vazio do
-D. O nome do efeito é animação guiada pela rolagem. Escolhida entre três
-protótipos, porque a logo da Didaticus já é um livro: abrir o D e entrar por ele
-mostra a metáfora que já está na marca, em vez de acrescentar outra.
+**A abertura da home.** Um livro com a marca oficial se abre durante a primeira
+rolagem e revela a home. Esta direção substituiu o zoom pelo vazio do D depois
+da revisão visual feita com o cliente em 24/09/2026.
 
 **O portal do responsável é o único item destacado do menu.** Nenhum concorrente
 de Brasília tem um. Ver `docs/PESQUISA.md`.
@@ -118,9 +117,10 @@ docs/
   MARCA.md              os arquivos da marca e onde cada um serve
 ```
 
-Os grupos de rota `(institucional)` e `(portal)`, previstos na arquitetura,
-**ainda não existem**. Pasta vazia não entra no git, e as páginas internas não
-foram escritas.
+As rotas públicas já têm páginas: aulas presenciais e online, como funciona,
+professores, preços, conteúdos, blog, materiais, sobre, contato e trabalhe
+conosco. O portal tem uma página de apresentação, mas ainda não oferece login
+nem mostra informações privadas.
 
 ## A home, e de onde veio cada parte
 
@@ -136,18 +136,17 @@ vender.
 **O que a escola faz de fato** vem do sistema: as 17 matérias e os 42 bairros
 são os mesmos que a recepção usa para marcar aula.
 
-**O que não está**, de propósito: o preço, porque tabela em código é tabela que
-alguém esquece de atualizar. Quando a página de preços existir, ela lê das
-faixas das regiões.
+**O que não está**, de propósito: valores em código. A página de preços explica
+o que entra no orçamento e encaminha a família para a equipe. A tabela pública
+deve ler as faixas do sistema quando a API de publicação estiver definida.
 
-## Três regras da abertura, que não são detalhe
+## Regras da abertura
 
-**A marca ocupa 42% da altura da tela, e o quadro de desenho tem o formato da
-tela.** Não um quadrado recortado: foi exatamente isso que produziu o D
-gigante. Ver `docs/HISTORICO.md`.
+**O livro mantém proporção própria e cabe na tela**, inclusive em monitores
+baixos. A capa usa a marca empilhada entregue pelo cliente.
 
-**Ela dura duas telas e meia.** Acima disso a pessoa não sente que está
-entrando, sente que está presa.
+**A transição dura menos de uma tela adicional.** Depois da abertura, a home
+rola normalmente.
 
 **Quem tem movimento reduzido ligado no sistema não vê a cena**, e sem
 JavaScript ela simplesmente não acontece. O texto da home é HTML normal por
@@ -168,9 +167,13 @@ baixo, indexável.
 
 ## O que ainda não existe
 
-- As páginas internas: aulas, professores, preços, materiais, contato, blog.
-- O portal do responsável. **A home já o anuncia**, então a home não pode ir
-  para o ar antes dele, ou ela promete o que não entrega.
-- O consumo da API. Nada aqui busca dado ainda.
+- O acesso autenticado do responsável. O contrato OpenAPI deste repositório
+  ainda não expõe as consultas de agenda, relatos, notas e faturas com escopo
+  do responsável. A página `/portal` informa que o acesso está em preparação.
+- A publicação de professores e preços a partir da API. As páginas explicam o
+  serviço sem inventar perfis ou valores.
+- A captura de leads pelo site. O contrato contém `/v1/leads/captura`, mas o
+  esquema do corpo está vazio; é preciso confirmar os campos antes de enviar.
+- Conteúdo aprovado para blog e materiais.
 - O favicon. Abaixo de uns 32px o símbolo vira mancha, e a saída é uma versão
   simplificada da marca. Ver `docs/MARCA.md`.

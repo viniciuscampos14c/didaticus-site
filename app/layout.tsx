@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     template: "%s · Didaticus",
   },
   description:
-    "Aulas particulares feitas sob medida para o ensino fundamental e médio, em casa " +
-    "ou online, em Brasília. O professor vai até você.",
+    "Aulas particulares em domicílio no Distrito Federal para o ensino fundamental, " +
+    "médio e preparação para o vestibular. Conheça a Didaticus.",
 };
 
 export default function Raiz({ children }: { children: React.ReactNode }) {
