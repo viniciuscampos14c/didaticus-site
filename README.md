@@ -122,7 +122,11 @@ professores, preços, conteúdos, blog, materiais, sobre, contato e trabalhe
 conosco. O portal tem uma página de apresentação e uma prévia navegável em
 `/portal/previa`, com estados vazios para agenda, financeiro, cadastro e
 solicitações de aula, conforme o escopo atualizado do sistema interno.
-Ainda não oferece login nem mostra informações privadas.
+As rotas `/portal/entrar` e `/portal/painel` já usam a API do sistema interno
+com a conta `RESPONSAVEL`. A página pública só aponta para a entrada quando
+`NEXT_PUBLIC_PORTAL_ENABLED=true`. Para testar, configure `NEXT_PUBLIC_API_URL`
+e permita a origem do site em `CORS_ORIGINS` na API. A liberação depende de
+validar o fluxo com uma conta real vinculada a um aluno e os domínios HTTPS.
 
 ## A home, e de onde veio cada parte
 
@@ -169,10 +173,9 @@ baixo, indexável.
 
 ## O que ainda não existe
 
-- O acesso autenticado do responsável. O contrato OpenAPI deste repositório
-  ainda não expõe as consultas de agenda, financeiro e cadastro com escopo
-  do responsável. A página `/portal` informa que o acesso está em preparação;
-  `/portal/previa` mostra a interface sem dados reais e não é indexada.
+- A validação de ponta a ponta do portal com uma conta real e a ativação em
+  produção. Enquanto `NEXT_PUBLIC_PORTAL_ENABLED` for falso, `/portal` aponta
+  para a prévia, que não contém dados reais.
 - A publicação de professores e preços a partir da API. As páginas explicam o
   serviço sem inventar perfis ou valores.
 - A captura de leads pelo site. O contrato contém `/v1/leads/captura`, mas o
