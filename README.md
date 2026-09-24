@@ -117,10 +117,11 @@ docs/
   MARCA.md              os arquivos da marca e onde cada um serve
 ```
 
-As rotas públicas já têm páginas: aulas presenciais e online, como funciona,
+As rotas públicas já têm páginas: aulas presenciais, suporte online, como funciona,
 professores, preços, conteúdos, blog, materiais, sobre, contato e trabalhe
-conosco. O portal tem uma página de apresentação, mas ainda não oferece login
-nem mostra informações privadas.
+conosco. O portal tem uma página de apresentação e uma prévia navegável em
+`/portal/previa`, com estados vazios para agenda, relatos, notas e faturas.
+Ainda não oferece login nem mostra informações privadas.
 
 ## A home, e de onde veio cada parte
 
@@ -169,7 +170,8 @@ baixo, indexável.
 
 - O acesso autenticado do responsável. O contrato OpenAPI deste repositório
   ainda não expõe as consultas de agenda, relatos, notas e faturas com escopo
-  do responsável. A página `/portal` informa que o acesso está em preparação.
+  do responsável. A página `/portal` informa que o acesso está em preparação;
+  `/portal/previa` mostra a interface sem dados reais e não é indexada.
 - A publicação de professores e preços a partir da API. As páginas explicam o
   serviço sem inventar perfis ou valores.
 - A captura de leads pelo site. O contrato contém `/v1/leads/captura`, mas o

@@ -344,6 +344,291 @@ app/home.module.css  .topo  align-items: center
 app/home.module.css  .topo  display: flex
 app/home.module.css  .topo  gap: 24px
 app/home.module.css  .topo  justify-content: space-between
+app/portal/previa/previa.module.css  .abertura  align-items: end
+app/portal/previa/previa.module.css  .abertura  display: flex
+app/portal/previa/previa.module.css  .abertura  gap: 35px
+app/portal/previa/previa.module.css  .abertura  justify-content: space-between
+app/portal/previa/previa.module.css  .abertura  padding: 60px 0 38px
+app/portal/previa/previa.module.css  .abertura h1  color: var(--azul)
+app/portal/previa/previa.module.css  .abertura h1  font-size: clamp(36px, 4.1vw, 58px)
+app/portal/previa/previa.module.css  .abertura h1  letter-spacing: -.045em
+app/portal/previa/previa.module.css  .abertura h1  line-height: 1.08
+app/portal/previa/previa.module.css  .abertura h1  margin: 0
+app/portal/previa/previa.module.css  .abertura h1 em  color: var(--laranja)
+app/portal/previa/previa.module.css  .abertura h1 em  font-style: normal
+app/portal/previa/previa.module.css  .abertura p:not(.sobretitulo)  color: #526d80
+app/portal/previa/previa.module.css  .abertura p:not(.sobretitulo)  font-size: 14px
+app/portal/previa/previa.module.css  .abertura p:not(.sobretitulo)  line-height: 1.75
+app/portal/previa/previa.module.css  .abertura p:not(.sobretitulo)  margin: 21px 0 0
+app/portal/previa/previa.module.css  .abertura p:not(.sobretitulo)  max-width: 625px
+app/portal/previa/previa.module.css  .agenda  grid-column: span 2
+app/portal/previa/previa.module.css  .agenda  min-height: 228px
+app/portal/previa/previa.module.css  .ajuda  align-items: center
+app/portal/previa/previa.module.css  .ajuda  background: #dff0f4
+app/portal/previa/previa.module.css  .ajuda  border-radius: 18px
+app/portal/previa/previa.module.css  .ajuda  display: flex
+app/portal/previa/previa.module.css  .ajuda  gap: 24px
+app/portal/previa/previa.module.css  .ajuda  justify-content: space-between
+app/portal/previa/previa.module.css  .ajuda  margin-top: 20px
+app/portal/previa/previa.module.css  .ajuda  padding: 31px 35px
+app/portal/previa/previa.module.css  .ajuda a  background: var(--laranja)
+app/portal/previa/previa.module.css  .ajuda a  border-radius: 999px
+app/portal/previa/previa.module.css  .ajuda a  color: #fff
+app/portal/previa/previa.module.css  .ajuda a  flex: none
+app/portal/previa/previa.module.css  .ajuda a  font-size: 12px
+app/portal/previa/previa.module.css  .ajuda a  font-weight: 800
+app/portal/previa/previa.module.css  .ajuda a  padding: 12px 18px
+app/portal/previa/previa.module.css  .ajuda a  text-decoration: none
+app/portal/previa/previa.module.css  .ajuda a:hover  background: #da4e23
+app/portal/previa/previa.module.css  .ajuda h2  color: var(--azul)
+app/portal/previa/previa.module.css  .ajuda h2  font-size: 23px
+app/portal/previa/previa.module.css  .ajuda h2  letter-spacing: -.03em
+app/portal/previa/previa.module.css  .ajuda h2  margin: 0
+app/portal/previa/previa.module.css  .ajuda p:last-child  color: #4c6a7e
+app/portal/previa/previa.module.css  .ajuda p:last-child  font-size: 12px
+app/portal/previa/previa.module.css  .ajuda p:last-child  line-height: 1.6
+app/portal/previa/previa.module.css  .ajuda p:last-child  margin: 8px 0 0
+app/portal/previa/previa.module.css  .ajuda p:last-child  max-width: 590px
+app/portal/previa/previa.module.css  .areaAluno  align-items: center
+app/portal/previa/previa.module.css  .areaAluno  background: #102f4b
+app/portal/previa/previa.module.css  .areaAluno  border-radius: 18px
+app/portal/previa/previa.module.css  .areaAluno  color: #fff
+app/portal/previa/previa.module.css  .areaAluno  display: flex
+app/portal/previa/previa.module.css  .areaAluno  gap: 17px
+app/portal/previa/previa.module.css  .areaAluno  padding: 19px 22px
+app/portal/previa/previa.module.css  .areaAluno > div:nth-child(2)  display: grid
+app/portal/previa/previa.module.css  .areaAluno > div:nth-child(2)  gap: 2px
+app/portal/previa/previa.module.css  .areaAluno span:not(.etiqueta)  color: #a6c4d5
+app/portal/previa/previa.module.css  .areaAluno span:not(.etiqueta)  font-size: 9px
+app/portal/previa/previa.module.css  .areaAluno span:not(.etiqueta)  font-weight: 800
+app/portal/previa/previa.module.css  .areaAluno span:not(.etiqueta)  letter-spacing: .15em
+app/portal/previa/previa.module.css  .areaAluno strong  font-size: 14px
+app/portal/previa/previa.module.css  .avatar  background: #f26336
+app/portal/previa/previa.module.css  .avatar  border-radius: 13px
+app/portal/previa/previa.module.css  .avatar  color: #fff
+app/portal/previa/previa.module.css  .avatar  display: grid
+app/portal/previa/previa.module.css  .avatar  flex: none
+app/portal/previa/previa.module.css  .avatar  font-size: 23px
+app/portal/previa/previa.module.css  .avatar  font-weight: 800
+app/portal/previa/previa.module.css  .avatar  height: 46px
+app/portal/previa/previa.module.css  .avatar  place-items: center
+app/portal/previa/previa.module.css  .avatar  width: 46px
+app/portal/previa/previa.module.css  .barras  align-items: end
+app/portal/previa/previa.module.css  .barras  display: flex
+app/portal/previa/previa.module.css  .barras  gap: 7px
+app/portal/previa/previa.module.css  .barras  height: 35px
+app/portal/previa/previa.module.css  .barras  margin-bottom: 16px
+app/portal/previa/previa.module.css  .barras i  background: #d9e9ee
+app/portal/previa/previa.module.css  .barras i  border-radius: 4px 4px 0 0
+app/portal/previa/previa.module.css  .barras i  display: block
+app/portal/previa/previa.module.css  .barras i  height: 30%
+app/portal/previa/previa.module.css  .barras i  width: 13px
+app/portal/previa/previa.module.css  .barras i:nth-child(2)  height: 62%
+app/portal/previa/previa.module.css  .barras i:nth-child(3)  height: 44%
+app/portal/previa/previa.module.css  .barras i:nth-child(4)  background: #f7b298
+app/portal/previa/previa.module.css  .barras i:nth-child(4)  height: 86%
+app/portal/previa/previa.module.css  .baseCartao  border-top: 1px solid #e6eff2
+app/portal/previa/previa.module.css  .baseCartao  color: #90a5b0
+app/portal/previa/previa.module.css  .baseCartao  font-size: 11px
+app/portal/previa/previa.module.css  .baseCartao  margin: 23px 0 0
+app/portal/previa/previa.module.css  .baseCartao  padding-top: 12px
+app/portal/previa/previa.module.css  .cabecalhoCartao  align-items: flex-start
+app/portal/previa/previa.module.css  .cabecalhoCartao  display: flex
+app/portal/previa/previa.module.css  .cabecalhoCartao  gap: 15px
+app/portal/previa/previa.module.css  .cabecalhoCartao  justify-content: space-between
+app/portal/previa/previa.module.css  .cabecalhoCartao h2  color: var(--azul)
+app/portal/previa/previa.module.css  .cabecalhoCartao h2  font-size: 21px
+app/portal/previa/previa.module.css  .cabecalhoCartao h2  letter-spacing: -.03em
+app/portal/previa/previa.module.css  .cabecalhoCartao h2  line-height: 1.2
+app/portal/previa/previa.module.css  .cabecalhoCartao h2  margin: 0
+app/portal/previa/previa.module.css  .cartao  background: #fff
+app/portal/previa/previa.module.css  .cartao  border-radius: 18px
+app/portal/previa/previa.module.css  .cartao  border: 1px solid #dce9ee
+app/portal/previa/previa.module.css  .cartao  min-height: 265px
+app/portal/previa/previa.module.css  .cartao  padding: 27px 29px 24px
+app/portal/previa/previa.module.css  .dataVazia  background: #f3f8fa
+app/portal/previa/previa.module.css  .dataVazia  border-left: 4px solid var(--laranja)
+app/portal/previa/previa.module.css  .dataVazia  border-radius: 7px
+app/portal/previa/previa.module.css  .dataVazia  color: #819bab
+app/portal/previa/previa.module.css  .dataVazia  display: grid
+app/portal/previa/previa.module.css  .dataVazia  flex: none
+app/portal/previa/previa.module.css  .dataVazia  height: 65px
+app/portal/previa/previa.module.css  .dataVazia  line-height: 1
+app/portal/previa/previa.module.css  .dataVazia  place-items: center
+app/portal/previa/previa.module.css  .dataVazia  width: 60px
+app/portal/previa/previa.module.css  .dataVazia small  font-size: 12px
+app/portal/previa/previa.module.css  .dataVazia span  font-size: 20px
+app/portal/previa/previa.module.css  .etiqueta  border-radius: 999px
+app/portal/previa/previa.module.css  .etiqueta  border: 1px solid #ffffff40
+app/portal/previa/previa.module.css  .etiqueta  color: #cbdce5
+app/portal/previa/previa.module.css  .etiqueta  font-size: 10px
+app/portal/previa/previa.module.css  .etiqueta  margin-left: auto
+app/portal/previa/previa.module.css  .etiqueta  padding: 7px 11px
+app/portal/previa/previa.module.css  .etiqueta  white-space: nowrap
+app/portal/previa/previa.module.css  .ficha  align-items: flex-start
+app/portal/previa/previa.module.css  .ficha  background: #fff
+app/portal/previa/previa.module.css  .ficha  border-radius: 17px
+app/portal/previa/previa.module.css  .ficha  border: 1px solid #dae8ed
+app/portal/previa/previa.module.css  .ficha  box-shadow: 0 10px 30px #103b5510
+app/portal/previa/previa.module.css  .ficha  display: flex
+app/portal/previa/previa.module.css  .ficha  flex: none
+app/portal/previa/previa.module.css  .ficha  gap: 12px
+app/portal/previa/previa.module.css  .ficha  padding: 18px 19px
+app/portal/previa/previa.module.css  .ficha  width: 238px
+app/portal/previa/previa.module.css  .ficha div  display: grid
+app/portal/previa/previa.module.css  .ficha div  gap: 3px
+app/portal/previa/previa.module.css  .ficha small  color: #89a0ac
+app/portal/previa/previa.module.css  .ficha small  font-size: 9px
+app/portal/previa/previa.module.css  .ficha small  font-weight: 800
+app/portal/previa/previa.module.css  .ficha small  letter-spacing: .15em
+app/portal/previa/previa.module.css  .ficha span:last-child  color: #7b93a2
+app/portal/previa/previa.module.css  .ficha span:last-child  font-size: 11px
+app/portal/previa/previa.module.css  .ficha span:last-child  line-height: 1.5
+app/portal/previa/previa.module.css  .ficha strong  font-size: 13px
+app/portal/previa/previa.module.css  .fichaPonto  background: var(--laranja)
+app/portal/previa/previa.module.css  .fichaPonto  border-radius: 50%
+app/portal/previa/previa.module.css  .fichaPonto  box-shadow: 0 0 0 4px #f05a291f
+app/portal/previa/previa.module.css  .fichaPonto  flex: none
+app/portal/previa/previa.module.css  .fichaPonto  height: 9px
+app/portal/previa/previa.module.css  .fichaPonto  margin-top: 5px
+app/portal/previa/previa.module.css  .fichaPonto  width: 9px
+app/portal/previa/previa.module.css  .financeiro  grid-column: span 2
+app/portal/previa/previa.module.css  .financeiro  min-height: 188px
+app/portal/previa/previa.module.css  .financeiro .vazio  margin-top: 22px
+app/portal/previa/previa.module.css  .grade  display: grid
+app/portal/previa/previa.module.css  .grade  gap: 18px
+app/portal/previa/previa.module.css  .grade  grid-template-columns: repeat(2, minmax(0, 1fr))
+app/portal/previa/previa.module.css  .grade  margin-top: 19px
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  background: #edf5f8
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  border-radius: 10px
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  color: #648499
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  display: grid
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  font-size: 20px
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  height: 36px
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  place-items: center
+app/portal/previa/previa.module.css  .iconeAgenda, .iconeSimples  width: 36px
+app/portal/previa/previa.module.css  .indice  color: var(--laranja)
+app/portal/previa/previa.module.css  .indice  font-size: 10px
+app/portal/previa/previa.module.css  .indice  font-weight: 800
+app/portal/previa/previa.module.css  .indice  letter-spacing: .13em
+app/portal/previa/previa.module.css  .indice  margin: 0 0 7px
+app/portal/previa/previa.module.css  .lateral  background: #fff
+app/portal/previa/previa.module.css  .lateral  border-right: 1px solid #dce9ee
+app/portal/previa/previa.module.css  .lateral  display: flex
+app/portal/previa/previa.module.css  .lateral  flex-direction: column
+app/portal/previa/previa.module.css  .lateral  height: 100vh
+app/portal/previa/previa.module.css  .lateral  padding: 31px 22px 25px
+app/portal/previa/previa.module.css  .lateral  position: sticky
+app/portal/previa/previa.module.css  .lateral  top: 0
+app/portal/previa/previa.module.css  .lateral nav  display: grid
+app/portal/previa/previa.module.css  .lateral nav  gap: 4px
+app/portal/previa/previa.module.css  .lateral nav a  align-items: center
+app/portal/previa/previa.module.css  .lateral nav a  border-radius: 12px
+app/portal/previa/previa.module.css  .lateral nav a  color: #436177
+app/portal/previa/previa.module.css  .lateral nav a  display: flex
+app/portal/previa/previa.module.css  .lateral nav a  font-size: 13px
+app/portal/previa/previa.module.css  .lateral nav a  font-weight: 600
+app/portal/previa/previa.module.css  .lateral nav a  justify-content: space-between
+app/portal/previa/previa.module.css  .lateral nav a  padding: 12px 14px
+app/portal/previa/previa.module.css  .lateral nav a  text-decoration: none
+app/portal/previa/previa.module.css  .lateral nav a  transition: background .2s, color .2s
+app/portal/previa/previa.module.css  .lateral nav a.ativo  background: #e7f1f5
+app/portal/previa/previa.module.css  .lateral nav a.ativo  color: var(--azul)
+app/portal/previa/previa.module.css  .lateral nav a.ativo  font-weight: 800
+app/portal/previa/previa.module.css  .lateral nav a:hover, .lateral nav a:focus-visible  background: #edf5f8
+app/portal/previa/previa.module.css  .lateral nav a:hover, .lateral nav a:focus-visible  color: var(--azul)
+app/portal/previa/previa.module.css  .lateral nav small  color: #a9bdc7
+app/portal/previa/previa.module.css  .lateral nav small  font-size: 10px
+app/portal/previa/previa.module.css  .linha  background: #dce9ee
+app/portal/previa/previa.module.css  .linha  height: 1px
+app/portal/previa/previa.module.css  .linhaAgenda  align-items: center
+app/portal/previa/previa.module.css  .linhaAgenda  display: flex
+app/portal/previa/previa.module.css  .linhaAgenda  gap: 20px
+app/portal/previa/previa.module.css  .linhaAgenda  margin-top: 25px
+app/portal/previa/previa.module.css  .linhaAgenda p, .vazio p  color: #7890a0
+app/portal/previa/previa.module.css  .linhaAgenda p, .vazio p  font-size: 12px
+app/portal/previa/previa.module.css  .linhaAgenda p, .vazio p  line-height: 1.65
+app/portal/previa/previa.module.css  .linhaAgenda p, .vazio p  margin: 4px 0 0
+app/portal/previa/previa.module.css  .linhaAgenda p, .vazio p  max-width: 420px
+app/portal/previa/previa.module.css  .linhaAgenda strong, .vazio strong  color: var(--azul)
+app/portal/previa/previa.module.css  .linhaAgenda strong, .vazio strong  display: block
+app/portal/previa/previa.module.css  .linhaAgenda strong, .vazio strong  font-size: 13px
+app/portal/previa/previa.module.css  .marca  display: block
+app/portal/previa/previa.module.css  .marca  margin: 0 0 23px 4px
+app/portal/previa/previa.module.css  .marca  width: 176px
+app/portal/previa/previa.module.css  .marca img  display: block
+app/portal/previa/previa.module.css  .marca img  height: auto
+app/portal/previa/previa.module.css  .marca img  width: 100%
+app/portal/previa/previa.module.css  .pagina  --azul: #0b2f52
+app/portal/previa/previa.module.css  .pagina  --laranja: #f05a29
+app/portal/previa/previa.module.css  .pagina  background: #f3f8fa
+app/portal/previa/previa.module.css  .pagina  color: #102e47
+app/portal/previa/previa.module.css  .pagina  display: grid
+app/portal/previa/previa.module.css  .pagina  grid-template-columns: 252px minmax(0, 1fr)
+app/portal/previa/previa.module.css  .pagina  min-height: 100vh
+app/portal/previa/previa.module.css  .pagina a:focus-visible  outline-offset: 3px
+app/portal/previa/previa.module.css  .pagina a:focus-visible  outline: 3px solid #ffbe4d
+app/portal/previa/previa.module.css  .principal  margin: 0 auto
+app/portal/previa/previa.module.css  .principal  padding: 26px clamp(25px, 4vw, 72px) 72px
+app/portal/previa/previa.module.css  .principal  width: min(100%, 1290px)
+app/portal/previa/previa.module.css  .rodapeLateral  border-top: 1px solid #dce9ee
+app/portal/previa/previa.module.css  .rodapeLateral  margin-top: auto
+app/portal/previa/previa.module.css  .rodapeLateral  padding: 20px 13px 0
+app/portal/previa/previa.module.css  .rodapeLateral a  color: var(--azul)
+app/portal/previa/previa.module.css  .rodapeLateral a  font-size: 12px
+app/portal/previa/previa.module.css  .rodapeLateral a  font-weight: 800
+app/portal/previa/previa.module.css  .rodapeLateral a  text-decoration: none
+app/portal/previa/previa.module.css  .rodapeLateral p  color: #698296
+app/portal/previa/previa.module.css  .rodapeLateral p  font-size: 12px
+app/portal/previa/previa.module.css  .rodapeLateral p  line-height: 1.55
+app/portal/previa/previa.module.css  .rotuloLateral  color: #7890a0
+app/portal/previa/previa.module.css  .rotuloLateral  font-size: 10px
+app/portal/previa/previa.module.css  .rotuloLateral  font-weight: 800
+app/portal/previa/previa.module.css  .rotuloLateral  letter-spacing: .16em
+app/portal/previa/previa.module.css  .rotuloLateral  margin: 32px 13px 17px
+app/portal/previa/previa.module.css  .rotuloLateral  text-transform: uppercase
+app/portal/previa/previa.module.css  .selo  align-items: center
+app/portal/previa/previa.module.css  .selo  background: #fff1e9
+app/portal/previa/previa.module.css  .selo  border-radius: 999px
+app/portal/previa/previa.module.css  .selo  border: 1px solid #ffddc9
+app/portal/previa/previa.module.css  .selo  color: #a34827
+app/portal/previa/previa.module.css  .selo  display: inline-flex
+app/portal/previa/previa.module.css  .selo  font-size: 10px
+app/portal/previa/previa.module.css  .selo  font-weight: 800
+app/portal/previa/previa.module.css  .selo  gap: 9px
+app/portal/previa/previa.module.css  .selo  letter-spacing: .09em
+app/portal/previa/previa.module.css  .selo  padding: 8px 14px
+app/portal/previa/previa.module.css  .selo  text-transform: uppercase
+app/portal/previa/previa.module.css  .selo::before  background: var(--laranja)
+app/portal/previa/previa.module.css  .selo::before  border-radius: 50%
+app/portal/previa/previa.module.css  .selo::before  content: ""
+app/portal/previa/previa.module.css  .selo::before  height: 6px
+app/portal/previa/previa.module.css  .selo::before  width: 6px
+app/portal/previa/previa.module.css  .sobretitulo  color: var(--laranja)
+app/portal/previa/previa.module.css  .sobretitulo  font-size: 10px
+app/portal/previa/previa.module.css  .sobretitulo  font-weight: 800
+app/portal/previa/previa.module.css  .sobretitulo  letter-spacing: .17em
+app/portal/previa/previa.module.css  .sobretitulo  margin: 0 0 14px
+app/portal/previa/previa.module.css  .topo  align-items: center
+app/portal/previa/previa.module.css  .topo  display: flex
+app/portal/previa/previa.module.css  .topo  gap: 20px
+app/portal/previa/previa.module.css  .topo  justify-content: space-between
+app/portal/previa/previa.module.css  .topo > a  color: #44677d
+app/portal/previa/previa.module.css  .topo > a  font-size: 12px
+app/portal/previa/previa.module.css  .topo > a  font-weight: 700
+app/portal/previa/previa.module.css  .topo > a  text-decoration: none
+app/portal/previa/previa.module.css  .tracos  display: grid
+app/portal/previa/previa.module.css  .tracos  gap: 6px
+app/portal/previa/previa.module.css  .tracos  margin: 0 0 22px
+app/portal/previa/previa.module.css  .tracos i  background: #e5f0f3
+app/portal/previa/previa.module.css  .tracos i  border-radius: 5px
+app/portal/previa/previa.module.css  .tracos i  display: block
+app/portal/previa/previa.module.css  .tracos i  height: 6px
+app/portal/previa/previa.module.css  .tracos i  width: 70%
+app/portal/previa/previa.module.css  .tracos i:nth-child(2)  width: 48%
+app/portal/previa/previa.module.css  .tracos i:nth-child(3)  width: 58%
+app/portal/previa/previa.module.css  .vazio  margin-top: 28px
+app/portal/previa/previa.module.css  @media (prefers-reduced-motion: reduce) .lateral nav a  transition: none
 componentes/Abertura.module.css  .apoio  color: #d6e5ec
 componentes/Abertura.module.css  .apoio  font-size: clamp(13px,1vw,17px)
 componentes/Abertura.module.css  .apoio  margin: 14px 0 0
