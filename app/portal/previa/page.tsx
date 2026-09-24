@@ -10,9 +10,9 @@ export const metadata = {
 
 const secoes = [
   { id: "agenda", nome: "Agenda", indice: "01" },
-  { id: "relatos", nome: "Relatos", indice: "02" },
-  { id: "notas", nome: "Notas", indice: "03" },
-  { id: "faturas", nome: "Faturas", indice: "04" },
+  { id: "financeiro", nome: "Financeiro", indice: "02" },
+  { id: "cadastro", nome: "Cadastro", indice: "03" },
+  { id: "solicitacoes", nome: "Solicitações", indice: "04" },
 ];
 
 export default function PreviaPortal() {
@@ -48,7 +48,7 @@ export default function PreviaPortal() {
           <div>
             <p className={css.sobretitulo}>PORTAL DO RESPONSÁVEL</p>
             <h1>A rotina de estudos,<br /><em>mais perto de você.</em></h1>
-            <p>Este é o desenho da área que reunirá as informações do aluno. Os dados aparecerão apenas depois da autenticação e da integração com o sistema da Didaticus.</p>
+            <p>Este é o desenho da área que reunirá agenda, financeiro e dados de um filho por vez. Os dados aparecerão apenas depois da autenticação e da integração com o sistema da Didaticus.</p>
           </div>
           <div className={css.ficha} aria-label="Estado do acesso">
             <span className={css.fichaPonto} aria-hidden="true" />
@@ -58,7 +58,7 @@ export default function PreviaPortal() {
 
         <section className={css.areaAluno} aria-label="Aluno selecionado">
           <div className={css.avatar} aria-hidden="true">D</div>
-          <div><span>ÁREA DO ALUNO</span><strong>Os alunos vinculados aparecerão aqui</strong></div>
+          <div><span>ALUNO SELECIONADO</span><strong>Escolha um filho após entrar</strong></div>
           <span className={css.etiqueta}>Após entrar</span>
         </section>
 
@@ -67,24 +67,24 @@ export default function PreviaPortal() {
             <div className={css.cabecalhoCartao}><div><p className={css.indice}>01 / ROTINA</p><h2>Próximas aulas</h2></div><span className={css.iconeAgenda} aria-hidden="true">↗</span></div>
             <div className={css.linhaAgenda}>
               <div className={css.dataVazia} aria-hidden="true"><span>—</span><small>—</small></div>
-              <div><strong>A agenda aparecerá aqui</strong><p>Dia, horário, disciplina e professor de cada aula, depois que a família entrar.</p></div>
+              <div><strong>A agenda aparecerá aqui</strong><p>Dia, horário, disciplina e professor das aulas do filho selecionado.</p></div>
             </div>
             <p className={css.baseCartao}>As informações virão da agenda do sistema interno.</p>
           </section>
 
-          <section id="relatos" className={css.cartao}>
-            <div className={css.cabecalhoCartao}><div><p className={css.indice}>02 / ACOMPANHAMENTO</p><h2>Relatos das aulas</h2></div><span className={css.iconeSimples} aria-hidden="true">✎</span></div>
-            <div className={css.vazio}><div className={css.tracos} aria-hidden="true"><i /><i /><i /></div><strong>O que foi trabalhado</strong><p>Os registros das aulas ajudarão a família a acompanhar o percurso do aluno.</p></div>
+          <section id="financeiro" className={css.cartao}>
+            <div className={css.cabecalhoCartao}><div><p className={css.indice}>02 / FINANCEIRO</p><h2>Pagamentos</h2></div><span className={css.iconeSimples} aria-hidden="true">▤</span></div>
+            <div className={css.vazio}><div className={css.tracos} aria-hidden="true"><i /><i /><i /></div><strong>Em aberto e já pago</strong><p>Valores, vencimentos e formas de pagamento ficarão disponíveis para o responsável autorizado.</p></div>
           </section>
 
-          <section id="notas" className={css.cartao}>
-            <div className={css.cabecalhoCartao}><div><p className={css.indice}>03 / EVOLUÇÃO</p><h2>Notas</h2></div><span className={css.iconeSimples} aria-hidden="true">◌</span></div>
-            <div className={css.vazio}><div className={css.barras} aria-hidden="true"><i /><i /><i /><i /></div><strong>Um histórico para consultar</strong><p>As notas cadastradas para o aluno ficarão reunidas nesta seção.</p></div>
+          <section id="cadastro" className={css.cartao}>
+            <div className={css.cabecalhoCartao}><div><p className={css.indice}>03 / DADOS</p><h2>Cadastro do aluno</h2></div><span className={css.iconeSimples} aria-hidden="true">◌</span></div>
+            <div className={css.vazio}><div className={css.barras} aria-hidden="true"><i /><i /><i /><i /></div><strong>Dados em um lugar</strong><p>As informações cadastrais do filho selecionado aparecerão aqui depois do acesso.</p></div>
           </section>
 
-          <section id="faturas" className={`${css.cartao} ${css.financeiro}`}>
-            <div className={css.cabecalhoCartao}><div><p className={css.indice}>04 / FINANCEIRO</p><h2>Faturas</h2></div><span className={css.iconeSimples} aria-hidden="true">▤</span></div>
-            <div className={css.vazio}><strong>Valores e vencimentos em um lugar</strong><p>Quando o acesso estiver pronto, o responsável autorizado verá apenas as faturas ligadas aos seus alunos.</p></div>
+          <section id="solicitacoes" className={`${css.cartao} ${css.financeiro}`}>
+            <div className={css.cabecalhoCartao}><div><p className={css.indice}>04 / PEDIDOS</p><h2>Solicitações de aula</h2></div><span className={css.iconeSimples} aria-hidden="true">↗</span></div>
+            <div className={css.vazio}><strong>Peça um horário ou uma remarcação</strong><p>A família poderá enviar uma solicitação. A escola confirma e executa a alteração da agenda.</p></div>
           </section>
         </div>
 

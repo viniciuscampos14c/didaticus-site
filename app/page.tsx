@@ -194,16 +194,16 @@ export default function Home() {
                 Você acompanha <span className={css.realce}>cada aula</span>, sem precisar ligar
               </h2>
               <p className={css.textoSecao}>
-                Quando o acesso estiver disponível, você poderá consultar a agenda do seu filho,
-                os relatos das aulas, as notas e as faturas em um só lugar.
+                Quando o acesso estiver disponível, você poderá escolher um filho e consultar
+                as aulas, o financeiro e os dados cadastrais dele em um só lugar.
               </p>
             </div>
 
             <ul className={css.portalItens}>
               <li><strong>Agenda</strong> Os dias e horários de cada aula</li>
-              <li><strong>Relato</strong> O que foi dado e como o aluno respondeu</li>
-              <li><strong>Notas</strong> O desempenho ao longo do tempo</li>
-              <li><strong>Faturas</strong> Boleto e PIX na mesma fatura</li>
+              <li><strong>Financeiro</strong> O que está em aberto e o que já foi pago</li>
+              <li><strong>Cadastro</strong> Os dados do filho selecionado</li>
+              <li><strong>Pedidos</strong> Solicitações de aula e remarcação</li>
             </ul>
           </div>
         </section>

@@ -120,7 +120,8 @@ docs/
 As rotas públicas já têm páginas: aulas presenciais, suporte online, como funciona,
 professores, preços, conteúdos, blog, materiais, sobre, contato e trabalhe
 conosco. O portal tem uma página de apresentação e uma prévia navegável em
-`/portal/previa`, com estados vazios para agenda, relatos, notas e faturas.
+`/portal/previa`, com estados vazios para agenda, financeiro, cadastro e
+solicitações de aula, conforme o escopo atualizado do sistema interno.
 Ainda não oferece login nem mostra informações privadas.
 
 ## A home, e de onde veio cada parte
@@ -169,7 +170,7 @@ baixo, indexável.
 ## O que ainda não existe
 
 - O acesso autenticado do responsável. O contrato OpenAPI deste repositório
-  ainda não expõe as consultas de agenda, relatos, notas e faturas com escopo
+  ainda não expõe as consultas de agenda, financeiro e cadastro com escopo
   do responsável. A página `/portal` informa que o acesso está em preparação;
   `/portal/previa` mostra a interface sem dados reais e não é indexada.
 - A publicação de professores e preços a partir da API. As páginas explicam o
