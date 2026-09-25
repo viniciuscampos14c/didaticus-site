@@ -1,10 +1,10 @@
 .pagina { min-height: 100vh; background: radial-gradient(circle at 18% 60%, #1b5078 0, transparent 36%), #092b49; color: #fff; padding: clamp(26px, 5vw, 72px); }
 .conteudo { width: min(1150px, 100%); margin: auto; }
-.marca { display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin: 0 0 clamp(46px, 8vh, 88px); color: #fff; text-decoration: none; }
+.marca { display: inline-flex; align-items: center; gap: 14px; width: fit-content; margin: 0 0 clamp(38px, 6vh, 68px); color: #fff; text-decoration: none; }
 .marca:focus-visible { outline: 2px solid #ffd27f; outline-offset: 7px; border-radius: 3px; }
-.marcaSimbolo { display: block; width: 47px; height: 56px; flex: none; background: url('/marca/didaticus-simbolo.png') -17px -10px / 82px 82px no-repeat; }
-.marcaNome { display: flex; flex-direction: column; color: #fff; font-size: 22px; font-weight: 850; letter-spacing: -.055em; line-height: 1; }
-.marcaNome small { display: block; margin-top: 7px; padding-top: 5px; border-top: 2px solid #ff6533; color: #bed4e1; font-size: 8px; font-weight: 750; letter-spacing: .24em; white-space: nowrap; }
+.marcaSimbolo { display: block; width: 79px; height: 86px; flex: none; overflow: visible; }
+.marcaNome { display: flex; flex-direction: column; color: #fff; font-size: 34px; font-weight: 850; letter-spacing: -.055em; line-height: 1; }
+.marcaNome small { display: block; margin-top: 9px; padding-top: 7px; border-top: 2px solid #ff6533; color: #d4e3ec; font-size: 11px; font-weight: 750; letter-spacing: .19em; white-space: nowrap; }
 .grade { display: grid; grid-template-columns: 1fr minmax(330px, 430px); align-items: center; gap: clamp(35px, 7vw, 110px); min-height: calc(100vh - clamp(52px, 10vw, 144px)); }
 .apresentacao { max-width: 610px; }
 .selo, .numero { display: block; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
@@ -12,14 +12,13 @@
 .apresentacao h1 { margin: 22px 0; font-size: clamp(43px, 5.3vw, 74px); line-height: 1.04; letter-spacing: -.055em; }
 .apresentacao h1 em { color: #ff8b61; font-style: normal; }
 .apresentacao > p { max-width: 500px; color: #c7dce9; font-size: 17px; line-height: 1.7; }
-.detalhe { display: flex; align-items: start; gap: 19px; margin-top: 52px; padding-top: 23px; border-top: 1px solid #ffffff36; }
-.detalhe > span { color: #ff8b61; font-size: 12px; font-weight: 800; }
+.detalhe { margin-top: 52px; padding-top: 23px; border-top: 1px solid #ffffff36; }
 .detalhe strong, .detalhe small { display: block; }
 .detalhe strong { margin-bottom: 5px; font-size: 14px; }
 .detalhe small { color: #b9d0de; line-height: 1.6; }
 .formulario { padding: clamp(30px, 4vw, 51px); background: #fdfefe; color: #0c304e; border-radius: 28px; box-shadow: 0 32px 90px #00182d55; }
 .numero { color: #dd6138; font-size: 9px; }
-.formulario h2 { margin: 16px 0 5px; font-size: clamp(25px, 3vw, 34px); letter-spacing: -.04em; }
+.formulario h2 { margin: 16px 0 5px; font-size: clamp(25px, 2.5vw, 30px); letter-spacing: -.04em; }
 .formulario > p { margin: 0 0 29px; color: #617789; font-size: 13px; line-height: 1.6; }
 .formulario label { display: block; margin: 20px 0 0; color: #294e69; font-size: 12px; font-weight: 700; }
 .formulario input { display: block; width: 100%; margin-top: 9px; padding: 15px 17px; border: 1px solid #cbdce4; border-radius: 12px; background: #f7fafb; color: #0c304e; font: inherit; outline: none; }
@@ -36,4 +35,5 @@
 .segredo code { overflow-wrap: anywhere; font-size: 13px; }
 .codigos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 18px; }
 .codigos code { padding: 9px; border-radius: 7px; background: #f1f6f8; text-align: center; }
-@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 20px 0 45px; } .marca { margin-bottom: 48px; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
+@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 20px 0 45px; } .marca { margin-bottom: 42px; } .marcaSimbolo { width: 69px; height: 76px; } .marcaNome { font-size: 29px; } .marcaNome small { font-size: 10px; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
+@media(max-width:400px) { .marcaSimbolo { width: 58px; height: 64px; } .marcaNome { font-size: 25px; } .marcaNome small { font-size: 8px; } }

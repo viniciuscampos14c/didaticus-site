@@ -365,15 +365,9 @@ app/portal/entrar/portal.module.css  .codigos code  padding: 9px
 app/portal/entrar/portal.module.css  .codigos code  text-align: center
 app/portal/entrar/portal.module.css  .conteudo  margin: auto
 app/portal/entrar/portal.module.css  .conteudo  width: min(1150px, 100%)
-app/portal/entrar/portal.module.css  .detalhe  align-items: start
 app/portal/entrar/portal.module.css  .detalhe  border-top: 1px solid #ffffff36
-app/portal/entrar/portal.module.css  .detalhe  display: flex
-app/portal/entrar/portal.module.css  .detalhe  gap: 19px
 app/portal/entrar/portal.module.css  .detalhe  margin-top: 52px
 app/portal/entrar/portal.module.css  .detalhe  padding-top: 23px
-app/portal/entrar/portal.module.css  .detalhe > span  color: #ff8b61
-app/portal/entrar/portal.module.css  .detalhe > span  font-size: 12px
-app/portal/entrar/portal.module.css  .detalhe > span  font-weight: 800
 app/portal/entrar/portal.module.css  .detalhe small  color: #b9d0de
 app/portal/entrar/portal.module.css  .detalhe small  line-height: 1.6
 app/portal/entrar/portal.module.css  .detalhe strong  font-size: 14px
@@ -410,7 +404,7 @@ app/portal/entrar/portal.module.css  .formulario button  padding: 15px 19px
 app/portal/entrar/portal.module.css  .formulario button  width: 100%
 app/portal/entrar/portal.module.css  .formulario button:disabled  cursor: wait
 app/portal/entrar/portal.module.css  .formulario button:disabled  opacity: .7
-app/portal/entrar/portal.module.css  .formulario h2  font-size: clamp(25px, 3vw, 34px)
+app/portal/entrar/portal.module.css  .formulario h2  font-size: clamp(25px, 2.5vw, 30px)
 app/portal/entrar/portal.module.css  .formulario h2  letter-spacing: -.04em
 app/portal/entrar/portal.module.css  .formulario h2  margin: 16px 0 5px
 app/portal/entrar/portal.module.css  .formulario input  background: #f7fafb
@@ -444,8 +438,8 @@ app/portal/entrar/portal.module.css  .grade  min-height: calc(100vh - clamp(52px
 app/portal/entrar/portal.module.css  .marca  align-items: center
 app/portal/entrar/portal.module.css  .marca  color: #fff
 app/portal/entrar/portal.module.css  .marca  display: inline-flex
-app/portal/entrar/portal.module.css  .marca  gap: 9px
-app/portal/entrar/portal.module.css  .marca  margin: 0 0 clamp(46px, 8vh, 88px)
+app/portal/entrar/portal.module.css  .marca  gap: 14px
+app/portal/entrar/portal.module.css  .marca  margin: 0 0 clamp(38px, 6vh, 68px)
 app/portal/entrar/portal.module.css  .marca  text-decoration: none
 app/portal/entrar/portal.module.css  .marca  width: fit-content
 app/portal/entrar/portal.module.css  .marca:focus-visible  border-radius: 3px
@@ -454,24 +448,24 @@ app/portal/entrar/portal.module.css  .marca:focus-visible  outline: 2px solid #f
 app/portal/entrar/portal.module.css  .marcaNome  color: #fff
 app/portal/entrar/portal.module.css  .marcaNome  display: flex
 app/portal/entrar/portal.module.css  .marcaNome  flex-direction: column
-app/portal/entrar/portal.module.css  .marcaNome  font-size: 22px
+app/portal/entrar/portal.module.css  .marcaNome  font-size: 34px
 app/portal/entrar/portal.module.css  .marcaNome  font-weight: 850
 app/portal/entrar/portal.module.css  .marcaNome  letter-spacing: -.055em
 app/portal/entrar/portal.module.css  .marcaNome  line-height: 1
 app/portal/entrar/portal.module.css  .marcaNome small  border-top: 2px solid #ff6533
-app/portal/entrar/portal.module.css  .marcaNome small  color: #bed4e1
+app/portal/entrar/portal.module.css  .marcaNome small  color: #d4e3ec
 app/portal/entrar/portal.module.css  .marcaNome small  display: block
-app/portal/entrar/portal.module.css  .marcaNome small  font-size: 8px
+app/portal/entrar/portal.module.css  .marcaNome small  font-size: 11px
 app/portal/entrar/portal.module.css  .marcaNome small  font-weight: 750
-app/portal/entrar/portal.module.css  .marcaNome small  letter-spacing: .24em
-app/portal/entrar/portal.module.css  .marcaNome small  margin-top: 7px
-app/portal/entrar/portal.module.css  .marcaNome small  padding-top: 5px
+app/portal/entrar/portal.module.css  .marcaNome small  letter-spacing: .19em
+app/portal/entrar/portal.module.css  .marcaNome small  margin-top: 9px
+app/portal/entrar/portal.module.css  .marcaNome small  padding-top: 7px
 app/portal/entrar/portal.module.css  .marcaNome small  white-space: nowrap
-app/portal/entrar/portal.module.css  .marcaSimbolo  background: url('/marca/didaticus-simbolo.png') -17px -10px / 82px 82px no-repeat
 app/portal/entrar/portal.module.css  .marcaSimbolo  display: block
 app/portal/entrar/portal.module.css  .marcaSimbolo  flex: none
-app/portal/entrar/portal.module.css  .marcaSimbolo  height: 56px
-app/portal/entrar/portal.module.css  .marcaSimbolo  width: 47px
+app/portal/entrar/portal.module.css  .marcaSimbolo  height: 86px
+app/portal/entrar/portal.module.css  .marcaSimbolo  overflow: visible
+app/portal/entrar/portal.module.css  .marcaSimbolo  width: 79px
 app/portal/entrar/portal.module.css  .numero  color: #dd6138
 app/portal/entrar/portal.module.css  .numero  font-size: 9px
 app/portal/entrar/portal.module.css  .pagina  background: radial-gradient(circle at 18% 60%, #1b5078 0, transparent 36%), #092b49
