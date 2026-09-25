@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { exigirResponsavel, portalApi, type UsuarioPortal } from "@/lib/portal-api";
+import { EMAIL_DEMO, SENHA_DEMO } from "@/lib/portal-demo";
 import css from "./portal.module.css";
 
 type Entrada = {
@@ -31,6 +31,11 @@ export default function Entrar() {
     setErro("");
     setOcupado(true);
     try {
+      if (process.env.NODE_ENV === "development" && email.trim().toLowerCase() === EMAIL_DEMO && !desafio) {
+        if (senha !== SENHA_DEMO) throw new Error("Senha da demonstração incorreta.");
+        router.replace("/portal/demo");
+        return;
+      }
       const resposta = desafio
         ? await portalApi<Entrada>(segredo ? "/auth/segundo-fator/confirmar" : "/auth/segundo-fator", { method: "POST", body: JSON.stringify({ desafio, codigo }) })
         : await portalApi<Entrada>("/auth/entrar", { method: "POST", body: JSON.stringify({ email, senha }) });
@@ -63,9 +68,8 @@ export default function Entrar() {
 
   return <main className={css.pagina}>
     <div className={css.conteudo}>
-      <Link href="/" className={css.marca} aria-label="Voltar para a página inicial da Didaticus"><Image src="/marca/didaticus-horizontal-oficial.png" alt="Didaticus" width={2172} height={724} /></Link>
       <div className={css.grade}>
-        <div className={css.apresentacao}><span className={css.selo}>ÁREA DA FAMÍLIA</span><h1>Acompanhe cada passo <em>mais de perto.</em></h1><p>Aulas, pagamentos e pedidos reunidos para você acompanhar a rotina de estudos do seu filho.</p><div className={css.detalhe}><span>01</span><div><strong>Seu acesso é pessoal</strong><small>Use o e-mail e a senha cadastrados pela equipe da Didaticus.</small></div></div></div>
+        <div className={css.apresentacao}><Link href="/" className={css.marca} aria-label="Didaticus, voltar ao site"><span className={css.marcaSimbolo} aria-hidden="true" /><span className={css.marcaNome}>DIDATICUS<small>AULAS PARTICULARES</small></span></Link><span className={css.selo}>ÁREA DA FAMÍLIA</span><h1>Acompanhe cada passo <em>mais de perto.</em></h1><p>Aulas, pagamentos e pedidos reunidos para você acompanhar a rotina de estudos do seu filho.</p><div className={css.detalhe}><span>01</span><div><strong>Seu acesso é pessoal</strong><small>Use o e-mail e a senha cadastrados pela equipe da Didaticus.</small></div></div></div>
         <form className={css.formulario} onSubmit={enviar}>
           <span className={css.numero}>PORTAL DO RESPONSÁVEL / ENTRAR</span>
           <h2>{recuperacao.length ? "Guarde seus códigos" : segredo ? "Proteja seu acesso" : desafio ? "Confirme seu acesso" : "Bem-vindo de volta."}</h2>
@@ -74,6 +78,7 @@ export default function Entrar() {
           {erro && <p className={css.erro} role="alert">{erro}</p>}
           {recuperacao.length ? <button type="button" onClick={() => router.replace("/portal/painel")}>Guardei os códigos <span aria-hidden="true">↗</span></button> : <button disabled={ocupado} type="submit">{ocupado ? "Aguarde..." : desafio ? "Confirmar código" : "Entrar no portal"}<span aria-hidden="true">↗</span></button>}
           <small>Problemas para entrar? <Link href="/contato">Fale com a equipe</Link>.</small>
+          {process.env.NODE_ENV === "development" && <small className={css.demo}>Quer explorar antes de conectar a API? Use o acesso de demonstração. Os dados são fictícios.</small>}
         </form>
       </div>
     </div>

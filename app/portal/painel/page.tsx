@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ErroPortal, exigirResponsavel, portalApi, type UsuarioPortal } from "@/lib/portal-api";
+import { dadosDeDemonstracao } from "@/lib/portal-demo";
 import css from "./painel.module.css";
 
 type Aluno = { id: string; nome: string; serieEscolar?: string | null; escola?: string | null; colegio?: { nome: string } | null };
@@ -19,7 +20,7 @@ const dinheiro = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "
 function moeda(valor: string) { return dinheiro.format(Number(valor)); }
 function quando(valor: string) { return data.format(new Date(valor)); }
 
-export default function Painel() {
+export default function Painel({ demo = false }: { demo?: boolean }) {
   const router = useRouter();
   const [usuario, setUsuario] = useState<UsuarioPortal | null>(null);
   const [dados, setDados] = useState<Dados | null>(null);
@@ -31,6 +32,13 @@ export default function Painel() {
   const [aviso, setAviso] = useState("");
 
   async function carregar() {
+    if (demo) {
+      const exemplo = dadosDeDemonstracao();
+      setUsuario(exemplo.usuario);
+      setDados(exemplo);
+      setAlunoId((atual) => atual || exemplo.alunos[0].id);
+      return;
+    }
     try {
       const sessao = await portalApi<{ usuario: UsuarioPortal }>("/auth/eu");
       exigirResponsavel(sessao.usuario);
@@ -64,6 +72,12 @@ export default function Painel() {
     setAviso("");
     setEnviando(true);
     try {
+      if (demo) {
+        setDados((atual) => atual && ({ ...atual, pedidos: [{ id: `pedido-demo-${Date.now()}`, alunoId, status: "ABERTA", mensagem, criadoEm: new Date().toISOString() }, ...atual.pedidos] }));
+        setMensagem(""); setPreferencia("");
+        setAviso("Pedido registrado nesta demonstração. Nenhuma mensagem foi enviada à escola.");
+        return;
+      }
       await portalApi("/solicitacoes", { method: "POST", body: JSON.stringify({ alunoId, mensagem, preferencia: preferencia || undefined }) });
       setMensagem(""); setPreferencia(""); setAviso("Pedido enviado. A equipe vai analisar e responder por aqui.");
       await carregar();
@@ -72,13 +86,14 @@ export default function Painel() {
   }
 
   async function sair() {
+    if (demo) { router.replace("/portal/entrar"); return; }
     await portalApi("/auth/sair", { method: "POST" }).catch(() => undefined);
     router.replace("/portal/entrar");
   }
 
   return <main className={css.pagina}>
     <aside className={css.lateral}><Link href="/" className={css.marca}><Image src="/marca/didaticus-horizontal-oficial.png" alt="Didaticus" width={2172} height={724} /></Link><span className={css.divisor} /><p>ÁREA DO RESPONSÁVEL</p><nav aria-label="Seções do portal"><a href="#visao">Visão geral</a><a href="#agenda">Agenda</a><a href="#financeiro">Financeiro</a><a href="#cadastro">Cadastro</a><a href="#pedidos">Pedidos</a></nav><button className={css.sair} onClick={sair}>Sair do portal ↗</button></aside>
-    <div className={css.conteudo} id="visao"><header className={css.topo}><span>PORTAL DO RESPONSÁVEL</span><button onClick={sair}>Sair ↗</button></header>
+    <div className={css.conteudo} id="visao"><header className={css.topo}><span>{demo ? "DEMONSTRAÇÃO · DADOS FICTÍCIOS" : "PORTAL DO RESPONSÁVEL"}</span><button onClick={sair}>Sair ↗</button></header>
       {erro ? <div className={css.alerta} role="alert"><strong>Não foi possível abrir o painel.</strong><p>{erro}</p><button onClick={() => { setErro(""); void carregar(); }}>Tentar novamente</button></div> : !dados ? <p className={css.carregando}>Carregando informações da família...</p> : <>
         <section className={css.abertura}><div><span className={css.olho}>OLÁ, {usuario?.nome.split(" ")[0]?.toUpperCase()}</span><h1>A rotina de estudos,<br /><em>sempre por perto.</em></h1><p>Consulte as próximas aulas, acompanhe pagamentos e envie pedidos para a equipe.</p></div><span className={css.selo}>Informações da sua família</span></section>
         <div className={css.seletor}><div><small>ALUNO SELECIONADO</small><strong>{aluno?.nome ?? "Nenhum aluno vinculado"}</strong></div>{dados.alunos.length > 1 && <label>Selecionar filho<select value={alunoId} onChange={(e) => setAlunoId(e.target.value)}>{dados.alunos.map((item) => <option key={item.id} value={item.id}>{item.nome}</option>)}</select></label>}</div>

@@ -1,8 +1,11 @@
 .pagina { min-height: 100vh; background: radial-gradient(circle at 18% 60%, #1b5078 0, transparent 36%), #092b49; color: #fff; padding: clamp(26px, 5vw, 72px); }
 .conteudo { width: min(1150px, 100%); margin: auto; }
-.marca { display: inline-block; width: 196px; padding: 8px 15px; border-radius: 15px; background: #fff; }
-.marca img { display: block; width: 100%; height: auto; }
-.grade { display: grid; grid-template-columns: 1fr minmax(330px, 430px); align-items: center; gap: clamp(35px, 7vw, 110px); min-height: calc(100vh - 180px); }
+.marca { display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin: 0 0 clamp(46px, 8vh, 88px); color: #fff; text-decoration: none; }
+.marca:focus-visible { outline: 2px solid #ffd27f; outline-offset: 7px; border-radius: 3px; }
+.marcaSimbolo { display: block; width: 47px; height: 56px; flex: none; background: url('/marca/didaticus-simbolo.png') -17px -10px / 82px 82px no-repeat; }
+.marcaNome { display: flex; flex-direction: column; color: #fff; font-size: 22px; font-weight: 850; letter-spacing: -.055em; line-height: 1; }
+.marcaNome small { display: block; margin-top: 7px; padding-top: 5px; border-top: 2px solid #ff6533; color: #bed4e1; font-size: 8px; font-weight: 750; letter-spacing: .24em; white-space: nowrap; }
+.grade { display: grid; grid-template-columns: 1fr minmax(330px, 430px); align-items: center; gap: clamp(35px, 7vw, 110px); min-height: calc(100vh - clamp(52px, 10vw, 144px)); }
 .apresentacao { max-width: 610px; }
 .selo, .numero { display: block; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
 .selo { color: #ffd27f; }
@@ -26,10 +29,11 @@
 .formulario small { display: block; margin-top: 22px; color: #6a8092; line-height: 1.6; }
 .formulario small a { color: #0c304e; font-weight: 800; }
 .formulario .erro { margin: 19px 0 0; padding: 12px 14px; border-radius: 10px; background: #fff0eb; color: #9d3517; }
+.formulario .demo { padding-top: 16px; border-top: 1px solid #e3edf1; }
 .segredo { margin: 16px 0; padding: 13px; border: 1px solid #cbdce4; border-radius: 10px; background: #f7fafb; }
 .segredo small, .segredo code { display: block; }
 .segredo small { margin-bottom: 7px; color: #617789; font-size: 10px; font-weight: 800; }
 .segredo code { overflow-wrap: anywhere; font-size: 13px; }
 .codigos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 18px; }
 .codigos code { padding: 9px; border-radius: 7px; background: #f1f6f8; text-align: center; }
-@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 60px 0; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
+@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 20px 0 45px; } .marca { margin-bottom: 48px; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
