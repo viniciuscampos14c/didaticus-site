@@ -1,10 +1,12 @@
 .pagina { min-height: 100vh; background: radial-gradient(circle at 18% 60%, #1b5078 0, transparent 36%), #092b49; color: #fff; padding: clamp(26px, 5vw, 72px); }
 .conteudo { width: min(1150px, 100%); margin: auto; }
-.marca { display: inline-flex; align-items: center; gap: 14px; width: fit-content; margin: 0 0 clamp(38px, 6vh, 68px); color: #fff; text-decoration: none; }
+.marca { display: block; width: fit-content; margin: 0 0 clamp(38px, 6vh, 68px); color: #fff; text-decoration: none; }
 .marca:focus-visible { outline: 2px solid #ffd27f; outline-offset: 7px; border-radius: 3px; }
-.marcaSimbolo { display: block; width: 79px; height: 86px; flex: none; overflow: visible; }
-.marcaNome { display: flex; flex-direction: column; color: #fff; font-size: 34px; font-weight: 850; letter-spacing: -.055em; line-height: 1; }
-.marcaNome small { display: block; margin-top: 9px; padding-top: 7px; border-top: 2px solid #ff6533; color: #d4e3ec; font-size: 11px; font-weight: 750; letter-spacing: .19em; white-space: nowrap; }
+.marcaArte { display: block; position: relative; width: 330px; height: 92px; overflow: hidden; }
+.marcaBase, .marcaTitulo, .marcaSubtitulo { position: absolute; inset: -12px 0 auto; width: 330px; height: 110px; background: url('/marca/didaticus-horizontal-oficial.png') center / 330px 110px no-repeat; }
+.marcaTitulo, .marcaSubtitulo { filter: brightness(0) invert(1); }
+.marcaTitulo { clip-path: inset(0 0 33% 25%); }
+.marcaSubtitulo { clip-path: inset(73% 0 0 25%); }
 .grade { display: grid; grid-template-columns: 1fr minmax(330px, 430px); align-items: center; gap: clamp(35px, 7vw, 110px); min-height: calc(100vh - clamp(52px, 10vw, 144px)); }
 .apresentacao { max-width: 610px; }
 .selo, .numero { display: block; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
@@ -35,5 +37,5 @@
 .segredo code { overflow-wrap: anywhere; font-size: 13px; }
 .codigos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 18px; }
 .codigos code { padding: 9px; border-radius: 7px; background: #f1f6f8; text-align: center; }
-@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 20px 0 45px; } .marca { margin-bottom: 42px; } .marcaSimbolo { width: 69px; height: 76px; } .marcaNome { font-size: 29px; } .marcaNome small { font-size: 10px; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
-@media(max-width:400px) { .marcaSimbolo { width: 58px; height: 64px; } .marcaNome { font-size: 25px; } .marcaNome small { font-size: 8px; } }
+@media(max-width:800px) { .pagina { padding: 25px; } .grade { grid-template-columns: 1fr; gap: 35px; padding: 20px 0 45px; } .marca { margin-bottom: 42px; } .apresentacao h1 { font-size: 45px; } .detalhe { margin-top: 30px; } }
+@media(max-width:400px) { .marcaArte { width: 280px; height: 78px; } .marcaBase, .marcaTitulo, .marcaSubtitulo { top: -10px; width: 280px; height: 93px; background-size: 280px 93px; } }

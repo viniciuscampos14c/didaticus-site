@@ -435,37 +435,27 @@ app/portal/entrar/portal.module.css  .grade  display: grid
 app/portal/entrar/portal.module.css  .grade  gap: clamp(35px, 7vw, 110px)
 app/portal/entrar/portal.module.css  .grade  grid-template-columns: 1fr minmax(330px, 430px)
 app/portal/entrar/portal.module.css  .grade  min-height: calc(100vh - clamp(52px, 10vw, 144px))
-app/portal/entrar/portal.module.css  .marca  align-items: center
 app/portal/entrar/portal.module.css  .marca  color: #fff
-app/portal/entrar/portal.module.css  .marca  display: inline-flex
-app/portal/entrar/portal.module.css  .marca  gap: 14px
+app/portal/entrar/portal.module.css  .marca  display: block
 app/portal/entrar/portal.module.css  .marca  margin: 0 0 clamp(38px, 6vh, 68px)
 app/portal/entrar/portal.module.css  .marca  text-decoration: none
 app/portal/entrar/portal.module.css  .marca  width: fit-content
 app/portal/entrar/portal.module.css  .marca:focus-visible  border-radius: 3px
 app/portal/entrar/portal.module.css  .marca:focus-visible  outline-offset: 7px
 app/portal/entrar/portal.module.css  .marca:focus-visible  outline: 2px solid #ffd27f
-app/portal/entrar/portal.module.css  .marcaNome  color: #fff
-app/portal/entrar/portal.module.css  .marcaNome  display: flex
-app/portal/entrar/portal.module.css  .marcaNome  flex-direction: column
-app/portal/entrar/portal.module.css  .marcaNome  font-size: 34px
-app/portal/entrar/portal.module.css  .marcaNome  font-weight: 850
-app/portal/entrar/portal.module.css  .marcaNome  letter-spacing: -.055em
-app/portal/entrar/portal.module.css  .marcaNome  line-height: 1
-app/portal/entrar/portal.module.css  .marcaNome small  border-top: 2px solid #ff6533
-app/portal/entrar/portal.module.css  .marcaNome small  color: #d4e3ec
-app/portal/entrar/portal.module.css  .marcaNome small  display: block
-app/portal/entrar/portal.module.css  .marcaNome small  font-size: 11px
-app/portal/entrar/portal.module.css  .marcaNome small  font-weight: 750
-app/portal/entrar/portal.module.css  .marcaNome small  letter-spacing: .19em
-app/portal/entrar/portal.module.css  .marcaNome small  margin-top: 9px
-app/portal/entrar/portal.module.css  .marcaNome small  padding-top: 7px
-app/portal/entrar/portal.module.css  .marcaNome small  white-space: nowrap
-app/portal/entrar/portal.module.css  .marcaSimbolo  display: block
-app/portal/entrar/portal.module.css  .marcaSimbolo  flex: none
-app/portal/entrar/portal.module.css  .marcaSimbolo  height: 86px
-app/portal/entrar/portal.module.css  .marcaSimbolo  overflow: visible
-app/portal/entrar/portal.module.css  .marcaSimbolo  width: 79px
+app/portal/entrar/portal.module.css  .marcaArte  display: block
+app/portal/entrar/portal.module.css  .marcaArte  height: 92px
+app/portal/entrar/portal.module.css  .marcaArte  overflow: hidden
+app/portal/entrar/portal.module.css  .marcaArte  position: relative
+app/portal/entrar/portal.module.css  .marcaArte  width: 330px
+app/portal/entrar/portal.module.css  .marcaBase, .marcaTitulo, .marcaSubtitulo  background: url('/marca/didaticus-horizontal-oficial.png') center / 330px 110px no-repeat
+app/portal/entrar/portal.module.css  .marcaBase, .marcaTitulo, .marcaSubtitulo  height: 110px
+app/portal/entrar/portal.module.css  .marcaBase, .marcaTitulo, .marcaSubtitulo  inset: -12px 0 auto
+app/portal/entrar/portal.module.css  .marcaBase, .marcaTitulo, .marcaSubtitulo  position: absolute
+app/portal/entrar/portal.module.css  .marcaBase, .marcaTitulo, .marcaSubtitulo  width: 330px
+app/portal/entrar/portal.module.css  .marcaSubtitulo  clip-path: inset(73% 0 0 25%)
+app/portal/entrar/portal.module.css  .marcaTitulo  clip-path: inset(0 0 33% 25%)
+app/portal/entrar/portal.module.css  .marcaTitulo, .marcaSubtitulo  filter: brightness(0) invert(1)
 app/portal/entrar/portal.module.css  .numero  color: #dd6138
 app/portal/entrar/portal.module.css  .numero  font-size: 9px
 app/portal/entrar/portal.module.css  .pagina  background: radial-gradient(circle at 18% 60%, #1b5078 0, transparent 36%), #092b49
