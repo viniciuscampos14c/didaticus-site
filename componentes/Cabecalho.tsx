@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import css from "./Cabecalho.module.css";
+import { PORTAL_DESTINO } from "@/dados/portal-destino";
 
 const links = [
   { href: "/aulas", texto: "Aulas" },
@@ -27,7 +28,7 @@ export function Cabecalho() {
       </button>
       <ul id="menu-principal" className={`${css.links} ${aberto ? css.aberto : ""}`}>
         {links.map((link) => <li key={link.href}><Link href={link.href} onClick={() => setAberto(false)}>{link.texto}</Link></li>)}
-        <li><Link href="/portal" className={css.portal} onClick={() => setAberto(false)}>Portal do responsável</Link></li>
+        <li><Link href={PORTAL_DESTINO} className={css.portal} onClick={() => setAberto(false)}>Portal do responsável</Link></li>
       </ul>
     </nav>
   );

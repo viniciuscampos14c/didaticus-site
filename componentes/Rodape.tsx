@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { LINK_WHATSAPP } from "@/dados/escola";
 import css from "./Rodape.module.css";
+import { PORTAL_DESTINO } from "@/dados/portal-destino";
 
 const grupos = [
   { titulo: "Aulas", links: [{ texto: "Presenciais", href: "/aulas/presenciais" }, { texto: "Suporte online", href: "/aulas/online" }, { texto: "Preços", href: "/precos" }] },
   { titulo: "A escola", links: [{ texto: "Como funciona", href: "/como-funciona" }, { texto: "Professores", href: "/professores" }, { texto: "Trabalhe conosco", href: "/trabalhe-conosco" }] },
-  { titulo: "Para a família", links: [{ texto: "Portal do responsável", href: "/portal" }, { texto: "Blog", href: "/blog" }, { texto: "Materiais", href: "/materiais" }] },
+  { titulo: "Para a família", links: [{ texto: "Portal do responsável", href: PORTAL_DESTINO }, { texto: "Blog", href: "/blog" }, { texto: "Materiais", href: "/materiais" }] },
 ];
 
 export function Rodape() {
