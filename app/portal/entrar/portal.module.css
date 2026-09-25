@@ -30,7 +30,11 @@
 .formulario small { display: block; margin-top: 22px; color: #6a8092; line-height: 1.6; }
 .formulario small a { color: #0c304e; font-weight: 800; }
 .formulario .erro { margin: 19px 0 0; padding: 12px 14px; border-radius: 10px; background: #fff0eb; color: #9d3517; }
-.formulario .demo { padding-top: 16px; border-top: 1px solid #e3edf1; }
+.demo { margin-top: 22px; padding-top: 18px; border-top: 1px solid #e3edf1; }
+.demo > span { display: block; color: #617789; font-size: 12px; }
+.demo > a { display: flex; justify-content: space-between; align-items: center; margin-top: 9px; padding: 12px 15px; border: 1px solid #bbd5df; border-radius: 10px; color: #0c304e; font-size: 12px; font-weight: 800; text-decoration: none; }
+.demo > a:hover, .demo > a:focus-visible { border-color: #0c304e; background: #f1f7f9; }
+.formulario .demo small { margin-top: 9px; }
 .segredo { margin: 16px 0; padding: 13px; border: 1px solid #cbdce4; border-radius: 10px; background: #f7fafb; }
 .segredo small, .segredo code { display: block; }
 .segredo small { margin-bottom: 7px; color: #617789; font-size: 10px; font-weight: 800; }

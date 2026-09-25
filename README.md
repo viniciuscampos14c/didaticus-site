@@ -128,9 +128,10 @@ com a conta `RESPONSAVEL`. A página pública só aponta para a entrada quando
 e permita a origem do site em `CORS_ORIGINS` na API. A liberação depende de
 validar o fluxo com uma conta real vinculada a um aluno e os domínios HTTPS.
 
-Para avaliar a interface sem a API, inicie o site com `npm run dev` e entre em
-`/portal/entrar` com `familia.demo@didaticus.local` e `Didaticus#2026`. Esse
-acesso existe somente em desenvolvimento e abre `/portal/demo` com dados
+Para avaliar a interface sem a API, inicie o site com `npm run dev` e clique em
+**Abrir demonstração** em `/portal/entrar`. Também é possível usar
+`familia.demo@didaticus.local` e `Didaticus#2026`. Esse acesso existe somente
+em desenvolvimento e abre `/portal/demo` com dados
 fictícios. Pedidos enviados nessa tela não chegam à escola.
 
 ## A home, e de onde veio cada parte

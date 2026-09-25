@@ -60,7 +60,7 @@ export default function Entrar() {
       }
       router.replace("/portal/painel");
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "Não foi possível entrar. Tente novamente.");
+      setErro(e instanceof TypeError ? "O sistema interno não está conectado nesta prévia. Abra a demonstração abaixo para conhecer o portal." : e instanceof Error ? e.message : "Não foi possível entrar. Tente novamente.");
     } finally {
       setOcupado(false);
     }
@@ -77,8 +77,8 @@ export default function Entrar() {
           {recuperacao.length ? <div className={css.codigos}>{recuperacao.map((item) => <code key={item}>{item}</code>)}</div> : desafio ? <>{segredo && <div className={css.segredo}><small>CHAVE DE CONFIGURAÇÃO</small><code>{segredo}</code></div>}<label>Código de verificação<input value={codigo} onChange={(e) => setCodigo(e.target.value)} autoComplete="one-time-code" minLength={6} maxLength={20} required /></label></> : <><label>E-mail<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required /></label><label>Senha<input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} autoComplete="current-password" minLength={8} required /></label></>}
           {erro && <p className={css.erro} role="alert">{erro}</p>}
           {recuperacao.length ? <button type="button" onClick={() => router.replace("/portal/painel")}>Guardei os códigos <span aria-hidden="true">↗</span></button> : <button disabled={ocupado} type="submit">{ocupado ? "Aguarde..." : desafio ? "Confirmar código" : "Entrar no portal"}<span aria-hidden="true">↗</span></button>}
+          {process.env.NODE_ENV === "development" && <div className={css.demo}><span>Quer conhecer o portal agora?</span><Link href="/portal/demo">Abrir demonstração <span aria-hidden="true">↗</span></Link><small>Entrada sem senha, com dados fictícios. Nenhum pedido é enviado à escola.</small></div>}
           <small>Problemas para entrar? <Link href="/contato">Fale com a equipe</Link>.</small>
-          {process.env.NODE_ENV === "development" && <small className={css.demo}>Quer explorar antes de conectar a API? Use o acesso de demonstração. Os dados são fictícios.</small>}
         </form>
       </div>
     </div>

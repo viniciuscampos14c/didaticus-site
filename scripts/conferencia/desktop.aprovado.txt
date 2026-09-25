@@ -365,6 +365,25 @@ app/portal/entrar/portal.module.css  .codigos code  padding: 9px
 app/portal/entrar/portal.module.css  .codigos code  text-align: center
 app/portal/entrar/portal.module.css  .conteudo  margin: auto
 app/portal/entrar/portal.module.css  .conteudo  width: min(1150px, 100%)
+app/portal/entrar/portal.module.css  .demo  border-top: 1px solid #e3edf1
+app/portal/entrar/portal.module.css  .demo  margin-top: 22px
+app/portal/entrar/portal.module.css  .demo  padding-top: 18px
+app/portal/entrar/portal.module.css  .demo > a  align-items: center
+app/portal/entrar/portal.module.css  .demo > a  border-radius: 10px
+app/portal/entrar/portal.module.css  .demo > a  border: 1px solid #bbd5df
+app/portal/entrar/portal.module.css  .demo > a  color: #0c304e
+app/portal/entrar/portal.module.css  .demo > a  display: flex
+app/portal/entrar/portal.module.css  .demo > a  font-size: 12px
+app/portal/entrar/portal.module.css  .demo > a  font-weight: 800
+app/portal/entrar/portal.module.css  .demo > a  justify-content: space-between
+app/portal/entrar/portal.module.css  .demo > a  margin-top: 9px
+app/portal/entrar/portal.module.css  .demo > a  padding: 12px 15px
+app/portal/entrar/portal.module.css  .demo > a  text-decoration: none
+app/portal/entrar/portal.module.css  .demo > a:hover, .demo > a:focus-visible  background: #f1f7f9
+app/portal/entrar/portal.module.css  .demo > a:hover, .demo > a:focus-visible  border-color: #0c304e
+app/portal/entrar/portal.module.css  .demo > span  color: #617789
+app/portal/entrar/portal.module.css  .demo > span  display: block
+app/portal/entrar/portal.module.css  .demo > span  font-size: 12px
 app/portal/entrar/portal.module.css  .detalhe  border-top: 1px solid #ffffff36
 app/portal/entrar/portal.module.css  .detalhe  margin-top: 52px
 app/portal/entrar/portal.module.css  .detalhe  padding-top: 23px
@@ -378,8 +397,7 @@ app/portal/entrar/portal.module.css  .formulario  border-radius: 28px
 app/portal/entrar/portal.module.css  .formulario  box-shadow: 0 32px 90px #00182d55
 app/portal/entrar/portal.module.css  .formulario  color: #0c304e
 app/portal/entrar/portal.module.css  .formulario  padding: clamp(30px, 4vw, 51px)
-app/portal/entrar/portal.module.css  .formulario .demo  border-top: 1px solid #e3edf1
-app/portal/entrar/portal.module.css  .formulario .demo  padding-top: 16px
+app/portal/entrar/portal.module.css  .formulario .demo small  margin-top: 9px
 app/portal/entrar/portal.module.css  .formulario .erro  background: #fff0eb
 app/portal/entrar/portal.module.css  .formulario .erro  border-radius: 10px
 app/portal/entrar/portal.module.css  .formulario .erro  color: #9d3517
